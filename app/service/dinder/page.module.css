@@ -1,0 +1,374 @@
+/* dinder LP */
+.page {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+/* ---- Header ---- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #f37c19;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.headerInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLogo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.headerBtns {
+  display: flex;
+  gap: 8px;
+}
+
+.headerBtn {
+  display: inline-block;
+  background: #ffffff;
+  color: #f37c19;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.headerBtn:hover { background: #fff7ed; }
+
+/* ---- Shared ---- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.bgOrange {
+  background: #fff7ed;
+}
+
+.sectionTitle {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px;
+  color: #1a1a1a;
+}
+
+.onOrange {
+  color: #9a3d08;
+}
+
+/* ---- Hero ---- */
+.hero {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  padding: 120px 0 64px;
+}
+
+.heroInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .heroInner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.heroBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroTag {
+  display: inline-block;
+  background: #f37c19;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  align-self: flex-start;
+}
+
+.heroH1 {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.heroSub {
+  font-size: 17px;
+  color: #6b5344;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.heroCtas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.ctaPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ---- Pain Points ---- */
+.painGrid {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .painGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.painCard {
+  border: 2px solid #f37c19;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.painScene {
+  background: #f37c19;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 16px;
+}
+
+.painList {
+  list-style: none;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.painItem {
+  font-size: 14px;
+  color: #4a3728;
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+}
+.painItem::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+  color: #f37c19;
+}
+
+.solutionIntro {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 48px;
+  color: #1a1a1a;
+}
+
+.brandName {
+  color: #f37c19;
+}
+
+/* ---- How It Works ---- */
+.stepsGrid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 600px) {
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stepsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stepCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px 20px;
+  box-shadow: 0 2px 12px rgba(243, 124, 25, 0.08);
+  border: 1px solid rgba(243, 124, 25, 0.15);
+}
+
+.stepNum {
+  font-size: 36px;
+  font-weight: 800;
+  color: #f37c19;
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.stepTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.stepBody {
+  font-size: 14px;
+  color: #6b5344;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ---- Screenshots ---- */
+.screenshotsGrid {
+  display: grid;
+  gap: 32px;
+  justify-items: center;
+}
+
+@media (min-width: 600px) {
+  .screenshotsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.screenshotItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.screenshotImg {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.screenshotCaption {
+  font-size: 14px;
+  color: #6b5344;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ---- CTA ---- */
+.ctaSection {
+  background: linear-gradient(135deg, #f37c19 0%, #e05e00 100%);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.ctaH2 {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.storeBtn {
+  display: inline-flex;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.storeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- Footer ---- */
+.footer {
+  background: #1a1a1a;
+  padding: 40px 24px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footerLinks a {
+  font-size: 14px;
+  color: #9ca3af;
+  transition: color 0.15s;
+}
+.footerLinks a:hover { color: #f9fafb; }
+
+.footerCopy {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 767px) {
+  .hero {
+    padding: 100px 0 48px;
+  }
+}
