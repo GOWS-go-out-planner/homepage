@@ -7,7 +7,11 @@ export default function Footer() {
         <div className={s.footerGrid}>
           <div className={s.footerBrand}>
             <span className={s.footerLogo}>GOWS</span>
-            <p className={s.footerTagline}>技術で、ビジネスの可能性を拓く。</p>
+            <p className={s.footerTagline}>
+              ITで未来を切り拓く、課題解決のプロフェッショナル。<br/>
+              GOWS合同会社は、DX・AXコンサルティングとシステム開発を通じて、
+              中小企業・スタートアップの成長を支援します。
+            </p>
           </div>
           <nav aria-label="サービス">
             <p className={s.footerNavLabel}>サービス</p>

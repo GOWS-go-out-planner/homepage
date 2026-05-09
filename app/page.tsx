@@ -132,7 +132,7 @@ const services = [
   {
     name: "自社プロダクト",
     desc: "開発現場の知見から生まれたiOS・Androidアプリを展開中。英語学習・見守り・飲食店選びの3サービス。",
-    tags: ["iOS / Android", "全機能無料", "自社開発"],
+    tags: ["iOS / Android", "自社開発"],
     cta: "サービスを見る",
     href: "/service/products",
   },
@@ -183,7 +183,7 @@ export default function Home() {
         <div className={s.heroOrb} aria-hidden="true" />
         <div className={`container ${s.heroBody}`}>
           <h1 className={s.heroH1}>
-            技術で、ビジネスの<br />可能性を拓く。
+            ITで未来を切り拓く、<br />課題解決のプロフェッショナル
           </h1>
           <p className={s.heroSub}>
             GOWS合同会社は、DX・AXコンサルティングとシステム開発を通じて、

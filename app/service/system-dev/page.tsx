@@ -83,7 +83,6 @@ export default function SystemDevPage() {
               <li><span aria-current="page">システム開発</span></li>
             </ol>
           </nav>
-          <span className={s.pageBadge}>システム開発</span>
           <h1 className={s.pageH1}>システム開発</h1>
           <p className={s.pageSubCopy}>
             課題を深く理解した設計と、全工程自社完結の開発力で、{"\n"}低コスト・短納期・高品質なシステムを提供します。
