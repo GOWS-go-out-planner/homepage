@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import s from "./page.module.css";
+import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
   title: "Duosub | 映画・ドラマで楽しくネイティブの英語を習得",
@@ -266,15 +267,7 @@ export default function DuosubPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className={s.footer}>
-        <nav className={s.footerLinks} aria-label="フッターナビゲーション">
-          <a href="https://gows-llc.com/company-info/" target="_blank" rel="noopener noreferrer">会社概要</a>
-          <a href="/privacy">プライバシーポリシー</a>
-          <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer">お問い合わせ</a>
-        </nav>
-        <p className={s.footerCopy}>© 2025 GOWS合同会社</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

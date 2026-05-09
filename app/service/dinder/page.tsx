@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import s from "./page.module.css";
+import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
   title: "dinder | 飲食店選び、もう迷わない",
@@ -199,14 +200,7 @@ export default function DinderPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className={s.footer}>
-        <nav className={s.footerLinks} aria-label="フッターナビゲーション">
-          <a href="/" >GOWS合同会社</a>
-          <a href="/privacy">プライバシーポリシー</a>
-        </nav>
-        <p className={s.footerCopy}>© 2025 GOWS合同会社</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import s from "./page.module.css";
+import Footer from "../../components/Footer";
 
 const APP_STORE_URL =
   "https://apps.apple.com/jp/app/gentle-diary-%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E5%85%B1%E6%9C%89%E3%81%97%E3%81%AA%E3%81%84%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1%E6%97%A5%E8%A8%98/id6758263521";
@@ -219,22 +220,7 @@ export default function GentleDiaryPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className={s.footer}>
-        <div className={`${s.container} ${s.footerContent}`}>
-          <nav className={s.footerLinks} aria-label="フッターナビゲーション">
-            <a href="https://gows-llc.com/company-info/" target="_blank" rel="noopener noreferrer">会社概要</a>
-            <a href="https://gows-llc.com/service/in-house/gentle-diary/privacy_policy/" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>
-            <a href="https://gows-llc.com/service/in-house/gentle-diary/terms_of_use/" target="_blank" rel="noopener noreferrer">利用規約</a>
-          </nav>
-          <div className={s.footerCompany}>
-            <strong>GOWS合同会社</strong>
-          </div>
-          <div className={s.footerCopyright}>
-            Copyright © GOWS合同会社 All Rights Reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

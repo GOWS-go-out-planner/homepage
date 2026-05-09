@@ -1,78 +1,160 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Nav from "./components/Nav";
 import FaqAccordion from "./components/FaqAccordion";
+import Footer from "./components/Footer";
 import s from "./page.module.css";
 
-const CONTACT_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfqxRSQa8Sb6tGcrgLZlXUJrRFKqXDaqC35J5CGdzxuVXXQGA/viewform";
+const CONTACT_URL = "/contact";
 
-const stats = [
-  { value: "XX", unit: "件", label: "支援実績" },
-  { value: "XX", unit: "社", label: "伴走支援" },
-  { value: "XX", unit: "%", label: "顧客継続率" },
+function ParticleCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animId: number;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+
+    const COUNT = 80;
+    const MAX_DIST = 120;
+
+    const pts = Array.from({ length: COUNT }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+    }));
+
+    const tick = () => {
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      for (const p of pts) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = W;
+        if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H;
+        if (p.y > H) p.y = 0;
+      }
+
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const d = Math.hypot(dx, dy);
+          if (d < MAX_DIST) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(79,142,247,${0.22 * (1 - d / MAX_DIST)})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            ctx.stroke();
+          }
+        }
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(79,142,247,0.65)";
+        ctx.arc(pts[i].x, pts[i].y, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      animId = requestAnimationFrame(tick);
+    };
+    tick();
+
+    window.addEventListener("resize", resize);
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className={s.particleCanvas} aria-hidden="true" />;
+}
+
+const cardAccents = ['#4F8EF7', '#8B5CF6', '#06B6D4', '#10B981'];
+
+const serviceGlows = [
+  'radial-gradient(ellipse at top left, rgba(79,142,247,0.18) 0%, transparent 65%)',
+  'radial-gradient(ellipse at top left, rgba(139,92,246,0.18) 0%, transparent 65%)',
+  'radial-gradient(ellipse at top left, rgba(6,182,212,0.15) 0%, transparent 65%)',
 ];
 
 const problems = [
   {
-    heading: "デジタル化の次の一手が見えない",
-    body: "DX推進は始めたが、AIをどう活用すべきか、投資対効果が見えないまま停滞している",
-    tag: "DX・AX戦略の立案と実行支援",
+    heading: "DX推進を検討しているが、何から始めればいいかわからない",
+    body: "デジタル化の必要性は感じているが、優先度の整理や具体的な進め方が見えない",
+    tag: "DX戦略立案・ロードマップ設計",
   },
   {
-    heading: "スピードとリソースのジレンマ",
-    body: "市場に早く出たいが、開発リソースが足りない。内製か外注か判断がつかない",
-    tag: "MVP開発〜スケール設計まで一気通貫",
+    heading: "AIを活用したい（AX）が、自社での導入ノウハウがない",
+    body: "生成AI・機械学習の活用に興味はあるが、どのツールをどう使えばよいか判断できない",
+    tag: "AX（AIトランスフォーメーション）支援",
   },
   {
-    heading: "新規事業、何から始めればいい？",
-    body: "アイデアはある。でも技術選定・開発・運用をどう進めればよいか分からない",
-    tag: "構想から事業化まで伴走",
+    heading: "システム開発を依頼したいが、信頼できるパートナーが見つからない",
+    body: "要件定義から保守まで任せられる、技術力と対話力を兼ね備えたパートナーを探している",
+    tag: "要件定義〜保守まで一気通貫",
+  },
+  {
+    heading: "新規事業を立ち上げたいが、技術面のサポートが不足している",
+    body: "アイデアはあるが、技術選定・MVP開発・スケールまでの道筋が見えない",
+    tag: "新規事業・MVP開発支援",
   },
 ];
 
-const consulting = [
+const services = [
   {
     name: "DX・AXコンサルティング",
-    desc: "業務プロセスのデジタル化、AI活用戦略の立案、ROI設計から推進支援まで",
-    tags: ["戦略立案", "KPI設計", "ツール選定", "推進支援"],
-    cta: "コンサルを相談する",
-    href: null as string | null,
+    desc: "DX戦略の立案からAI導入・新規事業支援まで、専門コンサルタントがビジネスパートナーとして伴走します。",
+    tags: ["DX推進支援", "AI導入", "新規事業", "補助金申請"],
+    cta: "詳しく見る",
+    href: "/service/dx-ax",
   },
   {
     name: "システム開発",
-    desc: "要件定義〜設計・開発・テスト・運用保守まで一気通貫。MVPから基幹システムまで対応",
-    tags: ["要件定義", "設計・開発", "テスト", "保守運用"],
-    cta: "開発を相談する",
-    href: null as string | null,
+    desc: "要件定義から保守・運用まで全フェーズを自社内で完結。低コスト・短納期・高品質を実現します。",
+    tags: ["Webアプリ", "業務システム", "モバイルアプリ", "API開発"],
+    cta: "詳しく見る",
+    href: "/service/system-dev",
+  },
+  {
+    name: "自社プロダクト",
+    desc: "開発現場の知見から生まれたiOS・Androidアプリを展開中。英語学習・見守り・飲食店選びの3サービス。",
+    tags: ["iOS / Android", "全機能無料", "自社開発"],
+    cta: "サービスを見る",
+    href: "/service/products",
   },
 ];
 
-const products = [
+const news = [
   {
-    name: "Duosub",
-    desc: "映画・ドラマで楽しくスマホ留学。英語・日本語の字幕を同時表示してネイティブの英語を学べるアプリ。全機能無料。",
-    tags: ["iOS / Android", "全機能無料"],
-    cta: "Duosubを見る",
-    href: "/service/duosub",
+    tag: "お知らせ",
+    date: "2025.04.01",
+    title: "GOWS合同会社のホームページをリニューアルしました",
   },
   {
-    name: "Gentle Diary",
-    desc: "1日の行動をやさしく要約して家族に届ける見守りアプリ。リアルタイム追跡なしでプライバシーと安心を両立。",
-    tags: ["iOS / Android", "見守りアプリ"],
-    cta: "Gentle Diaryを見る",
-    href: "/service/gentle-diary",
+    tag: "サービス",
+    date: "2025.03.15",
+    title: "DX・AXコンサルティングサービスの提供を開始しました",
   },
   {
-    name: "dinder",
-    desc: "位置情報をもとに近くの飲食店を提案。スワイプするだけで1人でも複数人でもすぐにお店が決まる。",
-    tags: ["iOS / Android", "飲食店選びアプリ"],
-    cta: "dinderを見る",
-    href: "/service/dinder",
+    tag: "プレスリリース",
+    date: "2025.01.08",
+    title: "GOWS合同会社を設立しました",
   },
 ];
-
 
 export default function Home() {
   useEffect(() => {
@@ -97,45 +179,34 @@ export default function Home() {
 
       {/* Hero */}
       <section className={s.hero}>
-        <div className={s.heroMesh} aria-hidden="true" />
+        <ParticleCanvas />
         <div className={s.heroOrb} aria-hidden="true" />
         <div className={`container ${s.heroBody}`}>
-          <span className={s.heroBadge}>DX・AX専門</span>
-          <h1 className={s.heroH1}>DX・AXで、事業を加速する。</h1>
+          <h1 className={s.heroH1}>
+            技術で、ビジネスの<br />可能性を拓く。
+          </h1>
           <p className={s.heroSub}>
-            戦略立案から実装・運用まで、中小企業・スタートアップのデジタル変革を一気通貫で支援します。
+            GOWS合同会社は、DX・AXコンサルティングとシステム開発を通じて、
+            中小企業・スタートアップの成長を支援します。
           </p>
           <div className={s.ctaRow}>
-            <a href="#contact" className={s.btnPrimary}>無料相談を予約する（30分）</a>
-            <a href="#services" className={s.btnGhost}>サービスを見る ↓</a>
+            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnPrimary}>
+              無料相談を予約する →
+            </a>
+            <a href="#services" className={s.btnGhost}>サービスを見る</a>
           </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className={s.stats} aria-label="実績サマリー">
-        <div className="container">
-          <ul className={s.statsGrid} role="list">
-            {stats.map((st, i) => (
-              <li key={st.label} className={`${s.statItem} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
-                <span className={s.statVal}>
-                  {st.value}<span className={s.statUnit}>{st.unit}</span>
-                </span>
-                <span className={s.statLabel}>{st.label}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
       {/* Problems */}
       <section className={s.section} id="problems">
         <div className="container">
-          <h2 className={`${s.sectionTitle} ${s.reveal}`}>こんな課題、ありませんか？</h2>
-          <p className={`${s.sectionSub} ${s.reveal}`}>業種・フェーズを問わず、御社の状況に合わせてご支援します。</p>
-          <ul className={s.cardGrid} role="list">
+          <h2 className={`${s.sectionTitle} ${s.reveal}`}>こんなお悩み、ありませんか？</h2>
+          <p className={`${s.sectionSub} ${s.reveal}`}>GOWSは、戦略立案から実装・運用まで一気通貫でサポートします。</p>
+          <ul className={s.cardGridFour} role="list">
             {problems.map((p, i) => (
-              <li key={p.heading} className={`${s.problemCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.12}s` }}>
+              <li key={p.heading} className={`${s.problemCard} ${s.reveal}`} style={{ '--card-accent': cardAccents[i], transitionDelay: `${i * 0.1}s` } as React.CSSProperties}>
+                <div className={s.cardNum} aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
                 <h3 className={s.cardH3}>{p.heading}</h3>
                 <p className={s.cardBody}>{p.body}</p>
                 <span className={s.tag}>{p.tag}</span>
@@ -143,7 +214,9 @@ export default function Home() {
             ))}
           </ul>
           <div className={`${s.midCta} ${s.reveal}`}>
-            <a href="#contact" className={s.btnSecondary}>あなたの課題を無料で相談する →</a>
+            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnSecondary}>
+              あなたの課題を無料で相談する →
+            </a>
           </div>
         </div>
       </section>
@@ -151,33 +224,34 @@ export default function Home() {
       {/* Services */}
       <section className={s.serviceSection} id="services">
         <div className="container">
-          <h2 className={`${s.sectionTitle} ${s.onDark} ${s.reveal}`}>GOWSのサービス</h2>
-          <p className={`${s.sectionSub} ${s.onDarkSub} ${s.reveal}`}>戦略から実装まで、必要なすべてをワンストップで</p>
-
-          <p className={`${s.serviceSubLabel} ${s.reveal}`}>コンサルティング・開発</p>
-          <ul className={`${s.cardGridTwo} ${s.mbSection}`} role="list">
-            {consulting.map((sv, i) => (
+          <h2 className={`${s.sectionTitle} ${s.reveal}`}>事業内容</h2>
+          <p className={`${s.sectionSub} ${s.reveal}`}>戦略立案からプロダクト運営まで、ITで事業成長を支援します。</p>
+          <ul className={s.cardGrid} role="list">
+            {services.map((sv, i) => (
               <li key={sv.name} className={`${s.serviceCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div className={s.serviceCardGlow} style={{ background: serviceGlows[i] }} aria-hidden="true" />
                 <h3 className={s.serviceH3}>{sv.name}</h3>
                 <p className={s.serviceDesc}>{sv.desc}</p>
                 <ul className={s.darkTagList} role="list" aria-label="対応内容">
                   {sv.tags.map((t) => <li key={t} className={s.darkTag}>{t}</li>)}
                 </ul>
-                <a href={sv.href ?? "#contact"} className={s.btnGhostSm}>{sv.cta}</a>
+                <a href={sv.href} className={s.btnGhostSm}>{sv.cta} →</a>
               </li>
             ))}
           </ul>
+        </div>
+      </section>
 
-          <p className={`${s.serviceSubLabel} ${s.reveal}`}>自社プロダクト</p>
-          <ul className={s.cardGrid} role="list">
-            {products.map((sv, i) => (
-              <li key={sv.name} className={`${s.serviceCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
-                <h3 className={s.serviceH3}>{sv.name}</h3>
-                <p className={s.serviceDesc}>{sv.desc}</p>
-                <ul className={s.darkTagList} role="list" aria-label="対応内容">
-                  {sv.tags.map((t) => <li key={t} className={s.darkTag}>{t}</li>)}
-                </ul>
-                <a href={sv.href ?? "#contact"} className={s.btnGhostSm}>{sv.cta}</a>
+      {/* News */}
+      <section className={s.newsSection} id="news">
+        <div className="container">
+          <h2 className={`${s.sectionTitle} ${s.reveal}`}>News</h2>
+          <ul className={s.newsGrid} role="list">
+            {news.map((n, i) => (
+              <li key={n.title} className={`${s.newsCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
+                <span className={s.newsTag}>{n.tag}</span>
+                <span className={s.newsDate}>{n.date}</span>
+                <p className={s.newsTitle}>{n.title}</p>
               </li>
             ))}
           </ul>
@@ -197,62 +271,21 @@ export default function Home() {
       {/* Footer CTA */}
       <section className={s.footerCta} id="contact">
         <div className="container">
-          <h2 className={s.footerCtaH2}>まず、話を聞いてもらうところから。</h2>
+          <h2 className={s.footerCtaH2}>まずは、気軽にご相談ください。</h2>
           <p className={s.footerCtaSub}>
-            30分の無料相談から、御社に合った最初の一手を一緒に考えます。
+            DX推進・システム開発・AI活用など、どんな段階のご相談も歓迎です。<br />
+            初回相談は無料で承ります。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
             <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnWhite}>
-              無料相談を予約する
-            </a>
-            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnGhost}>
-              メールで問い合わせる
+              無料相談を予約する →
             </a>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className={s.footer} id="company">
-        <div className="container">
-          <div className={s.footerGrid}>
-            <div className={s.footerBrand}>
-              <span className={s.footerLogo}>GOWS</span>
-              <p className={s.footerTagline}>DX・AXで、事業を加速する。</p>
-              <dl className={s.footerCompanyInfo}>
-                <div><dt>設立</dt><dd>2024年4月8日</dd></div>
-                <div><dt>所在地</dt><dd>〒150-0045 東京都渋谷区神泉町10-15-301</dd></div>
-                <div><dt>代表</dt><dd>小山望海</dd></div>
-                <div><dt>資本金</dt><dd>150万円</dd></div>
-              </dl>
-            </div>
-            <nav aria-label="サービス">
-              <p className={s.footerNavLabel}>サービス</p>
-              <ul role="list" className={s.footerNavList}>
-                <li><a href="#services">DX・AXコンサルティング</a></li>
-                <li><a href="#services">システム開発</a></li>
-                <li><a href="/service/duosub">Duosub</a></li>
-                <li><a href="/service/gentle-diary">Gentle Diary</a></li>
-                <li><a href="/service/dinder">dinder</a></li>
-              </ul>
-            </nav>
-            <nav aria-label="会社情報">
-              <p className={s.footerNavLabel}>会社情報</p>
-              <ul role="list" className={s.footerNavList}>
-                <li><a href="#faq">よくある質問</a></li>
-              </ul>
-            </nav>
-            <nav aria-label="その他">
-              <p className={s.footerNavLabel}>その他</p>
-              <ul role="list" className={s.footerNavList}>
-                <li><a href="#contact">お問い合わせ</a></li>
-                <li><a href="/privacy">プライバシーポリシー</a></li>
-              </ul>
-            </nav>
-          </div>
-          <p className={s.copyright}>© 2025 GOWS合同会社</p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
