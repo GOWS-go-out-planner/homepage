@@ -12,8 +12,8 @@ export type LpProductFooterLink = {
 };
 
 export type LpProductFooterProps = {
-  /** Duosub: default（緑） / Gentle Diary: teal */
-  variant?: "default" | "teal";
+  /** Duosub: default（緑） / Gentle Diary: teal / dinder: orange */
+  variant?: "default" | "teal" | "orange";
   iconSrc: string;
   iconAlt: string;
   productName: string;
@@ -72,7 +72,13 @@ export function LpProductFooter({
   social,
   socialNavLabel = "公式SNS",
 }: LpProductFooterProps) {
-  const footerClass = [s.footer, variant === "teal" ? s.footerTeal : ""].filter(Boolean).join(" ");
+  const footerClass = [
+    s.footer,
+    variant === "teal" ? s.footerTeal : "",
+    variant === "orange" ? s.footerOrange : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <footer className={footerClass}>

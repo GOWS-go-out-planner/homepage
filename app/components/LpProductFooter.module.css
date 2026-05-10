@@ -14,6 +14,11 @@
   --lp-accent-rgb: 74, 166, 177;
 }
 
+.footerOrange {
+  --lp-accent: #f37c19;
+  --lp-accent-rgb: 243, 124, 25;
+}
+
 .lpFooterMain {
   max-width: 1040px;
   margin: 0 auto;
