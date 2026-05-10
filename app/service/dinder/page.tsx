@@ -88,16 +88,16 @@ export default function DinderPage() {
             </p>
             <div className={s.heroCtas}>
               <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className={s.ctaPrimary}>
-                <Image src="/services/AppStore.png" alt="App Storeでダウンロード" width={140} height={42} />
+                <Image src="/images/products/AppStore.png" alt="App Storeでダウンロード" width={140} height={42} />
               </a>
               <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className={s.ctaPrimary}>
-                <Image src="/services/GooglePlay.png" alt="Google Playでダウンロード" width={140} height={42} />
+                <Image src="/images/products/GooglePlay.png" alt="Google Playでダウンロード" width={140} height={42} />
               </a>
             </div>
           </div>
           <div className={s.heroVisual}>
             <Image
-              src="/services/header-768x375.png"
+              src="/images/products/header-768x375.png"
               alt="dinderアプリのイメージ"
               width={500}
               height={244}
@@ -153,7 +153,7 @@ export default function DinderPage() {
           <div className={s.screenshotsGrid}>
             <div className={s.screenshotItem}>
               <Image
-                src="/services/右スワイプ-721x1536.png"
+                src="/images/products/右スワイプ-721x1536.png"
                 alt="気に入ったお店は右スワイプ"
                 width={240}
                 height={512}
@@ -163,7 +163,7 @@ export default function DinderPage() {
             </div>
             <div className={s.screenshotItem}>
               <Image
-                src="/services/左スワイプ-720x1536.png"
+                src="/images/products/左スワイプ-720x1536.png"
                 alt="気に入らなければ左スワイプで次の候補へ"
                 width={240}
                 height={512}
@@ -173,7 +173,7 @@ export default function DinderPage() {
             </div>
             <div className={s.screenshotItem}>
               <Image
-                src="/services/設定画面-719x1536.png"
+                src="/images/products/設定画面-719x1536.png"
                 alt="細かい条件を事前設定"
                 width={240}
                 height={512}
@@ -191,10 +191,10 @@ export default function DinderPage() {
           <h2 className={s.ctaH2}>今すぐダウンロードして、<br />迷わない食事選びを。</h2>
           <div className={s.ctaButtons}>
             <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className={s.storeBtn}>
-              <Image src="/services/AppStore.png" alt="App Storeでダウンロード" width={150} height={45} />
+              <Image src="/images/products/AppStore.png" alt="App Storeでダウンロード" width={150} height={45} />
             </a>
             <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className={s.storeBtn}>
-              <Image src="/services/GooglePlay.png" alt="Google Playでダウンロード" width={150} height={45} />
+              <Image src="/images/products/GooglePlay.png" alt="Google Playでダウンロード" width={150} height={45} />
             </a>
           </div>
         </div>

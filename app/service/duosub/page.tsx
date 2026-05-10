@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { XLogo } from "../../components/XLogo";
-import { InstagramLogo } from "../../components/InstagramLogo";
-import { YouTubeLogo } from "../../components/YouTubeLogo";
+import { LpProductFooter } from "../../components/LpProductFooter";
 import s from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -26,7 +24,7 @@ const VIDEO_SRC = "/images/products/Duosub使い方_映画・ドラマ.mp4";
 const FOOTER_ICON_URL = "/images/products/duosub-icon.webp";
 
 const LOGO_PATH = "/images/products/Duosub_logo.png";
-const SCREENSHOT_PATH = "/services/app-screenshot.png";
+const SCREENSHOT_PATH = "/images/products/app-screenshot.png";
 
 function IconDownload({ className }: { className?: string }) {
   return (
@@ -584,79 +582,28 @@ export default function DuosubPage() {
         </div>
       </section>
 
-      <footer className={s.lpFooter}>
-        <div className={s.lpFooterMain}>
-          <div className={s.lpFooterBrand}>
-            <div className={s.lpFooterBrandRow}>
-              <Image
-                src={FOOTER_ICON_URL}
-                alt="Duosub Icon"
-                width={40}
-                height={40}
-                className={s.lpFooterIcon}
-              />
-              <span className={s.lpFooterName}>Duosub</span>
-            </div>
-            <p className={s.lpFooterTagline}>映画・ドラマで楽しく英語学習</p>
-          </div>
-
-          <nav className={s.lpFooterNav} aria-label="フッターナビ">
-            <a href="https://gows-llc.com/company-info/" target="_blank" rel="noopener noreferrer" className={s.lpFooterLink}>会社概要</a>
-            <a href="https://gows-llc.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className={s.lpFooterLink}>プライバシーポリシー</a>
-            <a href="https://gows-llc.com/service/in-house/duosub/terms_of_use/" target="_blank" rel="noopener noreferrer" className={s.lpFooterLink}>利用規約</a>
-          </nav>
-
-          <div className={s.lpFooterDownload}>
-            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className={s.lpFooterStoreBtn}>
-              <IconDownload className={s.iconSm} />
-              App Store
-            </a>
-            <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" className={s.lpFooterStoreBtn}>
-              <IconDownload className={s.iconSm} />
-              Google Play
-            </a>
-          </div>
-        </div>
-
-        <div className={s.lpFooterBottom}>
-          <p className={s.lpFooterCopy}>© GOWS合同会社</p>
-          <ul className={s.lpFooterSocial} aria-label="Duosub公式SNS">
-            <li>
-              <a
-                href={OFFICIAL_X_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={s.lpFooterSocialLink}
-                aria-label="Duosub公式X"
-              >
-                <XLogo className={s.lpFooterSocialIcon} />
-              </a>
-            </li>
-            <li>
-              <a
-                href={OFFICIAL_INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={s.lpFooterSocialLink}
-                aria-label="Duosub公式Instagram"
-              >
-                <InstagramLogo className={s.lpFooterSocialIcon} />
-              </a>
-            </li>
-            <li>
-              <a
-                href={OFFICIAL_YOUTUBE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={s.lpFooterSocialLink}
-                aria-label="Duosub公式YouTube"
-              >
-                <YouTubeLogo className={s.lpFooterSocialIcon} />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      <LpProductFooter
+        iconSrc={FOOTER_ICON_URL}
+        iconAlt="Duosub Icon"
+        productName="Duosub"
+        tagline="映画・ドラマで楽しく英語学習"
+        links={[
+          { href: "https://gows-llc.com/company-info/", label: "会社概要" },
+          { href: "https://gows-llc.com/privacy-policy/", label: "プライバシーポリシー" },
+          {
+            href: "https://gows-llc.com/service/in-house/duosub/terms_of_use/",
+            label: "利用規約",
+          },
+        ]}
+        appStoreUrl={APP_STORE_URL}
+        googlePlayUrl={GOOGLE_PLAY_URL}
+        socialNavLabel="Duosub公式SNS"
+        social={[
+          { href: OFFICIAL_X_URL, ariaLabel: "Duosub公式X", icon: "x" },
+          { href: OFFICIAL_INSTAGRAM_URL, ariaLabel: "Duosub公式Instagram", icon: "instagram" },
+          { href: OFFICIAL_YOUTUBE_URL, ariaLabel: "Duosub公式YouTube", icon: "youtube" },
+        ]}
+      />
     </div>
   );
 }
