@@ -29,7 +29,7 @@ const products: ProductEntry[] = [
     desc: "海外映画やドラマ、YouTubeのリアルな英会話を聴きながら英語字幕と日本語字幕で内容を確認し、楽しく英語が学べる究極ツール",
     tags: ["iOS / Android", "英語学習"],
     cta: "詳しく見る",
-    href: "/service/duosub",
+    href: "/service/products/duosub",
   },
   {
     name: "Gentle Diary",
@@ -38,7 +38,7 @@ const products: ProductEntry[] = [
     desc: "リアルタイムな位置情報共有に縛られない、新しい位置情報共有のかたち\n1日の行動をざっくりまとめてから共有\n見せすぎないから、ちょうどいい距離感で繋がれる",
     tags: ["iOS / Android", "位置情報共有", "見守り", "プライバシー重視"],
     cta: "詳しく見る",
-    href: "/service/gentle-diary",
+    href: "/service/products/gentle-diary",
   },
   {
     name: "dinder",
@@ -47,7 +47,7 @@ const products: ProductEntry[] = [
     desc: "「何食べる？」「どこに食べに行く？」「2次会のお店どうする？」を解決する、飲食店選びの新定番アプリ",
     tags: ["iOS / Android", "飲食店選び"],
     cta: "詳しく見る",
-    href: "/service/dinder",
+    href: "/service/products/dinder",
   },
 ];
 

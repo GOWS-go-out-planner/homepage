@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { LpProductFooter } from "../../components/LpProductFooter";
+import { LpProductFooter } from "../../../components/LpProductFooter";
 import s from "./page.module.css";
 
 export const metadata: Metadata = {
