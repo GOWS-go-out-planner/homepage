@@ -60,6 +60,13 @@
   color: var(--color-text);
 }
 
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
 .cta {
   flex-shrink: 0;
   background: var(--gradient-accent);
@@ -74,6 +81,26 @@
 
 .cta:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.ctaSecondary {
+  flex-shrink: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.ctaSecondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  background: rgba(79, 142, 247, 0.1);
   transform: translateY(-1px);
 }
 
@@ -211,7 +238,7 @@
     display: none;
   }
 
-  .cta {
+  .ctaGroup {
     display: none;
   }
 

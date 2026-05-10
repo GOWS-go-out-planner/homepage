@@ -89,7 +89,7 @@ export default function CompanyPage() {
       {/* 役員紹介 */}
       <section className={s.section}>
         <div className="container">
-          <h2 className={`${s.sectionTitle} ${s.reveal}`}>役員紹介</h2>
+          {/* <h2 className={`${s.sectionTitle} ${s.reveal}`}>役員紹介</h2> */}
           <ul className={cs.officerList} role="list">
             <li className={`${cs.officerCard} ${s.reveal}`}>
               <div className={cs.officerPhoto}>
@@ -109,8 +109,7 @@ export default function CompanyPage() {
                   2018年4月に新卒でフューチャーアーキテクト株式会社にITコンサルタントとして入社。{"\n"}
                   金融業界や小売業のプロジェクトでコンサルタント兼エンジニアとして従事。{"\n"}
                   2022年8月にフリーランスとして独立。{"\n"}
-                  2024年4月にGOWS合同会社を設立。{"\n"}
-                  趣味はドライブ、剣道、スノーボード。
+                  2024年4月にGOWS合同会社を設立。
                 </p>
               </div>
             </li>

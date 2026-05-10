@@ -41,9 +41,19 @@ export default function Nav() {
           <li><a href="/company">会社概要</a></li>
           <li><a href="/#news">お知らせ</a></li>
         </ul>
-        <a href="/contact" target="_blank" rel="noopener noreferrer" className={styles.cta}>
-          無料相談を予約する
-        </a>
+        <div className={styles.ctaGroup}>
+          <a
+            href="https://forms.gle/BGJ5MAuT8nHxxkXK9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ctaSecondary}
+          >
+            お問い合わせ
+          </a>
+          <a href="/contact" target="_blank" rel="noopener noreferrer" className={styles.cta}>
+            無料相談を予約する
+          </a>
+        </div>
         <button
           type="button"
           className={styles.menuButton}
@@ -72,6 +82,16 @@ export default function Nav() {
           </li>
           <li><a href="/company" onClick={closeMobileMenu}>会社概要</a></li>
           <li><a href="/#news" onClick={closeMobileMenu}>お知らせ</a></li>
+          <li>
+            <a
+              href="https://forms.gle/BGJ5MAuT8nHxxkXK9"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMobileMenu}
+            >
+              お問い合わせ
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

@@ -98,7 +98,7 @@ const problems = [
     tag: "DX戦略立案・ロードマップ設計",
   },
   {
-    heading: "AIを活用したい（AX）が、自社での導入ノウハウがない",
+    heading: "AIを活用したいが、自社での導入ノウハウがない",
     body: "生成AI・機械学習の活用に興味はあるが、どのツールをどう使えばよいか判断できない",
     tag: "AX（AIトランスフォーメーション）支援",
   },
@@ -117,21 +117,21 @@ const problems = [
 const services = [
   {
     name: "DX・AXコンサルティング",
-    desc: "DX戦略の立案からAI導入・新規事業支援まで、専門コンサルタントがビジネスパートナーとして伴走します。",
+    desc: "ただの\"IT化\"で終わらせない、DX戦略の立案からAI導入・新規事業支援まで、専門コンサルタントがビジネスパートナーとして伴走します。",
     tags: ["DX推進支援", "AI導入", "新規事業", "補助金申請"],
     cta: "詳しく見る",
     href: "/service/dx-ax",
   },
   {
     name: "システム開発",
-    desc: "要件定義から保守・運用まで全フェーズを自社内で完結。低コスト・短納期・高品質を実現します。",
+    desc: "要件定義から保守・運用まで全フェーズを自社内で完結。\n課題の根本を解決する高品質システムを低コスト・短納期で開発します。",
     tags: ["Webアプリ", "業務システム", "モバイルアプリ", "API開発"],
     cta: "詳しく見る",
     href: "/service/system-dev",
   },
   {
     name: "自社プロダクト",
-    desc: "開発現場の知見から生まれたiOS・Androidアプリを展開中。英語学習・見守り・飲食店選びの3サービス。",
+    desc: "現場の知見や日常の課題から生まれたサービスを複数展開。\n全て無料でご利用いただけます。",
     tags: ["iOS / Android", "自社開発"],
     cta: "サービスを見る",
     href: "/service/products",
@@ -187,7 +187,7 @@ export default function Home() {
           </h1>
           <p className={s.heroSub}>
             GOWS合同会社は、DX・AXコンサルティングとシステム開発を通じて、
-            中小企業・スタートアップの成長を支援します。
+            事業を加速させ、企業の成長を支援します。
           </p>
           <div className={s.ctaRow}>
             <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnPrimary}>

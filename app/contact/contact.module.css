@@ -139,12 +139,6 @@
   margin-bottom: 6px;
 }
 
-.dateSectionNote {
-  font-size: 13px;
-  color: var(--color-text-sub);
-  margin-bottom: 24px;
-}
-
 .dateSlotList {
   display: flex;
   flex-direction: column;

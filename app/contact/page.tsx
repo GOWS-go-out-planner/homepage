@@ -335,7 +335,7 @@ export default function ContactPage() {
                   <textarea
                     id="content" name="content"
                     className={`${cs.textarea} ${errors.content ? cs.inputError : ""}`}
-                    placeholder="例：DXを推進したいが何から始めればよいかわからない。現状の課題として〜"
+                    placeholder="例：DXを推進したいが何から始めればよいかわからない。"
                     value={form.content}
                     onChange={handleChange}
                     rows={5}
@@ -347,7 +347,6 @@ export default function ContactPage() {
               {/* 希望日時 */}
               <div className={cs.dateSection}>
                 <h3 className={cs.dateSectionTitle}>ご希望日時</h3>
-                <p className={cs.dateSectionNote}>第3希望まで必須、第4・第5希望は任意です</p>
                 <div className={cs.dateSlotList}>
                   {dateFields.map(({ prefix, label, required }) => {
                     const dateKey = `${prefix}Date` as keyof FormData;
