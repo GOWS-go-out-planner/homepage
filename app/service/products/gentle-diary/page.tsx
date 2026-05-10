@@ -264,7 +264,7 @@ export default function GentleDiaryPage() {
         productName="Gentle Diary"
         tagline="リアルタイム共有しない位置情報日記"
         links={[
-          { href: "https://gows-llc.com/company-info/", label: "会社概要" },
+          { href: "/company", label: "会社概要" },
           {
             href: "https://gows-llc.com/service/in-house/gentle-diary/privacy_policy/",
             label: "プライバシーポリシー",

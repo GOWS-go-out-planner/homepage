@@ -267,7 +267,7 @@ export default function DinderPage() {
         productName="dinder"
         tagline="お店選びに時間はかけない"
         links={[
-          { href: "https://gows-llc.com/company-info/", label: "会社概要" },
+          { href: "/company", label: "会社概要" },
           {
             href: "https://gows-llc.com/service/in-house/dinder/privacy_policy/",
             label: "プライバシーポリシー",
