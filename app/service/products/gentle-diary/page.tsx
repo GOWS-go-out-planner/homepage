@@ -266,11 +266,11 @@ export default function GentleDiaryPage() {
         links={[
           { href: "/company", label: "会社概要" },
           {
-            href: "https://gows-llc.com/service/in-house/gentle-diary/privacy_policy/",
+            href: "/service/products/gentle-diary/privacy",
             label: "プライバシーポリシー",
           },
           {
-            href: "https://gows-llc.com/service/in-house/gentle-diary/terms_of_use/",
+            href: "/service/products/gentle-diary/terms",
             label: "利用規約",
           },
         ]}
