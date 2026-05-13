@@ -589,9 +589,9 @@ export default function DuosubPage() {
         tagline="映画・ドラマで楽しく英語学習"
         links={[
           { href: "/company", label: "会社概要" },
-          { href: "https://gows-llc.com/privacy-policy/", label: "プライバシーポリシー" },
+          { href: "/privacy", label: "プライバシーポリシー" },
           {
-            href: "https://gows-llc.com/service/in-house/duosub/terms_of_use/",
+            href: "/service/products/duosub/terms",
             label: "利用規約",
           },
         ]}
