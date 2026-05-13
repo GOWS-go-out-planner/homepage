@@ -72,7 +72,6 @@ export default function Footer() {
             </ul>
           </div>
           <nav aria-label="サービス">
-            <p className={s.footerNavLabel}>サービス</p>
             <ul role="list" className={s.footerNavList}>
               <li><a href="/service/dx-ax">DX・AXコンサルティング</a></li>
               <li><a href="/service/system-dev">システム開発</a></li>
@@ -80,7 +79,6 @@ export default function Footer() {
             </ul>
           </nav>
           <nav aria-label="会社情報">
-            <p className={s.footerNavLabel}>会社概要</p>
             <ul role="list" className={s.footerNavList}>
               <li><a href="/company">会社情報</a></li>
               <li><a href="/#news">お知らせ</a></li>
@@ -88,9 +86,7 @@ export default function Footer() {
             </ul>
           </nav>
           <nav aria-label="その他">
-            <p className={s.footerNavLabel}>その他</p>
             <ul role="list" className={s.footerNavList}>
-              <li><a href="/contact" target="_blank" rel="noopener noreferrer">無料相談のご予約</a></li>
               <li><a href="/privacy">プライバシーポリシー</a></li>
               <li><a href="/personal-info">個人情報の取り扱いについて</a></li>
             </ul>

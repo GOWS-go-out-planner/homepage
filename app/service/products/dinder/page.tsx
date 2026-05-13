@@ -268,14 +268,7 @@ export default function DinderPage() {
         tagline="お店選びに時間はかけない"
         links={[
           { href: "/company", label: "会社概要" },
-          {
-            href: "https://gows-llc.com/service/in-house/dinder/privacy_policy/",
-            label: "プライバシーポリシー",
-          },
-          {
-            href: "https://gows-llc.com/service/in-house/dinder/terms_of_use/",
-            label: "利用規約",
-          },
+          { href: "/privacy", label: "プライバシーポリシー" },
         ]}
         appStoreUrl={APP_STORE_URL}
         googlePlayUrl={GOOGLE_PLAY_URL}
