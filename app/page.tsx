@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Nav from "./components/Nav";
 import FaqAccordion from "./components/FaqAccordion";
 import Footer from "./components/Footer";
@@ -140,21 +140,135 @@ const services = [
 
 const news = [
   {
-    tag: "お知らせ",
-    date: "2025.04.01",
-    title: "GOWS合同会社のホームページをリニューアルしました",
+    id: 1,
+    tags: ["プレスリリース", "Duosub"],
+    date: "2025.01.30",
+    title: "海外映画・ドラマの英語字幕表示アプリ「Duosub」大幅アップデート（日本語訳の常時表示が可能に。）",
+    url: "https://www.atpress.ne.jp/news/423834",
   },
   {
-    tag: "サービス",
-    date: "2025.03.15",
-    title: "DX・AXコンサルティングサービスの提供を開始しました",
+    id: 2,
+    tags: ["プレスリリース", "Duosub"],
+    date: "2025.05.17",
+    title: "海外映画・ドラマの英語字幕・日本語訳アプリ『Duosub』が大幅アップデート（広告なしで全機能使い放題の格安サブスクプランを追加）",
+    url: "https://prtimes.jp/main/html/rd/p/000000001.000156441.html",
   },
   {
-    tag: "プレスリリース",
-    date: "2025.01.08",
-    title: "GOWS合同会社を設立しました",
+    id: 3,
+    tags: ["プレスリリース", "Duosub"],
+    date: "2025.11.08",
+    title: "海外映画・ドラマの英語字幕・日本語訳アプリ『Duosub』がYouTubeにも対応！",
+    url: "https://prtimes.jp/main/html/rd/p/000000003.000156441.html",
+  },
+  {
+    id: 4,
+    tags: ["メディア掲載"],
+    date: "2025.11.10",
+    title: "弊社代表の小山望海が朝日新聞に掲載されました。",
+    url: "/news/4",
+  },
+  {
+    id: 5,
+    tags: ["プレスリリース", "Duosub"],
+    date: "2025.12.02",
+    title: "海外動画の英語字幕・日本語訳アプリ『Duosub』の日本語訳性能が向上",
+    url: "https://prtimes.jp/main/html/rd/p/000000004.000156441.html",
+  },
+  {
+    id: 6,
+    tags: ["プレスリリース", "Gentle Diary"],
+    date: "2026.04.16",
+    title: "新サービス「Gentle Diary」リリース",
+    url: "https://prtimes.jp/main/html/rd/p/000000005.000156441.html",
   },
 ];
+
+function isExternalNewsUrl(url: string): boolean {
+  return /^https?:\/\//i.test(url);
+}
+
+const newsSortedByIdDesc = [...news].sort((a, b) => b.id - a.id);
+
+type NewsEntry = (typeof news)[number];
+
+function NewsHomeCard({ n, i, external }: { n: NewsEntry; i: number; external: boolean }) {
+  const [expanded, setExpanded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [hasClampOverflow, setHasClampOverflow] = useState(false);
+  const titleRef = useRef<HTMLSpanElement>(null);
+
+  useLayoutEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+
+    const measure = () => {
+      const mobile = mq.matches;
+      setIsMobile(mobile);
+      if (!mobile) {
+        setExpanded(false);
+        setHasClampOverflow(false);
+        return;
+      }
+      if (expanded) return;
+      const el = titleRef.current;
+      if (!el) return;
+      setHasClampOverflow(el.scrollHeight > el.clientHeight + 1);
+    };
+
+    measure();
+    const ro = new ResizeObserver(() => {
+      requestAnimationFrame(measure);
+    });
+    const el = titleRef.current;
+    if (el) ro.observe(el);
+    mq.addEventListener("change", measure);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      mq.removeEventListener("change", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, [expanded, n.title]);
+
+  const showToggle = isMobile && (expanded || hasClampOverflow);
+
+  return (
+    <li
+      className={`${s.newsCard} ${s.reveal}`}
+      style={{ transitionDelay: `${i * 0.1}s` }}
+      data-expanded={expanded ? "true" : "false"}
+    >
+      <a
+        href={n.url}
+        className={s.newsCardLink}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
+        <ul className={s.newsTagList} role="list" aria-label="カテゴリ">
+          {n.tags.map((t, ti) => (
+            <li key={`${n.title}-${ti}-${t}`} className={s.newsTag}>
+              {t}
+            </li>
+          ))}
+        </ul>
+        <span className={s.newsDate}>{n.date}</span>
+        <span ref={titleRef} className={s.newsTitle}>
+          {n.title}
+        </span>
+      </a>
+      {showToggle && (
+        <button
+          type="button"
+          className={s.newsMoreBtn}
+          aria-expanded={expanded}
+          onClick={() => {
+            setExpanded((v) => !v);
+          }}
+        >
+          {expanded ? "閉じる" : "もっと見る"}
+        </button>
+      )}
+    </li>
+  );
+}
 
 export default function Home() {
   useEffect(() => {
@@ -247,12 +361,8 @@ export default function Home() {
         <div className="container">
           <h2 className={`${s.sectionTitle} ${s.reveal}`}>News</h2>
           <ul className={s.newsGrid} role="list">
-            {news.map((n, i) => (
-              <li key={n.title} className={`${s.newsCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
-                <span className={s.newsTag}>{n.tag}</span>
-                <span className={s.newsDate}>{n.date}</span>
-                <p className={s.newsTitle}>{n.title}</p>
-              </li>
+            {newsSortedByIdDesc.map((n, i) => (
+              <NewsHomeCard key={n.id} n={n} i={i} external={isExternalNewsUrl(n.url)} />
             ))}
           </ul>
         </div>
