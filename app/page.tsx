@@ -214,7 +214,7 @@ export default function Home() {
             ))}
           </ul>
           <div className={`${s.midCta} ${s.reveal}`}>
-            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnSecondary}>
+            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnWhite}>
               あなたの課題を無料で相談する →
             </a>
           </div>

@@ -95,8 +95,8 @@ export default function DxAxPage() {
       {/* Service Menus */}
       <section className={s.section}>
         <div className="container">
-          <h2 className={`${s.sectionTitle} ${s.reveal}`}>サービスメニュー</h2>
-          <p className={`${s.sectionSub} ${s.reveal}`}>お客様の課題に合わせてご支援します。</p>
+          <h2 className={`${s.sectionTitle} ${s.reveal}`}>支援内容</h2>
+          <p className={`${s.sectionSub} ${s.reveal}`}>お客様の課題に合わせて最適なご支援を提供します。</p>
           <ul className={s.menuGrid} role="list">
             {menus.map((m, i) => (
               <li key={m.name} className={`${s.menuCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>

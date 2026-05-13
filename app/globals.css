@@ -18,7 +18,7 @@
   --color-accent-hover: #3D7DE8;
 
   --color-text:         #F0F4FF;
-  --color-text-sub:     #8B9CC8;
+  --color-text-sub:     #C0D3FF;
   --color-text-dark:    #F0F4FF;
   --color-muted:        #4A5578;
 
@@ -32,13 +32,17 @@
   --font: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* ブラウザ既定(通常16px)に対してほんの少しだけ拡大。rem・継承フォントが一括で追従 */
+  font-size: 105%;
+}
 
 body {
   font-family: var(--font);
   color: var(--color-text);
   background: var(--color-bg);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
 }

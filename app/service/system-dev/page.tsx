@@ -96,8 +96,8 @@ export default function SystemDevPage() {
       {/* Service Menus */}
       <section className={s.section}>
         <div className="container">
-          <h2 className={`${s.sectionTitle} ${s.reveal}`}>開発できるもの</h2>
-          <p className={`${s.sectionSub} ${s.reveal}`}>幅広い開発ニーズに対応します</p>
+          <h2 className={`${s.sectionTitle} ${s.reveal}`}>幅広い開発ニーズに対応します</h2>
+          <p className={`${s.sectionSub} ${s.reveal}`}>以下に記載されていないものも、お気軽にご相談ください。</p>
           <ul className={s.menuGrid} role="list">
             {menus.map((m, i) => (
               <li key={m.name} className={`${s.menuCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>

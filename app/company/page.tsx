@@ -68,9 +68,9 @@ export default function CompanyPage() {
                 <dt className={cs.companyTh}>事業内容</dt>
                 <dd className={cs.companyTd}>
                   <ul className={cs.companyList}>
-                    <li>IT(DX・AX)コンサルティング</li>
+                    <li>DX・AXを中心としたITコンサルティング</li>
                     <li>システム開発</li>
-                    <li>自社サービスの開発・運営</li>
+                    <li>自社プロダクトの開発・運営</li>
                   </ul>
                 </dd>
               </div>
