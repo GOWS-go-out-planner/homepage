@@ -10,7 +10,7 @@ const CONTACT_URL = "/contact";
 const menus = [
   {
     name: "Webアプリケーション",
-    desc: "SaaS・社内ツール・ECサイト・管理画面など、ビジネス課題に合わせて設計・開発します。",
+    desc: "SaaS・社内ツール・ECサイト・CMSなど、ビジネス課題に合わせて設計・開発します。",
   },
   {
     name: "業務システム・API",

@@ -40,12 +40,12 @@ const features = [
   {
     num: "03",
     title: "中立的なビジネスパートナー",
-    body: "特定製品・ベンダーに依存しない中立的な立場で、ITコスト削減と新たなビジネス創造に貢献します。",
+    body: "特定製品・ベンダーに依存しない中立的な立場で、業務改善や新たなビジネス創造に貢献します。",
   },
   {
     num: "04",
     title: "一気通貫・ワンストップ対応",
-    body: "グランドデザインから要件定義・開発・保守・運用まで全フェーズを自社内で完結。下請けに丸投げしないため、コストとコミュニケーションロスを最小化します。",
+    body: "コンサルティング・グランドデザインから要件定義・開発・保守・運用まで全フェーズを自社内で完結。下請けに丸投げしないため、コストとコミュニケーションロスを最小化します。",
   },
 ];
 
@@ -96,7 +96,7 @@ export default function DxAxPage() {
       <section className={s.section}>
         <div className="container">
           <h2 className={`${s.sectionTitle} ${s.reveal}`}>サービスメニュー</h2>
-          <p className={`${s.sectionSub} ${s.reveal}`}>お客様の課題に合わせてご支援します</p>
+          <p className={`${s.sectionSub} ${s.reveal}`}>お客様の課題に合わせてご支援します。</p>
           <ul className={s.menuGrid} role="list">
             {menus.map((m, i) => (
               <li key={m.name} className={`${s.menuCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
