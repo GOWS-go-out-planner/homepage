@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "GOWS合同会社 | DX・AXコンサルティング・システム開発",
   description:
     "中小企業・スタートアップのDX推進・AI活用（AX）を戦略立案から実装まで支援。GOWS合同会社のITコンサルティング・システム開発サービス。",
+  icons: {
+    icon: "/images/gows_favicon.png",
+  },
 };
 
 export default function RootLayout({
