@@ -1,0 +1,783 @@
+/* base/safepage.html の Tailwind / shadcn 相当を再現（ライトテーマ LP） */
+
+.root {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #0a0a0a;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- デザイントークン（safe-primary は拡張のブランド色に相当） ---- */
+.safePrimary {
+  color: #0d9488;
+}
+
+.bgSafePrimary {
+  background: #0d9488;
+}
+
+.bgSafePrimaryHover:hover {
+  background: rgb(13 148 136 / 0.9);
+}
+
+.borderSafePrimary {
+  border-color: rgb(13 148 136 / 0.3);
+}
+
+.borderSafePrimary50 {
+  border-color: rgb(13 148 136 / 0.5);
+}
+
+.ringSafe {
+  --tw-ring-color: rgb(13 148 136 / 0.5);
+}
+
+/* ---- 固定ヘッダー ---- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  border-bottom: 1px solid #e5e5e5;
+  background: rgb(255 255 255 / 0.95);
+  backdrop-filter: blur(8px);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .header {
+    background: rgb(255 255 255 / 0.8);
+  }
+}
+
+.headerInner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.5rem 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .headerInner {
+    padding: 0.75rem 1rem;
+  }
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .headerRow {
+    gap: 1rem;
+  }
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+@media (min-width: 640px) {
+  .brandRow {
+    gap: 0.5rem;
+  }
+}
+
+.brandTitle {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  .brandTitle {
+    font-size: 1.125rem;
+  }
+}
+
+.headerCtas {
+  display: flex;
+  flex: 1;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .headerCtas {
+    gap: 0.75rem;
+  }
+}
+
+.btnChrome {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+@media (min-width: 640px) {
+  .btnChrome {
+    height: 2.5rem;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+}
+
+.btnChrome:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(13 148 136 / 0.35);
+}
+
+.headerLogoImg {
+  height: 1.5rem;
+  width: 1.5rem;
+  object-fit: contain;
+}
+
+@media (min-width: 640px) {
+  .headerLogoImg {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+.heroLogoImg {
+  height: 6rem;
+  width: 6rem;
+  object-fit: contain;
+}
+
+@media (min-width: 640px) {
+  .heroLogoImg {
+    height: 8rem;
+    width: 8rem;
+  }
+}
+
+.chromeIconSm {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .chromeIconSm {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.chromeLabelFull {
+  display: none;
+}
+
+.chromeLabelShort {
+  display: inline;
+}
+
+@media (min-width: 475px) {
+  .chromeLabelFull {
+    display: inline;
+  }
+
+  .chromeLabelShort {
+    display: none;
+  }
+}
+
+.btnOutlineHeader {
+  display: none;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #0a0a0a;
+  text-decoration: none;
+  border: 1px solid rgb(13 148 136 / 0.3);
+  background: transparent;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+@media (min-width: 640px) {
+  .btnOutlineHeader {
+    display: inline-flex;
+    height: 2.5rem;
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+}
+
+.btnOutlineHeader:hover {
+  background: rgb(13 148 136 / 0.1);
+}
+
+.contactLabelLong {
+  display: none;
+}
+
+.contactLabelShort {
+  display: inline;
+}
+
+@media (min-width: 768px) {
+  .contactLabelLong {
+    display: inline;
+  }
+
+  .contactLabelShort {
+    display: none;
+  }
+}
+
+.mainPad {
+  padding-top: 60px;
+}
+
+@media (min-width: 640px) {
+  .mainPad {
+    padding-top: 76px;
+  }
+}
+
+/* ---- セクション共通 ---- */
+.containerXl {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .containerXl {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.sectionBorder {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sectionPad {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 640px) {
+  .sectionPad {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.bgAccentSoft {
+  background: rgb(245 245 245 / 0.3);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.heroInner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .heroInner {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroInner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.maxW3xl {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.maxW2xl {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.maxW5xl {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.maxW3xlWide {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.heroLogoWrap {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.badgeChrome {
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #171717;
+}
+
+.pingDot {
+  position: relative;
+  display: flex;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.pingOuter {
+  position: absolute;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  background: #0d9488;
+  opacity: 0.75;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.pingInner {
+  position: relative;
+  display: inline-flex;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background: #0d9488;
+}
+
+.heroH1 {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.75rem, 5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.heroLead {
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #737373;
+  text-wrap: pretty;
+}
+
+@media (min-width: 640px) {
+  .heroLead {
+    font-size: 1.25rem;
+  }
+}
+
+.heroCtas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .heroCtas {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.btnChromeLg {
+  display: inline-flex;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.375rem;
+  padding: 0 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.btnChromeLg:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(13 148 136 / 0.35);
+}
+
+.chromeIconMd {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.mutedSm {
+  font-size: 0.875rem;
+  color: #737373;
+}
+
+.sectionH2 {
+  margin-bottom: 1rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .sectionH2 {
+    font-size: 2.25rem;
+  }
+}
+
+.sectionLead {
+  margin-bottom: 3rem;
+  font-size: 1.125rem;
+  color: #737373;
+  text-wrap: pretty;
+}
+
+.grid3 {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .grid3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cardWarning {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(245 158 11 / 0.2);
+  background: rgb(245 158 11 / 0.05);
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.iconWarnWrap {
+  margin-bottom: 1rem;
+  display: inline-flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: rgb(245 158 11 / 0.1);
+}
+
+.iconWarn {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #f59e0b;
+}
+
+.cardH3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.cardP {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: #737373;
+}
+
+.supportIconWrap {
+  margin-bottom: 1rem;
+  display: inline-flex;
+  height: 4rem;
+  width: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: rgb(13 148 136 / 0.1);
+}
+
+.iconShieldLg {
+  width: 2rem;
+  height: 2rem;
+  color: #0d9488;
+}
+
+.supportChecks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #0d9488;
+  flex-shrink: 0;
+}
+
+.stepCol {
+  position: relative;
+  text-align: center;
+}
+
+.stepNum {
+  margin-bottom: 1rem;
+  display: inline-flex;
+  height: 4rem;
+  width: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #0d9488;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.gridFeatures {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .gridFeatures {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .gridFeatures {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cardFeature {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e5e5;
+  background: #ffffff;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.iconFeatureWrap {
+  margin-bottom: 1rem;
+  display: inline-flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: rgb(13 148 136 / 0.1);
+}
+
+.iconFeature {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #0d9488;
+}
+
+.featureH3 {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.pricingWrap {
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cardPricing {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(13 148 136 / 0.5);
+  background: #ffffff;
+  padding: 2rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.priceTitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.priceRow {
+  margin-bottom: 1rem;
+}
+
+.priceYen {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.priceUnit {
+  color: #737373;
+}
+
+.featureList {
+  margin-bottom: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.featureList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.featureList li + li {
+  margin-top: 0.75rem;
+}
+
+.listCheck {
+  margin-top: 0.125rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: #0d9488;
+}
+
+.btnFull {
+  display: inline-flex;
+  width: 100%;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.375rem;
+  padding: 0 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.btnFull:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(13 148 136 / 0.35);
+}
+
+.trustGrid {
+  display: grid;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .trustGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ctaH2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.mb8 {
+  margin-bottom: 2rem;
+}
+
+.mt4 {
+  margin-top: 1rem;
+}
+
+.mb12lead {
+  margin-bottom: 3rem;
+}
+
+.supportLead {
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #737373;
+  text-wrap: pretty;
+}

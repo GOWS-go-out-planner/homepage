@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Nav from "../../../../components/Nav";
-import Footer from "../../../../components/Footer";
 import s from "../../../../page.module.css";
 import ts from "./terms.module.css";
 
@@ -13,9 +11,7 @@ export const metadata: Metadata = {
 export default function DuosubTermsPage() {
   return (
     <>
-      <Nav />
-
-      <section className={s.pageHero}>
+      <section className={`${s.pageHero} ${s.pageHeroTerms}`}>
         <div className={`container ${ts.pageHeroInner}`}>
           <nav className={s.breadcrumb} aria-label="パンくず">
             <ol>
@@ -46,7 +42,7 @@ export default function DuosubTermsPage() {
         </div>
       </section>
 
-      <section className={s.section}>
+      <section className={`${s.section} ${s.sectionTerms}`}>
         <div className="container">
           <div className={ts.contentWrap}>
             <p className={ts.meta}>
@@ -275,8 +271,6 @@ export default function DuosubTermsPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }
