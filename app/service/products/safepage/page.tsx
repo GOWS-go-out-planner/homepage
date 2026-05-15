@@ -172,10 +172,138 @@ function IconLock({ className }: { className?: string }) {
   );
 }
 
+const problemCards = [
+  {
+    key: "trust",
+    title: "「このサイト、本当に安全？」",
+    body: "知らないURLをクリックするとき、詐欺サイトではないか心配になります。",
+  },
+  {
+    key: "offer",
+    title: "「この特典、怪しくない？」",
+    body: "お得すぎるオファーや投資話を見ると、不安が募ります。",
+  },
+  {
+    key: "check",
+    title: "毎回の確認が面倒",
+    body: "URLを調べたり口コミを探したりするのは時間の無駄です。",
+  },
+] as const;
+
+const featureCards = [
+  {
+    key: "score",
+    icon: IconEye,
+    title: "リスクスコア可視化",
+    body: "🟢 低リスク / 🟡 注意 / 🔴 高リスク で一目でわかる",
+  },
+  {
+    key: "warn",
+    icon: IconTriangleAlert,
+    title: "警告サインの説明",
+    body: "なぜ注意が必要なのか、わかりやすく説明します",
+  },
+  {
+    key: "zap",
+    icon: IconZap,
+    title: "アカウント不要",
+    body: "基本機能は登録なしですぐに使える",
+  },
+  {
+    key: "lock",
+    icon: IconLock,
+    title: "プライバシー重視",
+    body: "個人情報は収集しません。ローカルで動作します",
+  },
+] as const;
+
+const trustCards = [
+  {
+    key: "noblock",
+    icon: IconShield,
+    title: "ブロックしない",
+    body: "サイトへのアクセスを妨げることはありません",
+  },
+  {
+    key: "noprivacy",
+    icon: IconLock,
+    title: "個人情報を収集しない",
+    body: "あなたのプライバシーを最優先します",
+  },
+  {
+    key: "assist",
+    icon: IconCircleCheck,
+    title: "補助ツールとして設計",
+    body: "判断するのはあなた。私たちはサポートします",
+  },
+] as const;
+
+const warnItems = ["ドメイン登録が直近", "類似の詐欺サイトを検知", "不審なリダイレクトあり"] as const;
+
+function ExtensionMockup() {
+  return (
+    <div className={s.extWrap} aria-hidden>
+      <div className={`${s.extFloat} ${s.extFloatSafe}`}>
+        <IconCircleCheck className={s.extFloatCheckIcon} />
+        <span>安全なサイト</span>
+      </div>
+
+      <div className={s.extPopup}>
+        <div className={s.extPopupHeader}>
+          <div className={s.extPopupBrand}>
+            <Image
+              src={LOGO_SRC}
+              alt=""
+              width={18}
+              height={18}
+              className={s.extPopupLogo}
+            />
+            <span className={s.extPopupBrandName}>SafePage</span>
+          </div>
+          <span className={s.extPopupSub}>リスクチェック</span>
+        </div>
+
+        <div className={s.extPopupBody}>
+          <div className={s.extUrlRow}>
+            <IconLock className={s.extUrlIcon} />
+            <span className={s.extUrlText}>suspicious-deal.xyz</span>
+          </div>
+
+          <div className={s.extRiskBlock}>
+            <div className={s.extRiskTop}>
+              <span className={s.extRiskMuted}>リスクレベル</span>
+              <span className={s.extRiskHigh}>高リスク</span>
+            </div>
+            <div className={s.extRiskTrack}>
+              <div className={s.extRiskFillHigh} />
+            </div>
+          </div>
+
+          <div className={s.extWarnings}>
+            <p className={s.extWarnTitle}>警告サイン（{warnItems.length}件）</p>
+            {warnItems.map((w) => (
+              <div key={w} className={s.extWarnRow}>
+                <span className={s.extWarnDot} />
+                <span className={s.extWarnText}>{w}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className={`${s.extFloat} ${s.extFloatWarn}`}>
+        <IconTriangleAlert className={s.extFloatWarnIcon} />
+        <span>注意が必要です</span>
+      </div>
+    </div>
+  );
+}
+
 export default function SafepageProductPage() {
   return (
     <div className={s.root}>
-      <div className={s.header}>
+      {/* ---- Header ---- */}
+      <header className={s.header}>
         <div className={s.headerInner}>
           <div className={s.headerRow}>
             <div className={s.brandRow}>
@@ -213,224 +341,221 @@ export default function SafepageProductPage() {
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       <div className={s.mainPad}>
-        <section className={`${s.hero} ${s.sectionBorder}`}>
+        {/* ---- Hero ---- */}
+        <section className={s.heroSection}>
           <div className={s.heroInner}>
-            <div className={s.maxW3xl}>
-              <div className={s.heroLogoWrap}>
-                <Image
-                  src={LOGO_SRC}
-                  alt="SafePage"
-                  width={120}
-                  height={120}
-                  className={s.heroLogoImg}
-                  sizes="(max-width: 640px) 96px, 128px"
-                  priority
-                />
+            <div className={s.heroGrid}>
+              <div className={s.heroTextCol}>
+                <div className={s.badgeChrome}>
+                  <span className={s.pingDot}>
+                    <span className={s.pingOuter} />
+                    <span className={s.pingInner} />
+                  </span>
+                  Chrome拡張機能 • 無料で利用可能
+                </div>
+                <h1 className={s.heroH1}>
+                  クリックする前に、
+                  <br />
+                  <span className={s.safePrimary}>確認しよう。</span>
+                </h1>
+                <p className={s.heroLead}>
+                  SafePageは、訪問するURLのリスクレベルを瞬時にチェック。
+                  怪しいサイトの警告サインを表示し、あなたの安全な判断をサポートします。
+                </p>
+                <div className={s.heroCtas}>
+                  <a
+                    className={`${s.btnChromeLg} ${s.bgSafePrimary} ${s.bgSafePrimaryHover}`}
+                    href={CHROME_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <IconChrome className={s.chromeIconMd} />
+                    Chromeに追加
+                  </a>
+                  <p className={s.heroCta2nd}>無料 • アカウント不要</p>
+                </div>
               </div>
-              <div className={s.badgeChrome}>
-                <span className={s.pingDot}>
-                  <span className={s.pingOuter} />
-                  <span className={s.pingInner} />
-                </span>
-                Chrome拡張機能
-              </div>
-              <h1 className={s.heroH1}>
-                クリックする前に、
-                <br />
-                <span className={s.safePrimary}>確認しよう。</span>
-              </h1>
-              <p className={s.heroLead}>
-                SafePageは、訪問するURLのリスクレベルを瞬時にチェック。
-                <br />
-                怪しいサイトの警告サインを表示し、安全な判断をサポートします。
-              </p>
-              <div className={s.heroCtas}>
-                <a
-                  className={`${s.btnChromeLg} ${s.bgSafePrimary} ${s.bgSafePrimaryHover}`}
-                  href={CHROME_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <IconChrome className={s.chromeIconMd} />
-                  Chromeに追加
-                </a>
-                <p className={s.mutedSm}>無料で試す</p>
+
+              <div className={s.heroVisualCol}>
+                <ExtensionMockup />
               </div>
             </div>
           </div>
         </section>
 
-        <section className={`${s.sectionBorder} ${s.sectionPad}`}>
+        {/* ---- Stats band ---- */}
+        <section className={s.statsBand}>
+          <div className={s.statsInner}>
+            <div className={s.statsRow}>
+              <div className={s.statItem}>
+                <span className={s.statIconWrap}>
+                  <IconShield className={s.statSvg} />
+                </span>
+                <span className={s.statValue}>3ステップ</span>
+                <span className={s.statLabel}>で即座にチェック</span>
+              </div>
+              <div className={s.statDivider} />
+              <div className={s.statItem}>
+                <span className={s.statIconWrap}>
+                  <IconLock className={s.statSvg} />
+                </span>
+                <span className={s.statValue}>個人情報ゼロ</span>
+                <span className={s.statLabel}>収集しない</span>
+              </div>
+              <div className={s.statDivider} />
+              <div className={s.statItem}>
+                <span className={s.statIconWrap}>
+                  <IconZap className={s.statSvg} />
+                </span>
+                <span className={s.statValue}>登録不要</span>
+                <span className={s.statLabel}>すぐに使い始められる</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ---- Problems ---- */}
+        <section className={s.sectionPad}>
           <div className={s.containerXl}>
-            <div className={s.maxW2xl}>
+            <div className={s.sectionHead}>
               <h2 className={s.sectionH2}>こんな不安、ありませんか？</h2>
-              <p className={`${s.sectionLead} ${s.mb12lead}`}>
-                見知らぬサイトを訪れるとき、いつも心配になります。
-              </p>
+              <p className={s.sectionLead}>インターネットには、あなたを狙うリスクが潜んでいます。</p>
             </div>
             <div className={s.grid3}>
-              <div className={s.cardWarning}>
-                <div className={s.iconWarnWrap}>
-                  <IconTriangleAlert className={s.iconWarn} />
+              {problemCards.map(({ key, title, body }) => (
+                <div key={key} className={s.cardProblem}>
+                  <div className={s.problemIconWrap}>
+                    <IconTriangleAlert className={s.problemIcon} />
+                  </div>
+                  <h3 className={s.cardH3}>{title}</h3>
+                  <p className={s.cardP}>{body}</p>
                 </div>
-                <h3 className={s.cardH3}>「このサイト、本当に安全？」</h3>
-                <p className={s.cardP}>
-                  知らないURLをクリックするとき、詐欺サイトではないか心配になります。
-                </p>
-              </div>
-              <div className={s.cardWarning}>
-                <div className={s.iconWarnWrap}>
-                  <IconTriangleAlert className={s.iconWarn} />
-                </div>
-                <h3 className={s.cardH3}>「この特典、怪しくない？」</h3>
-                <p className={s.cardP}>お得すぎるオファーや投資話を見ると、不安が募ります。</p>
-              </div>
-              <div className={s.cardWarning}>
-                <div className={s.iconWarnWrap}>
-                  <IconTriangleAlert className={s.iconWarn} />
-                </div>
-                <h3 className={s.cardH3}>手動チェックは時間の無駄</h3>
-                <p className={s.cardP}>
-                  毎回URLを調べたり、口コミを探したりするのは面倒です。
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className={`${s.sectionBorder} ${s.bgAccentSoft} ${s.sectionPad}`}>
+        {/* ---- Solution ---- */}
+        <section className={`${s.sectionPad} ${s.sectionAlt}`}>
           <div className={s.containerXl}>
-            <div className={s.maxW2xl}>
-              <div className={s.supportIconWrap}>
-                <IconShield className={s.iconShieldLg} />
+            <div className={s.solutionBlock}>
+              <div className={s.solutionIconWrap}>
+                <IconShield className={s.solutionIcon} />
               </div>
               <h2 className={s.sectionH2}>SafePageが優しくサポート</h2>
               <p className={s.supportLead}>
                 SafePageは、サイトを判断したりブロックしたりはしません。
                 <br />
-                代わりに、リスクのサインを表示して、あなたの判断をお手伝いします。
+                リスクのサインを表示して、
+                <strong>あなたの判断をお手伝い</strong>
+                します。
               </p>
-              <div className={s.supportChecks}>
-                <div className={s.checkRow}>
-                  <IconCircleCheck className={s.checkIcon} />
-                  判断するのはあなた
-                </div>
-                <div className={s.checkRow}>
-                  <IconCircleCheck className={s.checkIcon} />
-                  情報を提供するだけ
-                </div>
-                <div className={s.checkRow}>
-                  <IconCircleCheck className={s.checkIcon} />
-                  ブロックはしない
-                </div>
+              <div className={s.checkRow3}>
+                {(["判断するのはあなた", "情報を提供するだけ", "ブロックはしない"] as const).map(
+                  (item) => (
+                    <div key={item} className={s.checkItem}>
+                      <IconCircleCheck className={s.checkItemIcon} />
+                      <span className={s.checkItemText}>{item}</span>
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           </div>
         </section>
 
-        <section className={`${s.sectionBorder} ${s.sectionPad}`}>
+        {/* ---- How it works ---- */}
+        <section className={s.sectionPad}>
           <div className={s.containerXl}>
-            <div className={s.maxW2xl}>
+            <div className={s.sectionHead}>
               <h2 className={s.sectionH2}>使い方はシンプル</h2>
-              <p className={`${s.sectionLead} ${s.mb12lead}`}>3ステップで、すぐにリスクチェック</p>
+              <p className={s.sectionLead}>3ステップで、すぐにリスクチェック</p>
             </div>
-            <div className={s.grid3}>
-              <div className={s.stepCol}>
-                <div className={s.stepNum}>1</div>
-                <h3 className={s.cardH3}>任意のページを開く</h3>
-                <p className={s.cardP}>通常通りウェブサイトを閲覧します</p>
-              </div>
-              <div className={s.stepCol}>
-                <div className={s.stepNum}>2</div>
-                <h3 className={s.cardH3}>SafePageアイコンをクリック</h3>
-                <p className={s.cardP}>ブラウザのツールバーにあるアイコンをクリック</p>
-              </div>
-              <div className={s.stepCol}>
-                <div className={s.stepNum}>3</div>
-                <h3 className={s.cardH3}>リスクサインを確認</h3>
-                <p className={s.cardP}>瞬時に警告サインが表示されます</p>
-              </div>
+            <div className={s.stepsGrid}>
+              {(
+                [
+                  { num: "1", title: "任意のページを開く", body: "通常通りウェブサイトを閲覧します" },
+                  {
+                    num: "2",
+                    title: "アイコンをクリック",
+                    body: "ツールバーのSafePageアイコンをクリック",
+                  },
+                  {
+                    num: "3",
+                    title: "リスクサインを確認",
+                    body: "瞬時に警告サインが表示されます",
+                  },
+                ] as const
+              ).map(({ num, title, body }) => (
+                <div key={num} className={s.stepCard}>
+                  <div className={s.stepNumCircle}>{num}</div>
+                  <div className={s.stepContent}>
+                    <h3 className={s.cardH3}>{title}</h3>
+                    <p className={s.cardP}>{body}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className={`${s.sectionBorder} ${s.bgAccentSoft} ${s.sectionPad}`}>
+        {/* ---- Features ---- */}
+        <section className={`${s.sectionPad} ${s.sectionAlt}`}>
           <div className={s.containerXl}>
-            <div className={s.maxW2xl}>
+            <div className={s.sectionHead}>
               <h2 className={s.sectionH2}>主な機能</h2>
-              <p className={`${s.sectionLead} ${s.mb12lead}`}>
-                シンプルで強力な安全チェック機能
-              </p>
+              <p className={s.sectionLead}>シンプルで強力な安全チェック機能</p>
             </div>
-            <div className={s.gridFeatures}>
-              <div className={s.cardFeature}>
-                <div className={s.iconFeatureWrap}>
-                  <IconEye className={s.iconFeature} />
+            <div className={s.featuresGrid}>
+              {featureCards.map(({ key, icon: Icon, title, body }) => (
+                <div key={key} className={s.featureCard}>
+                  <div className={s.featureIconWrap}>
+                    <Icon className={s.featureIconSvg} />
+                  </div>
+                  <h3 className={s.featureH3}>{title}</h3>
+                  <p className={s.cardP}>{body}</p>
                 </div>
-                <h3 className={s.featureH3}>リスクスコア可視化</h3>
-                <p className={s.cardP}>
-                  🟢 低リスク / 🟡 注意 / 🔴 高リスク で一目でわかる
-                </p>
-              </div>
-              <div className={s.cardFeature}>
-                <div className={s.iconFeatureWrap}>
-                  <IconTriangleAlert className={s.iconFeature} />
-                </div>
-                <h3 className={s.featureH3}>警告サインの説明</h3>
-                <p className={s.cardP}>なぜ注意が必要なのか、わかりやすく説明</p>
-              </div>
-              <div className={s.cardFeature}>
-                <div className={s.iconFeatureWrap}>
-                  <IconZap className={s.iconFeature} />
-                </div>
-                <h3 className={s.featureH3}>アカウント不要</h3>
-                <p className={s.cardP}>基本機能は登録なしですぐに使える</p>
-              </div>
-              <div className={s.cardFeature}>
-                <div className={s.iconFeatureWrap}>
-                  <IconLock className={s.iconFeature} />
-                </div>
-                <h3 className={s.featureH3}>プライバシー重視</h3>
-                <p className={s.cardP}>ローカルで動作、最小限のデータ使用</p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className={`${s.sectionBorder} ${s.sectionPad}`}>
+        {/* ---- Pricing ---- */}
+        <section className={s.sectionPad}>
           <div className={s.containerXl}>
-            <div className={s.maxW2xl}>
+            <div className={s.sectionHead}>
               <h2 className={s.sectionH2}>シンプルな料金プラン</h2>
-              <p className={`${s.sectionLead} ${s.mb12lead}`}>まずは無料でお試しください</p>
+              <p className={s.sectionLead}>まずは無料でお試しください</p>
             </div>
-            <div className={s.pricingWrap}>
-              <div className={s.cardPricing}>
-                <div>
+            <div className={s.pricingCenter}>
+              <div className={s.pricingCard}>
+                <div className={s.pricingTop}>
                   <h3 className={s.priceTitle}>無料プラン</h3>
-                  <div className={s.priceRow}>
+                  <div>
                     <span className={s.priceYen}>¥0</span>
                     <span className={s.priceUnit}> / 月</span>
                   </div>
                 </div>
-                <ul className={s.featureList}>
-                  <li>
-                    <IconCircleCheck className={s.listCheck} />
-                    <span className={s.cardP}>基本的なリスク指標</span>
-                  </li>
-                  <li>
-                    <IconCircleCheck className={s.listCheck} />
-                    <span className={s.cardP}>リスクレベル表示</span>
-                  </li>
-                  <li>
-                    <IconCircleCheck className={s.listCheck} />
-                    <span className={s.cardP}>シンプルな警告サイン</span>
-                  </li>
+                <ul className={s.priceFeatures}>
+                  {(
+                    [
+                      "基本的なリスク指標",
+                      "リスクレベル表示",
+                      "シンプルな警告サイン",
+                      "アカウント不要",
+                    ] as const
+                  ).map((f) => (
+                    <li key={f} className={s.priceFeatureItem}>
+                      <IconCircleCheck className={s.priceCheckIcon} />
+                      <span>{f}</span>
+                    </li>
+                  ))}
                 </ul>
                 <a
-                  className={`${s.btnFull} ${s.bgSafePrimary} ${s.bgSafePrimaryHover}`}
+                  className={`${s.priceCta} ${s.bgSafePrimary} ${s.bgSafePrimaryHover}`}
                   href={CHROME_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -443,48 +568,42 @@ export default function SafepageProductPage() {
           </div>
         </section>
 
-        <section className={`${s.sectionBorder} ${s.bgAccentSoft} ${s.sectionPad}`}>
+        {/* ---- Trust ---- */}
+        <section className={`${s.sectionPad} ${s.sectionAlt}`}>
           <div className={s.containerXl}>
-            <div className={s.maxW3xlWide}>
-              <div className={s.supportIconWrap}>
-                <IconShield className={s.iconShieldLg} />
-              </div>
+            <div className={s.sectionHead}>
               <h2 className={s.sectionH2}>信頼と安全性</h2>
-              <p className={`${s.supportLead} ${s.mb8}`}>SafePageは、あなたの判断を尊重します</p>
-              <div className={s.trustGrid}>
-                <div>
-                  <h3 className={s.featureH3}>ブロックしない</h3>
-                  <p className={s.cardP}>サイトへのアクセスを妨げることはありません</p>
+              <p className={s.sectionLead}>SafePageは、あなたの判断を尊重します</p>
+            </div>
+            <div className={s.trustGrid}>
+              {trustCards.map(({ key, icon: Icon, title, body }) => (
+                <div key={key} className={s.trustCard}>
+                  <div className={s.trustIconWrap}>
+                    <Icon className={s.trustIconSvg} />
+                  </div>
+                  <h3 className={s.trustH3}>{title}</h3>
+                  <p className={s.cardP}>{body}</p>
                 </div>
-                <div>
-                  <h3 className={s.featureH3}>個人情報を収集しない</h3>
-                  <p className={s.cardP}>あなたのプライバシーを最優先します</p>
-                </div>
-                <div>
-                  <h3 className={s.featureH3}>補助ツールとして設計</h3>
-                  <p className={s.cardP}>判断するのはあなた、私たちはサポートします</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className={`${s.sectionBorder} ${s.sectionPad}`}>
-          <div className={s.containerXl}>
-            <div className={s.maxW2xl}>
-              <h2 className={s.ctaH2}>安心してウェブを楽しもう</h2>
-              <p className={`${s.sectionLead} ${s.mb8}`}>SafePageで、クリック前の不安を解消</p>
-              <a
-                className={`${s.btnChromeLg} ${s.bgSafePrimary} ${s.bgSafePrimaryHover}`}
-                href={CHROME_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <IconChrome className={s.chromeIconMd} />
-                SafePageをChromeに追加
-              </a>
-              <p className={`${s.mutedSm} ${s.mt4}`}>無料で今すぐ始められます</p>
-            </div>
+        {/* ---- CTA band ---- */}
+        <section className={s.ctaBand}>
+          <div className={s.ctaBandInner}>
+            <h2 className={s.ctaBandH2}>安心してウェブを楽しもう</h2>
+            <p className={s.ctaBandLead}>SafePageで、クリック前の不安を解消</p>
+            <a
+              className={s.ctaBandBtn}
+              href={CHROME_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconChrome className={s.ctaBtnIcon} />
+              SafePageをChromeに追加
+            </a>
+            <p className={s.ctaBandSub}>無料で今すぐ始められます</p>
           </div>
         </section>
 
