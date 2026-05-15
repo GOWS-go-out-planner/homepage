@@ -12,18 +12,47 @@ export type LpProductFooterLink = {
 };
 
 export type LpProductFooterProps = {
-  /** Duosub: default（緑） / Gentle Diary: teal / dinder: orange */
-  variant?: "default" | "teal" | "orange";
+  /** Duosub: default（緑） / Gentle Diary: teal / dinder: orange / SafePage: safepage */
+  variant?: "default" | "teal" | "orange" | "safepage";
   iconSrc: string;
   iconAlt: string;
   productName: string;
   tagline: string;
   links: LpProductFooterLink[];
-  appStoreUrl: string;
-  googlePlayUrl: string;
+  /** モバイルアプリ向け。chromeWebStoreUrl を指定しないときは両方渡す */
+  appStoreUrl?: string;
+  googlePlayUrl?: string;
+  /** Chrome 拡張向け。指定時は App Store / Google Play の代わりに1ボタンを表示 */
+  chromeWebStoreUrl?: string;
+  /** ブランド列の補足（免責など） */
+  footerNote?: string;
   social?: { href: string; ariaLabel: string; icon: LpProductSocialIcon }[];
   socialNavLabel?: string;
 };
+
+function IconChrome({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="4" />
+      <line x1="21.17" x2="12" y1="8" y2="8" />
+      <line x1="3.95" x2="8.54" y1="6.06" y2="14" />
+      <line x1="10.88" x2="15.46" y1="21.94" y2="14" />
+    </svg>
+  );
+}
 
 function IconDownload({ className }: { className?: string }) {
   return (
@@ -69,6 +98,8 @@ export function LpProductFooter({
   links,
   appStoreUrl,
   googlePlayUrl,
+  chromeWebStoreUrl,
+  footerNote,
   social,
   socialNavLabel = "公式SNS",
 }: LpProductFooterProps) {
@@ -76,9 +107,12 @@ export function LpProductFooter({
     s.footer,
     variant === "teal" ? s.footerTeal : "",
     variant === "orange" ? s.footerOrange : "",
+    variant === "safepage" ? s.footerSafepage : "",
   ]
     .filter(Boolean)
     .join(" ");
+
+  const showChromeStore = Boolean(chromeWebStoreUrl);
 
   return (
     <footer className={footerClass}>
@@ -89,6 +123,7 @@ export function LpProductFooter({
             <span className={s.lpFooterName}>{productName}</span>
           </div>
           <p className={s.lpFooterTagline}>{tagline}</p>
+          {footerNote ? <p className={s.lpFooterNote}>{footerNote}</p> : null}
         </div>
 
         <nav className={s.lpFooterNav} aria-label="フッターナビ">
@@ -106,14 +141,38 @@ export function LpProductFooter({
         </nav>
 
         <div className={s.lpFooterDownload}>
-          <a href={appStoreUrl} target="_blank" rel="noopener noreferrer" className={s.lpFooterStoreBtn}>
-            <IconDownload className={s.iconSm} />
-            App Store
-          </a>
-          <a href={googlePlayUrl} target="_blank" rel="noopener noreferrer" className={s.lpFooterStoreBtn}>
-            <IconDownload className={s.iconSm} />
-            Google Play
-          </a>
+          {showChromeStore ? (
+            <a
+              href={chromeWebStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={s.lpFooterStoreBtn}
+            >
+              <IconChrome className={s.iconSm} />
+              Chromeに追加
+            </a>
+          ) : appStoreUrl && googlePlayUrl ? (
+            <>
+              <a
+                href={appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={s.lpFooterStoreBtn}
+              >
+                <IconDownload className={s.iconSm} />
+                App Store
+              </a>
+              <a
+                href={googlePlayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={s.lpFooterStoreBtn}
+              >
+                <IconDownload className={s.iconSm} />
+                Google Play
+              </a>
+            </>
+          ) : null}
         </div>
       </div>
 

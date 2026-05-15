@@ -1,4 +1,4 @@
-/* Duosub LP フッターと同一レイアウト。アクセントは variant で切替 */
+/* Duosub LP フッターと同一レイアウト。アクセントは variant で切替（SafePage は footerSafepage） */
 
 .footer {
   --lp-accent: #22c55e;
@@ -17,6 +17,11 @@
 .footerOrange {
   --lp-accent: #f37c19;
   --lp-accent-rgb: 243, 124, 25;
+}
+
+.footerSafepage {
+  --lp-accent: #0d9488;
+  --lp-accent-rgb: 13, 148, 136;
 }
 
 .lpFooterMain {
@@ -59,6 +64,14 @@
   color: #9ca3af;
   font-size: 0.875rem;
   margin: 0;
+}
+
+.lpFooterNote {
+  margin: 8px 0 0;
+  max-width: 28rem;
+  color: #6b7280;
+  font-size: 0.75rem;
+  line-height: 1.55;
 }
 
 .lpFooterNav {
