@@ -304,7 +304,7 @@ export default function Home() {
             事業を加速させ、企業の成長を支援します。
           </p>
           <div className={s.ctaRow}>
-            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnPrimary}>
+            <a href={CONTACT_URL} className={s.btnPrimary}>
               無料相談を予約する →
             </a>
             <a href="#services" className={s.btnGhost}>サービスを見る</a>
@@ -328,7 +328,7 @@ export default function Home() {
             ))}
           </ul>
           <div className={`${s.midCta} ${s.reveal}`}>
-            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnWhite}>
               あなたの課題を無料で相談する →
             </a>
           </div>
@@ -387,7 +387,7 @@ export default function Home() {
             初回相談は無料で承ります。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnWhite}>
               無料相談を予約する →
             </a>
           </div>

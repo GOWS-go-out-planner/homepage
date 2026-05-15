@@ -86,7 +86,7 @@ export default function DxAxPage() {
           <p className={s.pageSubCopy}>
             AIとデジタルの力で、事業の変革を加速する。{"\n"}お客様と一体になって課題に寄り添い、{"\n"}最新テクノロジーを駆使して根本から解決します。
           </p>
-          <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnPrimary}>
+          <a href={CONTACT_URL} className={s.btnPrimary}>
             無料相談を予約する →
           </a>
         </div>
@@ -136,7 +136,7 @@ export default function DxAxPage() {
             DX推進・AI活用など、どんな段階でもお声がけください。初回相談は無料です。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnWhite}>
               無料相談を予約する →
             </a>
           </div>
