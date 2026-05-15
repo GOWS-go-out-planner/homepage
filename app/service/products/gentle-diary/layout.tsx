@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     absoluteTitle: true,
     image: "/images/products/GentleDiary.png",
     imageAlt: "Gentle Diary ロゴ",
-    keywords: ["Gentle Diary", "見守り", "位置情報", "プライバシー", "家族", "GOWS"],
+    keywords: ["Gentle Diary", "見守り", "位置情報", "プライバシー", "日記", "自動", "家族", "恋人"],
   }),
   icons: {
     icon: "/images/products/GentleDiary.png",

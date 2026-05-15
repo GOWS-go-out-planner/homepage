@@ -9,7 +9,7 @@ import s from "./page.module.css";
 const PAGE_PATH = "/service/products/duosub";
 const PAGE_TITLE = "Duosub | 映画・ドラマで楽しくネイティブの英語を習得";
 const PAGE_DESCRIPTION =
-  "映画・ドラマで楽しくスマホ留学。英語・日本語の字幕を同時表示してネイティブの英語を学べるアプリ。全機能無料、広告なしは月額300円。";
+  "映画・ドラマで楽しくスマホ留学。英語・日本語の字幕を同時表示してネイティブの英語を学べるアプリ。全機能無料。";
 
 export const metadata: Metadata = {
   ...createPageMetadata({
@@ -24,10 +24,9 @@ export const metadata: Metadata = {
       "英語学習",
       "映画",
       "ドラマ",
-      "二重字幕",
-      "英語アプリ",
       "YouTube",
-      "GOWS",
+      "2ヶ国語字幕",
+      "英語アプリ",
     ],
   }),
   icons: {

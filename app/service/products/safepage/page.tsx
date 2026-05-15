@@ -26,7 +26,6 @@ export const metadata: Metadata = {
       "フィッシング対策",
       "詐欺サイト",
       "SafePage",
-      "GOWS",
     ],
   }),
   icons: {

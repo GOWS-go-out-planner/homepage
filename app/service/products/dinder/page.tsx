@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     absoluteTitle: true,
     image: "/images/products/dinder_6x9.png",
     imageAlt: "dinder ロゴ",
-    keywords: ["dinder", "飲食店", "レストラン", "スワイプ", "位置情報", "GOWS"],
+    keywords: ["dinder", "飲食店", "レストラン", "提案", "スワイプ", "位置情報"],
   }),
   icons: {
     icon: "/images/products/dinder/dinder-favicon.png",
