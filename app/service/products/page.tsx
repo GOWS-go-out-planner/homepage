@@ -149,7 +149,7 @@ export default function ProductsPage() {
             アプリやサービスのアイデアをお持ちの方は、ぜひ一度ご相談ください。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnWhite}>
               無料相談を予約する →
             </a>
           </div>

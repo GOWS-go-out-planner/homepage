@@ -44,7 +44,7 @@ export default function Nav() {
           >
             お問い合わせ
           </a>
-          <a href="/contact" target="_blank" rel="noopener noreferrer" className={styles.cta}>
+          <a href="/contact" className={styles.cta}>
             無料相談を予約する
           </a>
         </div>
@@ -82,6 +82,15 @@ export default function Nav() {
             </a>
           </li>
         </ul>
+        <div className={styles.mobileCta}>
+          <a
+            href="/contact"
+            className={styles.mobileCtaPrimary}
+            onClick={closeMobileMenu}
+          >
+            無料相談を予約する
+          </a>
+        </div>
       </div>
     </nav>
   );
