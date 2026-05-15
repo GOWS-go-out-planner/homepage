@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "../../../../../lib/seo/metadata";
 import s from "../../../../page.module.css";
 import ts from "./terms.module.css";
 
-export const metadata: Metadata = {
-  title: "Duosub - 利用規約 | GOWS合同会社",
+export const metadata: Metadata = createPageMetadata({
+  title: "Duosub 利用規約",
   description:
-    "第1条（はじめに） 第2条（本規約の変更） 第3条 (著作権等の権利の帰属) 第4条 (利用者情報及び利用者コンテンツの取扱い) 第5条 (料金及び費用) 第6条 (禁止事項) 第7条 (免責) 第8条 (端末及びアカウントの管理) 第9条 (権利義務等の譲渡禁止) 第10条 (損害賠償) 第11条 (準拠法及び裁判管轄)",
-};
+    "Duosubアプリの利用規約。料金、禁止事項、免責、個人情報の取扱い、準拠法および裁判管轄などを定めます。",
+  path: "/service/products/duosub/terms",
+});
 
 export default function DuosubTermsPage() {
   return (

@@ -3,16 +3,20 @@ import path from "node:path";
 import type { Metadata } from "next";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
+import { createPageMetadata } from "../../../lib/seo/metadata";
 import s from "../../page.module.css";
 import ns from "./news4.module.css";
 
 const MBP_PROFILE_URL = "https://mbp-japan.com/tokyo/koyama/";
 
-export const metadata: Metadata = {
-  title: "朝日新聞朝刊に掲載されました。 | GOWS合同会社",
+export const metadata: Metadata = createPageMetadata({
+  title: "朝日新聞朝刊に掲載されました。",
   description:
     "2025年10月28日(火)の朝日新聞朝刊にてマイベストプロ東京が紹介する専門家として弊社代表の小山が掲載されました。「マイベストプロ東京」は、東京都を拠点に活躍するさまざまな専門家が掲載されている、朝日新聞が運営するWebガイドです。",
-};
+  path: "/news/4",
+  type: "article",
+  keywords: ["GOWS", "朝日新聞", "マイベストプロ", "メディア掲載", "小山望海"],
+});
 
 function listPressImages(): string[] {
   try {

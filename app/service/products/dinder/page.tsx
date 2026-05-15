@@ -1,12 +1,29 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { JsonLd } from "../../../components/JsonLd";
 import { LpProductFooter } from "../../../components/LpProductFooter";
+import { createPageMetadata } from "../../../../lib/seo/metadata";
+import { softwareApplicationJsonLd, webPageJsonLd } from "../../../../lib/seo/json-ld";
 import s from "./page.module.css";
 
+const PAGE_PATH = "/service/products/dinder";
+const PAGE_TITLE = "dinder - GOWS合同会社";
+const PAGE_DESCRIPTION =
+  "dinder - 位置情報をもとに近くの飲食店からアプリがお店を提案！ 提案されたお店が気に入れば右にスワイプするだけでお店までナビしてくれる！ 気に入らなければ左にスワイプすればアプリが次の候補を提案！ 事前に細かい条件を設定可能！";
+
 export const metadata: Metadata = {
-  title: "dinder - GOWS合同会社",
-  description:
-    "dinder - 位置情報をもとに近くの飲食店からアプリがお店を提案！ 提案されたお店が気に入れば右にスワイプするだけでお店までナビしてくれる！ 気に入らなければ左にスワイプすればアプリが次の候補を提案！ 事前に細かい条件を設定可能！",
+  ...createPageMetadata({
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    path: PAGE_PATH,
+    absoluteTitle: true,
+    image: "/images/products/dinder_6x9.png",
+    imageAlt: "dinder ロゴ",
+    keywords: ["dinder", "飲食店", "レストラン", "提案", "スワイプ", "位置情報"],
+  }),
+  icons: {
+    icon: "/images/products/dinder/dinder-favicon.png",
+  },
 };
 
 const APP_STORE_URL =
@@ -53,7 +70,23 @@ function StoreBadges() {
 
 export default function DinderPage() {
   return (
-    <div className={s.page}>
+    <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ name: PAGE_TITLE, description: PAGE_DESCRIPTION, path: PAGE_PATH }),
+          softwareApplicationJsonLd({
+            name: "dinder",
+            description: PAGE_DESCRIPTION,
+            path: PAGE_PATH,
+            operatingSystem: "iOS, Android",
+            applicationCategory: "LifestyleApplication",
+            downloadUrl: [APP_STORE_URL, GOOGLE_PLAY_URL],
+            image: "/images/products/dinder_6x9.png",
+            offers: { price: "0" },
+          }),
+        ]}
+      />
+      <div className={s.page}>
       {/* ── Fixed Header ── */}
       <header className={s.lpHeader}>
         <div className={s.lpHeaderInner}>
@@ -274,5 +307,6 @@ export default function DinderPage() {
         googlePlayUrl={GOOGLE_PLAY_URL}
       />
     </div>
+    </>
   );
 }
