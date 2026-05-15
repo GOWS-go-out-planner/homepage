@@ -28,11 +28,11 @@ const initialForm: FormData = {
 };
 
 const dateFields = [
-  { prefix: "date1", label: "第1希望", required: true },
-  { prefix: "date2", label: "第2希望", required: true },
-  { prefix: "date3", label: "第3希望", required: true },
-  { prefix: "date4", label: "第4希望", required: false },
-  { prefix: "date5", label: "第5希望", required: false },
+  { prefix: "date1", label: "第1希望" },
+  { prefix: "date2", label: "第2希望" },
+  { prefix: "date3", label: "第3希望" },
+  { prefix: "date4", label: "第4希望" },
+  { prefix: "date5", label: "第5希望" },
 ] as const;
 
 const MINUTES = ["00", "15", "30", "45"];
@@ -117,11 +117,11 @@ export default function ContactPage() {
     return () => observer.disconnect();
   }, []);
 
-  const validateSlot = (prefix: string, required: boolean): string | undefined => {
+  const validateSlot = (prefix: string): string | undefined => {
     const d = form[`${prefix}Date` as keyof FormData];
     const start = form[`${prefix}Start` as keyof FormData];
     const end = form[`${prefix}End` as keyof FormData];
-    if (!d && !start && !end) return required ? "日付と時間を入力してください" : undefined;
+    if (!d && !start && !end) return undefined;
     if (!d) return "日付を入力してください";
     if (!start) return "開始時刻を入力してください";
     if (!end) return "終了時刻を入力してください";
@@ -146,8 +146,8 @@ export default function ContactPage() {
       e.email = "メールアドレスの形式が正しくありません";
     }
     if (!form.content.trim()) e.content = "必須項目です";
-    for (const { prefix, required } of dateFields) {
-      const slotErr = validateSlot(prefix, required);
+    for (const { prefix } of dateFields) {
+      const slotErr = validateSlot(prefix);
       if (slotErr) e[prefix] = slotErr;
     }
     return e;
@@ -339,7 +339,7 @@ export default function ContactPage() {
               <div className={cs.dateSection}>
                 <h3 className={cs.dateSectionTitle}>ご希望日時</h3>
                 <div className={cs.dateSlotList}>
-                  {dateFields.map(({ prefix, label, required }) => {
+                  {dateFields.map(({ prefix, label }) => {
                     const dateKey = `${prefix}Date` as keyof FormData;
                     const startKey = `${prefix}Start` as keyof FormData;
                     const endKey = `${prefix}End` as keyof FormData;
@@ -348,7 +348,6 @@ export default function ContactPage() {
                       <div key={prefix} className={cs.dateSlot}>
                         <div className={cs.dateSlotMeta}>
                           <span className={cs.dateSlotLabel}>{label}</span>
-                          {required && <span className={cs.required}>必須</span>}
                         </div>
                         <div className={cs.dateSlotRight}>
                           <div className={cs.dateSlotInputs}>
