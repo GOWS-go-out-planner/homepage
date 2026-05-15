@@ -87,7 +87,7 @@ export default function SystemDevPage() {
           <p className={s.pageSubCopy}>
             課題を深く理解した設計と、全工程自社完結の開発力で、{"\n"}低コスト・短納期・高品質なシステムを提供します。
           </p>
-          <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnPrimary}>
+          <a href={CONTACT_URL} className={s.btnPrimary}>
             無料相談を予約する →
           </a>
         </div>
@@ -137,7 +137,7 @@ export default function SystemDevPage() {
             要件が固まっていなくても大丈夫です。一緒に整理するところからサポートします。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnWhite}>
               無料相談を予約する →
             </a>
           </div>

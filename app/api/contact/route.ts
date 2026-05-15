@@ -24,10 +24,7 @@ export async function POST(req: NextRequest) {
     date5Date, date5Start, date5End,
   } = body;
 
-  if (!company || !name || !email || !content ||
-      !date1Date || !date1Start ||
-      !date2Date || !date2Start ||
-      !date3Date || !date3Start) {
+  if (!company || !name || !email || !content) {
     return NextResponse.json({ error: "Required fields missing" }, { status: 400 });
   }
 
@@ -37,14 +34,21 @@ export async function POST(req: NextRequest) {
   }
 
   const slots = [
-    { label: "第1希望", value: formatSlot(date1Date, date1Start, date1End) },
-    { label: "第2希望", value: formatSlot(date2Date, date2Start, date2End) },
-    { label: "第3希望", value: formatSlot(date3Date, date3Start, date3End) },
-    ...((date4Date || date4Start) ? [{ label: "第4希望", value: formatSlot(date4Date, date4Start, date4End) }] : []),
-    ...((date5Date || date5Start) ? [{ label: "第5希望", value: formatSlot(date5Date, date5Start, date5End) }] : []),
-  ];
+    { label: "第1希望", date: date1Date, start: date1Start, end: date1End },
+    { label: "第2希望", date: date2Date, start: date2Start, end: date2End },
+    { label: "第3希望", date: date3Date, start: date3Start, end: date3End },
+    { label: "第4希望", date: date4Date, start: date4Start, end: date4End },
+    { label: "第5希望", date: date5Date, start: date5Start, end: date5End },
+  ]
+    .filter((slot) => slot.date || slot.start || slot.end)
+    .map((slot) => ({
+      label: slot.label,
+      value: formatSlot(slot.date, slot.start, slot.end),
+    }));
 
-  const dateLines = slots.map((sl) => `${sl.label}: ${sl.value}`).join("\n");
+  const dateLines = slots.length > 0
+    ? slots.map((sl) => `${sl.label}: ${sl.value}`).join("\n")
+    : "（ご希望日時の記入なし）";
 
   const payload = {
     blocks: [
