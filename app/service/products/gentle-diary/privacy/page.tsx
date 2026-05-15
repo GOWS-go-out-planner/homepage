@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Nav from "../../../../components/Nav";
 import Footer from "../../../../components/Footer";
+import { createPageMetadata } from "../../../../../lib/seo/metadata";
 import s from "../../../../page.module.css";
 import ts from "../../duosub/terms/terms.module.css";
 import ps from "./privacy.module.css";
 
-export const metadata: Metadata = {
-  title: "Gentle Diary - プライバシーポリシー | GOWS合同会社",
+export const metadata: Metadata = createPageMetadata({
+  title: "Gentle Diary プライバシーポリシー",
   description:
     "GOWS合同会社が提供するアプリケーション「Gentle Diary」における個人情報およびプライバシー情報の取り扱いについて定めたプライバシーポリシーです。",
-};
+  path: "/service/products/gentle-diary/privacy",
+});
 
 const CONTACT_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSd9TY96vilXIJadOm95aWLbaLY5_E5icg0qsGsmBdJDey6OIw/viewform";

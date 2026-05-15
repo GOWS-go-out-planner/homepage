@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import { createPageMetadata } from "../../../../../lib/seo/metadata";
 import s from "../../../../page.module.css";
-import ts from "../../duosub/terms/terms.module.css";
-import ps from "../privacy/privacy.module.css";
+import ts from "./terms.module.css";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Gentle Diary 利用規約",
+  title: "SafePage 利用規約",
   description:
-    "GOWS合同会社が提供するアプリケーション「Gentle Diary」の利用に関する規約です。",
-  path: "/service/products/gentle-diary/terms",
+    "SafePage（Chrome拡張機能）の利用規約。本サービスの利用条件、禁止事項、免責、準拠法等を定めます。",
+  path: "/service/products/safepage/terms_of_use",
 });
 
-export default function GentleDiaryTermsPage() {
+export default function SafepageTermsOfUsePage() {
   return (
     <>
       <section className={`${s.pageHero} ${s.pageHeroTerms}`}>
@@ -31,7 +30,7 @@ export default function GentleDiaryTermsPage() {
                 /
               </li>
               <li>
-                <a href="/service/products/gentle-diary">Gentle Diary</a>
+                <a href="/service/products/safepage">SafePage</a>
               </li>
               <li aria-hidden="true" className={s.breadcrumbSep}>
                 /
@@ -41,7 +40,7 @@ export default function GentleDiaryTermsPage() {
               </li>
             </ol>
           </nav>
-          <h1 className={s.pageH1}>Gentle Diary - 利用規約</h1>
+          <h1 className={s.pageH1}>SafePage - 利用規約</h1>
         </div>
       </section>
 
@@ -49,9 +48,9 @@ export default function GentleDiaryTermsPage() {
         <div className="container">
           <div className={ts.contentWrap}>
             <p className={ts.meta}>
-              2026年2月1日制定
+              2025年12月27日制定
               <br />
-              2026年2月1日最終改訂
+              2025年12月27日最終改訂
               <br />
               GOWS合同会社
               <br />
@@ -61,7 +60,7 @@ export default function GentleDiaryTermsPage() {
             <hr className={ts.divider} />
 
             <p className={ts.lead}>
-              GOWS合同会社（以下「弊社」といいます）は、弊社が運営し提供するアプリ「Gentle Diary」（以下「本サービス」といいます）について、以下のとおり利用規約（以下「本規約」といいます）を定めます。
+              GOWS合同会社（以下「弊社」といいます）は、弊社が運営し提供するサービス「SafePage」（以下「本サービス」といいます）について、以下のとおり利用規約（以下「本規約」といいます）を定めます。
             </p>
 
             <div className={ts.articleBlock}>
@@ -77,7 +76,16 @@ export default function GentleDiaryTermsPage() {
                   本規約に同意しない利用者は、本サービスを利用することはできないものとし、直ちに本サービスのダウンロード、インストールもしくは利用を中止するものとします。利用者が本サービスを既にインストールしている場合、そのアンインストールを行うものとします。
                 </li>
                 <li>
-                  利用者は、本サービスの利用を、自身の所有するスマートフォン端末またはタブレット端末（以下、単に「端末」といいます）の操作によって行うものとします。
+                  利用者は、本サービスの利用を、自身の所有するPC等の端末（以下、単に「端末」といいます）の操作によって行うものとします。
+                </li>
+                <li>
+                  本サービスは、ユーザーが閲覧しているWebページのURLや内容について、注意すべき可能性のある情報やシグナルを表示することにより、判断の参考情報を提供するツールです。
+                </li>
+                <li>
+                  本サービスは、特定のWebサイトやURLについて、安全性・合法性・正確性・信頼性を保証または断定するものではありません。
+                </li>
+                <li>
+                  本サービスは、詐欺・違法行為・損害の発生を完全に防止することを目的としたものではありません。
                 </li>
               </ol>
             </div>
@@ -95,42 +103,7 @@ export default function GentleDiaryTermsPage() {
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第3条 (本サービスの内容)</h2>
-              <ol className={ts.mainList}>
-                <li>
-                  本サービスは、ユーザーの位置情報等をもとに、1日の行動を自動的に要約・記録し、指定した相手と共有できるサービスです。
-                </li>
-                <li>
-                  本サービスは、リアルタイムでの位置情報共有を行わず、一定時間単位で抽象化・要約された情報を提供することを特徴とします。
-                </li>
-              </ol>
-            </div>
-
-            <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第4条 (利用登録)</h2>
-              <ol className={ts.mainList}>
-                <li>本サービスは、所定の方法により利用登録を行うことで利用できます。</li>
-                <li>
-                  運営者は、以下の場合、事前の通知なく利用登録を拒否または取消すことがあります。
-                  <ul className={ps.bulletList}>
-                    <li>虚偽の情報を登録した場合</li>
-                    <li>本規約に違反した場合</li>
-                    <li>その他、運営者が不適切と判断した場合</li>
-                  </ul>
-                </li>
-              </ol>
-            </div>
-
-            <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第5条 (アカウント管理)</h2>
-              <ol className={ts.mainList}>
-                <li>ユーザーは、自己の責任においてアカウント情報を管理するものとします。</li>
-                <li>アカウントを通じて行われた一切の行為は、ユーザー自身の行為とみなします。</li>
-              </ol>
-            </div>
-
-            <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第6条 (著作権等の権利の帰属)</h2>
+              <h2 className={ts.articleTitle}>第3条 (著作権等の権利の帰属)</h2>
               <ol className={ts.mainList}>
                 <li>
                   本サービスを構成する文章、画像、プログラムその他一切の情報について発生している著作権その他の知的財産権、肖像権及びパブリシティ権その他の人格権ならびに所有権その他の財産権は、利用者が自ら作成したものに関する権利を除き、弊社または当該権利を有する第三者に帰属します。
@@ -139,13 +112,8 @@ export default function GentleDiaryTermsPage() {
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第7条 (利用者情報及び利用者コンテンツの取扱い)</h2>
+              <h2 className={ts.articleTitle}>第4条 (利用者情報及び利用者コンテンツの取扱い)</h2>
               <ol className={ts.mainList}>
-                <li>本サービスは、ユーザーの同意に基づき、端末の位置情報等を取得します。</li>
-                <li>取得した情報は、本サービスの提供および品質向上の目的の範囲内でのみ利用されます。</li>
-                <li>
-                  運営者は、ユーザーの明示的な同意なく、リアルタイムの位置情報を第三者に公開することはありません。
-                </li>
                 <li>
                   弊社は、本サービスに関し、次に掲げる情報（以下「利用者情報」といいます）を取得することがあります。
                   <ol className={ts.romanList}>
@@ -156,7 +124,7 @@ export default function GentleDiaryTermsPage() {
                 </li>
                 <li>
                   弊社は、利用者情報を保存・蓄積した場合、弊社の
-                  <a href="/service/products/gentle-diary/privacy" className={ts.privacyLink}>
+                  <a href="/privacy" className={ts.privacyLink}>
                     プライバシーポリシー
                   </a>
                   に基づき、善良な管理者の注意義務に従い取り扱うとともに、以下の目的で使用します。
@@ -185,7 +153,7 @@ export default function GentleDiaryTermsPage() {
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第8条 (料金及び費用)</h2>
+              <h2 className={ts.articleTitle}>第5条 (料金及び費用)</h2>
               <ol className={ts.mainList}>
                 <li>
                   利用者は、原則として、本サービスを無料で利用できるものとします。ただし弊社は、利用者の選択によって追加または拡張できる機能の全部または一部を有料とし、その他有料のサービス（本サービス内で利用できるポイント、アイテム等の販売等を含みますが、これらに限定されません）を提供する場合があります。
@@ -200,7 +168,7 @@ export default function GentleDiaryTermsPage() {
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第9条 (禁止事項)</h2>
+              <h2 className={ts.articleTitle}>第6条 (禁止事項)</h2>
               <ol className={ts.mainList}>
                 <li>
                   弊社は、利用者に対し、本サービスの利用に関し、次の各号のいずれかに該当する行為を禁止します。
@@ -240,7 +208,7 @@ export default function GentleDiaryTermsPage() {
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第10条 (免責)</h2>
+              <h2 className={ts.articleTitle}>第7条 (免責)</h2>
               <ol className={ts.mainList}>
                 <li>弊社は、本サービスが第三者の権利を侵害していないこと、及び本サービスを実行することが第三者の権利を侵害しないことを保証しません。</li>
                 <li>
@@ -262,11 +230,17 @@ export default function GentleDiaryTermsPage() {
                 <li>
                   弊社は、本サービスに関する利用者からの問い合わせや改善等の意見その他の提案、フィードバック等について、これらの全てに回答をし、または何らかの対応を実施する義務を負わず、自らの裁量及び任意の判断でこれらを実施するものとします。弊社は、利用者からの問い合わせ、意見、提案、フィードバック等の内容に対して何らかの対応を実施することがありますが、弊社による当該行為は、当該利用者に対し、個別に回答や報告、金銭的な補償などを行う義務を負うものとは解釈されません。
                 </li>
+                <li>
+                  本サービスが表示するスコア、警告、注意喚起、その他の情報は、あくまで参考情報です。ユーザーが本サービスの情報を基に行った行為（購入、登録、契約、送金等）について、弊社は一切の責任を負いません。最終的な判断および行動は、必ずユーザー自身の責任において行うものとします。
+                </li>
+                <li>
+                  弊社は、本サービスの正確性、完全性、有用性、特定目的への適合性について、いかなる保証も行いません。本サービスの利用に関連してユーザーに生じた損害（直接的・間接的を問わず）について、運営者は一切の責任を負いません。本サービスは、すべてのWebサイト、URL、リスクを検出できることを保証するものではありません。
+                </li>
               </ol>
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第11条 (端末及びアカウントの管理)</h2>
+              <h2 className={ts.articleTitle}>第8条 (端末及びアカウントの管理)</h2>
               <ol className={ts.mainList}>
                 <li>
                   利用者は、本サービスの利用にあたり、その利用に用いる自身の端末及び利用者登録によって取得した自らのアカウント（以下「利用者アカウント」といいます）を、自らの責任において管理するものとします。
@@ -284,26 +258,26 @@ export default function GentleDiaryTermsPage() {
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第12条 (権利義務等の譲渡禁止)</h2>
+              <h2 className={ts.articleTitle}>第9条 (権利義務等の譲渡禁止)</h2>
               <p className={ts.plainPara}>
                 利用者は、本規約に基づく一切の権利または義務について、第三者への譲渡、承継、質入その他一切の処分をしてはならないものとします。
               </p>
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第13条 (損害賠償)</h2>
+              <h2 className={ts.articleTitle}>第10条 (損害賠償)</h2>
               <ol className={ts.mainList}>
                 <li>
                   利用者は、本規約に違反したことにより、弊社または第三者に損害（合理的な弁護士費用を含みますがこれに限られません）を与えた場合、弊社または第三者に対し、その損害を賠償するものとします。
                 </li>
                 <li>
-                  弊社が、第10条（免責）の規定にも関わらず、利用者に対して損害賠償責任を負担する場合であっても、その損害賠償額は、弊社に故意または重過失ある場合を除き、当該利用者の弊社に対する直近１ヶ月の支払額を上限とするものとします。
+                  弊社が、第7条（免責）の規定にも関わらず、利用者に対して損害賠償責任を負担する場合であっても、その損害賠償額は、弊社に故意または重過失ある場合を除き、当該利用者の弊社に対する直近１ヶ月の支払額を上限とするものとします。
                 </li>
               </ol>
             </div>
 
             <div className={ts.articleBlock}>
-              <h2 className={ts.articleTitle}>第14条 (準拠法及び裁判管轄)</h2>
+              <h2 className={ts.articleTitle}>第11条 (準拠法及び裁判管轄)</h2>
               <ol className={ts.mainList}>
                 <li>本規約は、日本法に準拠し、日本法に従って解釈されるものとします。</li>
                 <li>

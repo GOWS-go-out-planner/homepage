@@ -937,6 +937,23 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+/* 利用規約ページ（グローバル Nav 無し）：ヘッダー分の余白を詰める */
+.pageHeroTerms {
+  padding: 24px 0 36px;
+  min-height: 0;
+}
+
+.pageHeroTerms .breadcrumb {
+  position: relative;
+  top: auto;
+  left: auto;
+  margin-bottom: 12px;
+}
+
+.sectionTerms {
+  padding: 40px 0 72px;
+}
+
 .breadcrumb {
   position: absolute;
   top: 84px;
