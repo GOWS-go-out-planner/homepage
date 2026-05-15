@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "../../../../../lib/seo/metadata";
 import s from "../../../../page.module.css";
 import ts from "./terms.module.css";
 
-export const metadata: Metadata = {
-  title: "SafePage - 利用規約 | GOWS合同会社",
+export const metadata: Metadata = createPageMetadata({
+  title: "SafePage 利用規約",
   description:
     "SafePage（Chrome拡張機能）の利用規約。本サービスの利用条件、禁止事項、免責、準拠法等を定めます。",
-};
+  path: "/service/products/safepage/terms_of_use",
+});
 
 export default function SafepageTermsOfUsePage() {
   return (

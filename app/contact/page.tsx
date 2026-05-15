@@ -210,16 +210,7 @@ export default function ContactPage() {
           <p className={s.pageSubCopy}>
             DX推進・AI活用・システム開発など、どんな段階のご相談も歓迎です。{"\n"}
             まずはお気軽にご予約ください。初回相談は無料です。{"\n"}{"\n"}
-            ※営業等は本フォームでは対応しておりません。営業の場合は
-            <a
-              href="https://forms.gle/BGJ5MAuT8nHxxkXK9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cs.noticeLink}
-            >
-              お問い合わせフォーム
-            </a>
-            よりお問い合わせください。
+            ※本フォームからの営業は受け付けておりません。
           </p>
         </div>
       </section>

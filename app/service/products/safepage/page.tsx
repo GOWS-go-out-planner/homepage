@@ -1,20 +1,37 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { JsonLd } from "../../../components/JsonLd";
 import { LpProductFooter } from "../../../components/LpProductFooter";
+import { createPageMetadata } from "../../../../lib/seo/metadata";
+import { webApplicationJsonLd, webPageJsonLd } from "../../../../lib/seo/json-ld";
 import s from "./page.module.css";
 
+const PAGE_PATH = "/service/products/safepage";
+const PAGE_TITLE = "SafePage - クリックする前に、確認しよう";
+const PAGE_DESCRIPTION =
+  "SafePageは、訪問するURLのリスクレベルを瞬時にチェック。怪しいサイトの警告サインを表示し、安全な判断をサポートするChrome拡張機能です。";
+
 export const metadata: Metadata = {
-  title: "SafePage - クリックする前に、確認しよう",
-  description:
-    "SafePageは、訪問するURLのリスクレベルを瞬時にチェック。怪しいサイトの警告サインを表示し、安全な判断をサポートするChrome拡張機能です。",
-  keywords: [
-    "セキュリティ",
-    "Chrome拡張機能",
-    "URL チェック",
-    "安全",
-    "フィッシング対策",
-    "SafePage",
-  ],
+  ...createPageMetadata({
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    path: PAGE_PATH,
+    absoluteTitle: true,
+    image: "/images/products/SafePage/safepage_logo.png",
+    imageAlt: "SafePage ロゴ",
+    keywords: [
+      "セキュリティ",
+      "Chrome拡張機能",
+      "URLチェック",
+      "フィッシング対策",
+      "詐欺サイト",
+      "SafePage",
+      "GOWS",
+    ],
+  }),
+  icons: {
+    icon: "/images/products/SafePage/safepage_logo.png",
+  },
 };
 
 const CHROME_STORE_URL =
@@ -301,7 +318,21 @@ function ExtensionMockup() {
 
 export default function SafepageProductPage() {
   return (
-    <div className={s.root}>
+    <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ name: PAGE_TITLE, description: PAGE_DESCRIPTION, path: PAGE_PATH }),
+          webApplicationJsonLd({
+            name: "SafePage",
+            description: PAGE_DESCRIPTION,
+            path: PAGE_PATH,
+            downloadUrl: CHROME_STORE_URL,
+            image: "/images/products/SafePage/safepage_logo.png",
+            browserRequirements: "Google Chrome ブラウザが必要です",
+          }),
+        ]}
+      />
+      <div className={s.root}>
       {/* ---- Header ---- */}
       <header className={s.header}>
         <div className={s.headerInner}>
@@ -624,5 +655,6 @@ export default function SafepageProductPage() {
         />
       </div>
     </div>
+    </>
   );
 }

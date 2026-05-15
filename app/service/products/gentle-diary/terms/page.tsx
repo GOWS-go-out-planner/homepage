@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { createPageMetadata } from "../../../../../lib/seo/metadata";
 import s from "../../../../page.module.css";
 import ts from "../../duosub/terms/terms.module.css";
 import ps from "../privacy/privacy.module.css";
 
-export const metadata: Metadata = {
-  title: "Gentle Diary - 利用規約 | GOWS合同会社",
+export const metadata: Metadata = createPageMetadata({
+  title: "Gentle Diary 利用規約",
   description:
     "GOWS合同会社が提供するアプリケーション「Gentle Diary」の利用に関する規約です。第1条（はじめに）から第14条（準拠法及び裁判管轄）までを定めています。",
-};
+  path: "/service/products/gentle-diary/terms",
+});
 
 export default function GentleDiaryTermsPage() {
   return (
