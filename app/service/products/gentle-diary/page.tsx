@@ -264,7 +264,7 @@ export default function GentleDiaryPage() {
         productName="Gentle Diary"
         tagline="リアルタイム共有しない位置情報日記"
         links={[
-          { href: "/company", label: "会社概要" },
+          { href: "/company-info", label: "会社概要" },
           {
             href: "/service/products/gentle-diary/privacy",
             label: "プライバシーポリシー",
