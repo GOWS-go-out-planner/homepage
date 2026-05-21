@@ -80,7 +80,7 @@ export default function Footer() {
           </nav>
           <nav aria-label="会社情報">
             <ul role="list" className={s.footerNavList}>
-              <li><a href="/company">会社概要</a></li>
+              <li><a href="/company-info">会社概要</a></li>
               <li><a href="/#news">お知らせ</a></li>
               <li><a href="/#faq">よくある質問</a></li>
             </ul>

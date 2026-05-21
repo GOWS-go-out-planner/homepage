@@ -33,7 +33,7 @@ export default function Nav() {
           <li><a href="/service/dx-ax">DX・AXコンサルティング</a></li>
           <li><a href="/service/system-dev">システム開発</a></li>
           <li><a href="/service/products">自社プロダクト</a></li>
-          <li><a href="/company">会社概要</a></li>
+          <li><a href="/company-info">会社概要</a></li>
         </ul>
         <div className={styles.ctaGroup}>
           <a
@@ -69,7 +69,7 @@ export default function Nav() {
           <li><a href="/service/dx-ax" onClick={closeMobileMenu}>DX・AXコンサルティング</a></li>
           <li><a href="/service/system-dev" onClick={closeMobileMenu}>システム開発</a></li>
           <li><a href="/service/products" onClick={closeMobileMenu}>自社プロダクト</a></li>
-          <li><a href="/company" onClick={closeMobileMenu}>会社概要</a></li>
+          <li><a href="/company-info" onClick={closeMobileMenu}>会社概要</a></li>
           <li><a href="/#news" onClick={closeMobileMenu}>お知らせ</a></li>
           <li>
             <a

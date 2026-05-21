@@ -629,7 +629,7 @@ export default function DuosubPage() {
         productName="Duosub"
         tagline="映画・ドラマで楽しく英語学習"
         links={[
-          { href: "/company", label: "会社概要" },
+          { href: "/company-info", label: "会社概要" },
           { href: "/privacy", label: "プライバシーポリシー" },
           {
             href: "/service/products/duosub/terms",

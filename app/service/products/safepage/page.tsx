@@ -645,7 +645,7 @@ export default function SafepageProductPage() {
           tagline="クリックする前に、確認しよう。"
           footerNote="SafePageは、ウェブサイトの安全性を保証するものではありません。情報提供を目的としたツールです。"
           links={[
-            { href: "/company", label: "会社概要" },
+            { href: "/company-info", label: "会社概要" },
             { href: "/privacy", label: "プライバシーポリシー" },
             { href: TERMS_PATH, label: "利用規約" },
             { href: CONTACT_FORM_URL, label: "ご意見・お問い合わせ" },

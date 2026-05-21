@@ -300,7 +300,7 @@ export default function DinderPage() {
         productName="dinder"
         tagline="お店選びに時間はかけない"
         links={[
-          { href: "/company", label: "会社概要" },
+          { href: "/company-info", label: "会社概要" },
           { href: "/privacy", label: "プライバシーポリシー" },
         ]}
         appStoreUrl={APP_STORE_URL}
