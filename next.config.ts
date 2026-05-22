@@ -4,6 +4,21 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/service",
+        destination: "/#services",
+        permanent: true,
+      },
+      {
+        source: "/privacy-policy",
+        destination: "/privacy",
+        permanent: true,
+      },
+      {
+        source: "/service/in-house",
+        destination: "/service/products",
+        permanent: true,
+      },
+      {
         source: "/service/in-house/dinder",
         destination: "/service/products/dinder",
         permanent: true,
