@@ -142,7 +142,6 @@ const services = [
 
 // 強みカードデータ
 type StrengthCard = {
-  axis: string;
   accentColor: string;
   glowColor: string;
   heading: string;
@@ -152,7 +151,6 @@ type StrengthCard = {
 
 const strengthCards: StrengthCard[] = [
   {
-    axis: "DX軸",
     accentColor: "#06B6D4",
     glowColor: "rgba(6,182,212,0.08)",
     heading: "ツールを入れて終わりにしない。",
@@ -164,19 +162,17 @@ const strengthCards: StrengthCard[] = [
     ],
   },
   {
-    axis: "AX軸",
     accentColor: "#8B5CF6",
     glowColor: "rgba(139,92,246,0.08)",
     heading: "AIで何ができるか、誰よりも具体的に答えられる。",
-    body: "代表の小山は、北海道大学大学院でAI・機械学習を研究し、情報理工学の修士号を取得しています。GOWSは違います。AIの仕組みを原理から理解した上で、「あなたのビジネスのどこにAIを使えば効果が出るか」を具体的に設計します。流行のツールを当てはめるのではなく、課題から逆算してAIの活用方法を設計します。",
+    body: "代表の小山は、北海道大学大学院でAIを研究し、修士号を取得しています。GOWSはAIの仕組みを原理から理解した上で、「あなたのビジネスのどこにAIを使えば効果が出るか」を具体的に設計します。流行のツールを当てはめるのではなく、課題から逆算してAIの活用方法を設計します。",
     points: [
-      "代表が北大大学院でAI研究（情報理工学修士）",
-      "AI活用業務設計（AX=AIトランスフォーメーション）まで担う",
+      "代表が北大大学院でAI研究",
+      "AI活用業務設計まで担う",
       "自社プロダクトにもAIを実装済み、実装経験のある提案が可能",
     ],
   },
   {
-    axis: "一気通貫",
     accentColor: "#10B981",
     glowColor: "rgba(16,185,129,0.08)",
     heading: "「何をつくるか」から、一緒に考えます。",
@@ -203,9 +199,6 @@ const strengthSubCards = [
   },
 ];
 
-// 業種バッジ
-const industries = ["金融", "小売", "EC", "教育", "イベント", "製造", "エンタメ", "飲食", "人材"];
-
 // 信頼バー
 const trustItems = [
   {
@@ -215,7 +208,7 @@ const trustItems = [
   },
   {
     icon: "🏭",
-    main: "8業種の支援経験",
+    main: "9業種の支援経験",
     sub: "金融・製造・EC・教育など",
   },
   {
@@ -462,7 +455,7 @@ export default function Home() {
           <ul className={s.strengthGrid} role="list">
             {strengthCards.map((card, i) => (
               <li
-                key={card.axis}
+                key={i}
                 className={`${s.strengthCard} ${s.reveal}`}
                 style={
                   {
@@ -479,15 +472,6 @@ export default function Home() {
                   }}
                   aria-hidden="true"
                 />
-                <span
-                  className={s.strengthAxisBadge}
-                  style={{
-                    color: card.accentColor,
-                    background: `${card.accentColor}26`,
-                  }}
-                >
-                  {card.axis}
-                </span>
                 <h3 className={s.strengthH3}>{card.heading}</h3>
                 <p className={s.strengthBody}>{card.body}</p>
                 <ul className={s.strengthPoints} role="list">
@@ -546,41 +530,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 導入事例 + 業種バッジ */}
-      <section className={s.section} id="works">
-        <div className="container">
-          <h2 className={`${s.sectionTitle} ${s.reveal}`}>導入事例</h2>
-
-          {/* 業種バッジ */}
-          <ul
-            className={`${s.industryBadgeList} ${s.reveal}`}
-            role="list"
-            aria-label="支援業種"
-          >
-            {industries.map((industry) => (
-              <li key={industry} className={s.industryBadge}>
-                {industry}
-              </li>
-            ))}
-          </ul>
-
-          {/* 事例カード（プレースホルダー） */}
-          <ul className={s.cardGrid} role="list">
-            {[1, 2, 3].map((n, i) => (
-              <li
-                key={n}
-                className={`${s.caseCard} ${s.reveal}`}
-                style={{ transitionDelay: `${i * 0.1}s` }}
-              >
-                <span className={s.tag}>業種・企業規模</span>
-                <p className={s.caseChallenge}>課題（Before）</p>
-                <p className={s.caseResult}>成果（After）</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* 代表紹介セクション */}
       <section className={s.ceoSection} id="ceo">
         <div className="container">
@@ -588,8 +537,12 @@ export default function Home() {
           <div className={`${s.ceoInner} ${s.reveal}`}>
             {/* 左カラム：写真エリア */}
             <div className={s.ceoPhotoCol}>
-              <div className={s.ceoPhoto} role="img" aria-label="小山望海 代表写真">
-                {/* 写真が用意され次第 next/image に差し替える */}
+              <div className={s.ceoPhoto}>
+                <img
+                  src="/images/company/koyama-nozomi.png"
+                  alt="代表 小山望海"
+                  loading="lazy"
+                />
               </div>
               <span className={s.ceoRoleBadge}>代表 / CEO・Founder</span>
             </div>
@@ -634,7 +587,7 @@ export default function Home() {
       {/* Footer CTA */}
       <section className={s.footerCta} id="contact">
         <div className="container">
-          <h2 className={s.footerCtaH2}>「要件は固まっていない」で大丈夫です。</h2>
+          <h2 className={s.footerCtaH2}>「何をするか決まっていない」で大丈夫です。</h2>
           <p className={s.footerCtaSub}>
             一緒に整理するところから始めましょう。ヒアリングから提案まで、初回は無料です。
             <br />

@@ -1,47 +1,56 @@
 "use client";
 import { useState } from "react";
-import { SITE_FAQS } from "../../lib/seo/faqs";
+import { FAQ_GROUPS } from "../../lib/seo/faqs";
 import styles from "./FaqAccordion.module.css";
 
 export default function FaqAccordion() {
+  const [activeTab, setActiveTab] = useState(0);
   const [open, setOpen] = useState<number | null>(null);
 
-  // グループヘッダーを挿入するために、グループ境界を検出する
-  const seenGroups = new Set<string>();
+  const handleTabChange = (index: number) => {
+    setActiveTab(index);
+    setOpen(null);
+  };
+
+  const currentFaqs = FAQ_GROUPS[activeTab].faqs;
 
   return (
     <div>
-      {SITE_FAQS.map((faq, i) => {
-        const isNewGroup = !seenGroups.has(faq.group);
-        if (isNewGroup) seenGroups.add(faq.group);
+      <div className={styles.tabList} role="tablist">
+        {FAQ_GROUPS.map((group, i) => (
+          <button
+            key={group.label}
+            role="tab"
+            aria-selected={activeTab === i}
+            className={`${styles.tab} ${activeTab === i ? styles.tabActive : ""}`}
+            onClick={() => handleTabChange(i)}
+          >
+            {group.label}
+          </button>
+        ))}
+      </div>
 
-        return (
-          <div key={i}>
-            {isNewGroup && (
-              <div className={styles.groupHeader} aria-hidden="true">
-                {faq.group}
-              </div>
-            )}
-            <dl>
-              <div className={styles.item}>
-                <dt>
-                  <button
-                    className={styles.question}
-                    onClick={() => setOpen(open === i ? null : i)}
-                    aria-expanded={open === i}
-                  >
-                    {faq.q}
-                    <span className={styles.toggle} aria-hidden="true">
-                      {open === i ? "−" : "+"}
-                    </span>
-                  </button>
-                </dt>
-                {open === i && <dd className={styles.answer}>{faq.a}</dd>}
-              </div>
-            </dl>
-          </div>
-        );
-      })}
+      <div role="tabpanel">
+        {currentFaqs.map((faq, i) => (
+          <dl key={i}>
+            <div className={styles.item}>
+              <dt>
+                <button
+                  className={styles.question}
+                  onClick={() => setOpen(open === i ? null : i)}
+                  aria-expanded={open === i}
+                >
+                  {faq.q}
+                  <span className={styles.toggle} aria-hidden="true">
+                    {open === i ? "−" : "+"}
+                  </span>
+                </button>
+              </dt>
+              {open === i && <dd className={styles.answer}>{faq.a}</dd>}
+            </div>
+          </dl>
+        ))}
+      </div>
     </div>
   );
 }
