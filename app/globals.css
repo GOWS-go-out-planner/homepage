@@ -30,6 +30,14 @@
   --gradient-hero:      radial-gradient(ellipse at 60% 40%, #1a2456 0%, #0A0E1A 70%);
 
   --font: "Noto Sans JP", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* 代表紹介セクション用 */
+  --color-ceo-bg:       #0D1220;
+
+  /* 強みセクション 3軸アクセント */
+  --color-strength-dx:  #06B6D4;
+  --color-strength-ax:  #8B5CF6;
+  --color-strength-int: #10B981;
 }
 
 html {

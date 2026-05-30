@@ -87,7 +87,7 @@ export default function ProductsPage() {
           <h1 className={s.pageH1}>自社プロダクト</h1>
           <p className={s.pageSubCopy}>
           </p>
-          <a href={PRODUCT_CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnPrimary}>
+          <a href={PRODUCT_CONTACT_URL} target="_blank" rel="noopener noreferrer" className={s.btnSecondary}>
             プロダクトについて問い合わせる →
           </a>
         </div>
@@ -149,7 +149,7 @@ export default function ProductsPage() {
             アプリやサービスのアイデアをお持ちの方は、ぜひ一度ご相談ください。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnPrimary}>
               無料相談を予約する →
             </a>
           </div>

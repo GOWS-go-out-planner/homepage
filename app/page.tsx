@@ -83,61 +83,142 @@ function ParticleCanvas() {
   return <canvas ref={canvasRef} className={s.particleCanvas} aria-hidden="true" />;
 }
 
-const cardAccents = ['#4F8EF7', '#8B5CF6', '#06B6D4', '#10B981'];
-
-const serviceGlows = [
-  'radial-gradient(ellipse at top left, rgba(79,142,247,0.18) 0%, transparent 65%)',
-  'radial-gradient(ellipse at top left, rgba(139,92,246,0.18) 0%, transparent 65%)',
-  'radial-gradient(ellipse at top left, rgba(6,182,212,0.15) 0%, transparent 65%)',
-];
+// 課題カード
+const cardAccents = ["#4F8EF7", "#8B5CF6", "#06B6D4", "#10B981"];
 
 const problems = [
   {
-    heading: "DX推進を検討しているが、何から始めればいいかわからない",
-    body: "DXの必要性は感じているが、優先度の整理や具体的な進め方が見えない",
+    heading: "DXに取り組んでいるのに、現場が動いてくれない",
+    body: "ツールは入れた。研修もした。でも業務は変わらない。ただIT化しただけ、「やらされ感」だけが漂っている。",
     tag: "DX戦略立案・ロードマップ設計",
   },
   {
-    heading: "AIを活用したいが、自社での導入ノウハウがない",
-    body: "生成AI・機械学習の活用に興味はあるが、どのツールをどう使えばよいか判断できない",
+    heading: "AIを使いたいが、どう使えばいいかがわからない",
+    body: "社員が各々AIを使ったりはしているが、会社としてAIを有効活用しきれていない。社内の業務に当てはめると、どこに使えるのか、効果がちゃんと出るのか判断できない。",
     tag: "AX（AIトランスフォーメーション）支援",
   },
   {
-    heading: "システム開発を依頼したいが、信頼できるパートナーが見つからない",
-    body: "要件定義から保守まで任せられる、技術力と対話力を兼ね備えたパートナーを探している",
-    tag: "要件定義〜保守まで一気通貫",
+    heading: "ITに投資したのに、何が変わったのかわからない",
+    body: "システムを入れた。コンサルにも頼んだ。でも売上も業務効率も、正直あまり変わっていない。何にお金を使ったのか、説明できない。",
+    tag: "DX・AX戦略設計",
   },
   {
-    heading: "新規事業を立ち上げたいが、技術面のサポートが不足している",
-    body: "アイデアはあるが、技術選定・MVP開発・スケールまでの道筋が見えない",
+    heading: "技術と経営を両立できる相談相手がいない",
+    body: "CTOを雇う余裕はない。でも技術判断を経営者だけでするには限界がある。",
     tag: "新規事業・MVP開発支援",
   },
+];
+
+// サービスカード
+const serviceGlows = [
+  "radial-gradient(ellipse at top left, rgba(79,142,247,0.18) 0%, transparent 65%)",
+  "radial-gradient(ellipse at top left, rgba(139,92,246,0.18) 0%, transparent 65%)",
+  "radial-gradient(ellipse at top left, rgba(6,182,212,0.15) 0%, transparent 65%)",
 ];
 
 const services = [
   {
     name: "DX・AXコンサルティング",
-    desc: "ただの\"IT化\"で終わらせない、DX戦略の立案からAI導入・新規事業支援まで、専門コンサルタントがビジネスパートナーとして伴走します。",
+    desc: "ただの\"IT化\"で終わらせない。DX戦略の立案からAI導入・新規事業支援まで、コンサルタント・エンジニアがビジネスパートナーとして伴走します。",
     tags: ["DX推進支援", "AI導入", "新規事業", "補助金申請"],
-    cta: "詳しく見る",
+    cta: "コンサルを相談する",
     href: "/service/dx-ax",
   },
   {
     name: "システム開発",
-    desc: "要件定義から保守・運用まで全フェーズを自社内で完結。\n課題の根本を解決する高品質システムを低コスト・短納期で開発します。",
+    desc: "要件定義から保守・運用まで全フェーズを自社内で完結。多重下請け構造を排除し、低コスト・短納期・高品質なシステムを直接お届けします。",
     tags: ["Webアプリ", "業務システム", "モバイルアプリ", "API開発"],
-    cta: "詳しく見る",
+    cta: "開発を相談する",
     href: "/service/system-dev",
   },
   {
     name: "自社プロダクト",
-    desc: "現場の知見や日常の課題から生まれたサービスを複数展開。\n全て無料でご利用いただけます。",
-    tags: ["iOS / Android", "自社開発"],
+    desc: "現場の知見と日常の課題から生まれたサービスを複数展開。GOWSの開発力は自社プロダクトで証明されています。延べ1,000名以上のユーザーに使われています。",
+    tags: ["iOS", "Android", "自社開発"],
     cta: "プロダクトを見る",
     href: "/service/products",
   },
 ];
 
+// 強みカードデータ
+type StrengthCard = {
+  accentColor: string;
+  glowColor: string;
+  heading: string;
+  body: string;
+  points: string[];
+};
+
+const strengthCards: StrengthCard[] = [
+  {
+    accentColor: "#06B6D4",
+    glowColor: "rgba(6,182,212,0.08)",
+    heading: "ツールを入れて終わりにしない。",
+    body: "「システムを導入したのに、現場が使ってくれない」「デジタル化したのに、業務のスピードが変わらない」——これはツールの問題ではなく、変革の進め方の問題です。GOWSのDX支援は、ツールの選定・導入にとどまりません。現場の業務フロー・組織の動き方・人の意識まで変えることを前提に伴走します。",
+    points: [
+      "戦略・ロードマップ設計から着手し、現場定着まで伴走",
+      "定着・活用状況をモニタリングしてPDCAを回す",
+      "業務変革・組織変革の観点からも提言",
+    ],
+  },
+  {
+    accentColor: "#8B5CF6",
+    glowColor: "rgba(139,92,246,0.08)",
+    heading: "AIで何ができるか、誰よりも具体的に答えられる。",
+    body: "代表の小山は、北海道大学大学院でAIを研究し、修士号を取得しています。GOWSはAIの仕組みを原理から理解した上で、「あなたのビジネスのどこにAIを使えば効果が出るか」を具体的に設計します。流行のツールを当てはめるのではなく、課題から逆算してAIの活用方法を設計します。",
+    points: [
+      "代表が北大大学院でAI研究",
+      "AI活用業務設計まで担う",
+      "自社プロダクトにもAIを実装済み、実装経験のある提案が可能",
+    ],
+  },
+  {
+    accentColor: "#10B981",
+    glowColor: "rgba(16,185,129,0.08)",
+    heading: "「何をつくるか」から、一緒に考えます。",
+    body: "コンサルが出した戦略を開発会社が理解しきれない、開発の制約をコンサルが把握していなかった——この分断が、手戻り・追加費用の原因になります。GOWSは、戦略策定から要件定義・設計・開発・運用まで、すべてを自社内のチームが担当します。",
+    points: [
+      "戦略→要件定義→設計→開発→運用をワンチームで担当",
+      "コンサルと開発の「伝言ゲーム」「認識のズレ」を構造的に排除",
+      "「要件を固めてから来てください」とは言わない",
+    ],
+  },
+];
+
+// サブカードデータ
+const strengthSubCards = [
+  {
+    icon: "🕐",
+    heading: "お客様のペースに合わせて動きます。",
+    body: "夜間・土日の打ち合わせにも対応します。全国どこでもリモートで対応可能です（必要に応じて現地対応も可）。平日昼間に時間を取りにくい経営者や、一般企業とは稼働時間が異なる業種、リソースが限られたスタートアップにも柔軟に対応します。",
+  },
+  {
+    icon: "🏭",
+    heading: "業界の商習慣・規制を理解した上で提案します。",
+    body: "金融・小売・EC・教育・イベント・製造・エンタメ・飲食・人材など、多岐に渡る業種での支援実績があります。それぞれの業界特有の制約や商習慣を踏まえた上で、最適な提案が可能です。",
+  },
+];
+
+// 信頼バー
+const trustItems = [
+  {
+    icon: "📰",
+    main: "朝日新聞 掲載",
+    sub: "メディア掲載実績",
+  },
+  {
+    icon: "🏭",
+    main: "9業種の支援経験",
+    sub: "金融・製造・EC・教育など",
+  },
+  {
+    icon: "👥",
+    main: "延べ1,000名以上が利用",
+    sub: "自社プロダクト",
+  },
+];
+
+// ニュース
 const news = [
   {
     id: 1,
@@ -297,30 +378,57 @@ export default function Home() {
         <div className={s.heroOrb} aria-hidden="true" />
         <div className={`container ${s.heroBody}`}>
           <h1 className={s.heroH1}>
-            ITで未来を切り拓く、<br />課題解決のプロフェッショナル
+            テクノロジーの最前線で、<br />課題を解く。
           </h1>
           <p className={s.heroSub}>
-            GOWS合同会社は、DX・AXコンサルティングとシステム開発を通じて、
-            事業を加速させ、企業の成長を支援します。
+            AIを『使う』時代から、AIで『事業を作り変える』時代へ。GOWSは、DX・AX（AI Transformation）の専門チームとして、戦略立案から実装・運用まであなたの変革に伴走します。
           </p>
           <div className={s.ctaRow}>
             <a href={CONTACT_URL} className={s.btnPrimary}>
-              無料相談を予約する →
+              まずは相談してみる（無料・30分）
             </a>
             <a href="#services" className={s.btnGhost}>サービスを見る</a>
           </div>
         </div>
+        {/* スクロールプロンプト */}
+        <div className={s.scrollPrompt} aria-hidden="true">↓</div>
       </section>
 
-      {/* Problems */}
+      {/* 信頼バー */}
+      <section className={s.trustBar} aria-label="信頼シグナル">
+        <div className="container">
+          <ul className={s.trustGrid} role="list">
+            {trustItems.map((item, i) => (
+              <li key={i} className={s.trustItem}>
+                <span className={s.trustIcon} aria-hidden="true">{item.icon}</span>
+                <span className={s.trustMain}>{item.main}</span>
+                <span className={s.trustSub}>{item.sub}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 課題セクション */}
       <section className={s.section} id="problems">
         <div className="container">
           <h2 className={`${s.sectionTitle} ${s.reveal}`}>こんなお悩み、ありませんか？</h2>
           <p className={`${s.sectionSub} ${s.reveal}`}>GOWSは、戦略立案から実装・運用まで一気通貫でサポートします。</p>
           <ul className={s.cardGridFour} role="list">
             {problems.map((p, i) => (
-              <li key={p.heading} className={`${s.problemCard} ${s.reveal}`} style={{ '--card-accent': cardAccents[i], transitionDelay: `${i * 0.1}s` } as React.CSSProperties}>
-                <div className={s.cardNum} aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
+              <li
+                key={p.heading}
+                className={`${s.problemCard} ${s.reveal}`}
+                style={
+                  {
+                    "--card-accent": cardAccents[i],
+                    transitionDelay: `${i * 0.1}s`,
+                  } as React.CSSProperties
+                }
+              >
+                <div className={s.cardNum} aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
                 <h3 className={s.cardH3}>{p.heading}</h3>
                 <p className={s.cardBody}>{p.body}</p>
                 <span className={s.tag}>{p.tag}</span>
@@ -328,14 +436,74 @@ export default function Home() {
             ))}
           </ul>
           <div className={`${s.midCta} ${s.reveal}`}>
-            <a href={CONTACT_URL} className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnPrimary}>
               あなたの課題を無料で相談する →
             </a>
           </div>
         </div>
       </section>
 
-      {/* Services */}
+      {/* GOWSの強みセクション */}
+      <section className={s.strengthSection} id="why-gows">
+        <div className="container">
+          <h2 className={`${s.sectionTitle} ${s.reveal}`}>なぜGOWSが選ばれるのか</h2>
+          <p className={`${s.sectionSub} ${s.reveal} ${s.strengthLead}`}>
+            「コンサルに頼んだら戦略書だけ出てきた」「開発会社に頼んだら要件を固めてから来いと言われた」。この分断が、DX・AI導入を失敗させてきました。GOWSは、この構造問題に正面から向き合うために設立されました。
+          </p>
+
+          {/* 主軸3カード */}
+          <ul className={s.strengthGrid} role="list">
+            {strengthCards.map((card, i) => (
+              <li
+                key={i}
+                className={`${s.strengthCard} ${s.reveal}`}
+                style={
+                  {
+                    "--strength-accent": card.accentColor,
+                    "--strength-glow": card.glowColor,
+                    transitionDelay: `${i * 0.1}s`,
+                  } as React.CSSProperties
+                }
+              >
+                <div
+                  className={s.strengthCardGlow}
+                  style={{
+                    background: `radial-gradient(ellipse at top left, ${card.glowColor} 0%, transparent 60%)`,
+                  }}
+                  aria-hidden="true"
+                />
+                <h3 className={s.strengthH3}>{card.heading}</h3>
+                <p className={s.strengthBody}>{card.body}</p>
+                <ul className={s.strengthPoints} role="list">
+                  {card.points.map((pt, j) => (
+                    <li key={j} className={s.strengthPoint}>
+                      <span className={s.strengthPointIcon} style={{ color: card.accentColor }} aria-hidden="true">
+                        ✓
+                      </span>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+
+          {/* サブ2カード */}
+          <ul className={s.strengthSubGrid} role="list">
+            {strengthSubCards.map((card, i) => (
+              <li key={i} className={`${s.strengthSubCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div className={s.strengthSubIcon} aria-hidden="true">{card.icon}</div>
+                <div>
+                  <h3 className={s.strengthSubH3}>{card.heading}</h3>
+                  <p className={s.strengthSubBody}>{card.body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* サービス詳細 */}
       <section className={s.serviceSection} id="services">
         <div className="container">
           <h2 className={`${s.sectionTitle} ${s.reveal}`}>事業内容</h2>
@@ -347,12 +515,50 @@ export default function Home() {
                 <h3 className={s.serviceH3}>{sv.name}</h3>
                 <p className={s.serviceDesc}>{sv.desc}</p>
                 <ul className={s.darkTagList} role="list" aria-label="対応内容">
-                  {sv.tags.map((t) => <li key={t} className={s.darkTag}>{t}</li>)}
+                  {sv.tags.map((t) => (
+                    <li key={t} className={s.darkTag}>
+                      {t}
+                    </li>
+                  ))}
                 </ul>
-                <a href={sv.href} className={s.btnGhostSm}>{sv.cta} →</a>
+                <a href={sv.href} className={s.btnGhostSm}>
+                  {sv.cta} →
+                </a>
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* 代表紹介セクション */}
+      <section className={s.ceoSection} id="ceo">
+        <div className="container">
+          <h2 className={`${s.sectionTitle} ${s.reveal}`}>代表メッセージ</h2>
+          <div className={`${s.ceoInner} ${s.reveal}`}>
+            {/* 左カラム：写真エリア */}
+            <div className={s.ceoPhotoCol}>
+              <div className={s.ceoPhoto}>
+                <img
+                  src="/images/company/koyama-nozomi.png"
+                  alt="代表 小山望海"
+                  loading="lazy"
+                />
+              </div>
+              <span className={s.ceoRoleBadge}>代表 / CEO・Founder</span>
+            </div>
+
+            {/* 右カラム：テキスト */}
+            <div className={s.ceoContent}>
+              <p className={s.ceoName}>小山 望海</p>
+              <p className={s.ceoNameEn}>KOYAMA Nozomi</p>
+              <p className={s.ceoBio}>
+                DXやAX（AI Transformation）は、一朝一夕で成し遂げられるものではありません。技術の選定・業務プロセスの再設計・組織の変化・現場への定着まで、複数の壁を乗り越えて初めて成果になります。そしてその壁を越えるには、AI・DXを技術として深く理解していることと、現場で何が起きているかを見続けることの両方が必要です。GOWSは、その両方に向き合い続けるパートナーでありたいと思っています。
+              </p>
+              <blockquote className={s.ceoQuote}>
+                GOWSは、戦略と実装の両方ができるチームとして、お客様の事業成長に本気で向き合います。
+              </blockquote>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -381,14 +587,15 @@ export default function Home() {
       {/* Footer CTA */}
       <section className={s.footerCta} id="contact">
         <div className="container">
-          <h2 className={s.footerCtaH2}>まずは、気軽にご相談ください。</h2>
+          <h2 className={s.footerCtaH2}>「何をするか決まっていない」で大丈夫です。</h2>
           <p className={s.footerCtaSub}>
-            DX推進・システム開発・AI活用など、どんな段階のご相談も歓迎です。<br />
-            初回相談は無料で承ります。
+            一緒に整理するところから始めましょう。ヒアリングから提案まで、初回は無料です。
+            <br />
+            まずは30分、話だけでも聞いてみてください。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} className={s.btnWhite}>
-              無料相談を予約する →
+            <a href={CONTACT_URL} className={s.btnPrimary}>
+              無料相談を予約する（30分）
             </a>
           </div>
         </div>

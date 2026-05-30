@@ -136,7 +136,7 @@ export default function DxAxPage() {
             DX推進・AI活用など、どんな段階でもお声がけください。初回相談は無料です。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnPrimary}>
               無料相談を予約する →
             </a>
           </div>
