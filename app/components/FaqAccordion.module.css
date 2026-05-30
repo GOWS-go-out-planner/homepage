@@ -35,6 +35,22 @@
   white-space: pre-line;
 }
 
+.groupHeader {
+  margin-top: 40px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(79, 142, 247, 0.3);
+}
+
+/* 最初のグループヘッダーはマージントップなし */
+div:first-child > .groupHeader {
+  margin-top: 0;
+}
+
 @media (max-width: 767px) {
   .question {
     font-size: 16px;
