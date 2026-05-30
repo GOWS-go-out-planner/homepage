@@ -93,8 +93,8 @@ const problems = [
     tag: "DX戦略立案・ロードマップ設計",
   },
   {
-    heading: "AIを使いたいが、何に使えばいいかがわからない",
-    body: "ChatGPTは試した。でも社内の業務に当てはめると、どこに使えるのか判断できない。",
+    heading: "AIを使いたいが、どう使えばいいかがわからない",
+    body: "社員が各々AIを使ったりはしているが、会社としてAIを有効活用しきれていない。社内の業務に当てはめると、どこに使えるのか、効果がちゃんと出るのか判断できない。",
     tag: "AX（AIトランスフォーメーション）支援",
   },
   {
@@ -436,7 +436,7 @@ export default function Home() {
             ))}
           </ul>
           <div className={`${s.midCta} ${s.reveal}`}>
-            <a href={CONTACT_URL} className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnPrimary}>
               あなたの課題を無料で相談する →
             </a>
           </div>
@@ -594,11 +594,8 @@ export default function Home() {
             まずは30分、話だけでも聞いてみてください。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnPrimary}>
               無料相談を予約する（30分）
-            </a>
-            <a href={`mailto:info@gows.co.jp`} className={s.btnSecondary}>
-              メールで問い合わせる
             </a>
           </div>
         </div>
