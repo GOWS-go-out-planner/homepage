@@ -137,7 +137,7 @@ export default function SystemDevPage() {
             要件が固まっていなくても大丈夫です。一緒に整理するところからサポートします。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnPrimary}>
               無料相談を予約する →
             </a>
           </div>

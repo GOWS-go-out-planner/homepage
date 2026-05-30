@@ -111,17 +111,16 @@
 
 .btnSecondary {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: var(--color-accent);
   color: #ffffff;
   font-size: 16px;
   font-weight: 600;
   padding: 13px 30px;
   border-radius: 8px;
-  transition: background 0.2s, transform 0.15s;
+  transition: opacity 0.2s, transform 0.15s;
 }
 .btnSecondary:hover {
-  background: rgba(255, 255, 255, 0.18);
+  opacity: 0.88;
   transform: translateY(-2px);
 }
 
