@@ -25,7 +25,7 @@ const menus = [
 const features = [
   {
     num: "01",
-    title: "一気通貫・下請けなし",
+    title: "一気通貫",
     body: "要件定義→設計→開発→テスト→保守・運用まで全フェーズを自社内で完結。多重下請け構造による余分なコストと品質低下を排除します。",
   },
   {
@@ -137,7 +137,7 @@ export default function SystemDevPage() {
             要件が固まっていなくても大丈夫です。一緒に整理するところからサポートします。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
-            <a href={CONTACT_URL} className={s.btnWhite}>
+            <a href={CONTACT_URL} className={s.btnPrimary}>
               無料相談を予約する →
             </a>
           </div>
