@@ -5,6 +5,9 @@ import Nav from "./components/Nav";
 import FaqAccordion from "./components/FaqAccordion";
 import Footer from "./components/Footer";
 import s from "./page.module.css";
+// ニュースデータは lib/data/news.ts で一元管理。/news ページでも同データを参照している。
+import { news } from "../lib/data/news";
+import type { NewsEntry } from "../lib/data/news";
 
 const CONTACT_URL = "/contact";
 
@@ -105,7 +108,7 @@ const problems = [
   {
     heading: "技術と経営を両立できる相談相手がいない",
     body: "CTOを雇う余裕はない。でも技術判断を経営者だけでするには限界がある。",
-    tag: "新規事業・MVP開発支援",
+    tag: "技術顧問",
   },
 ];
 
@@ -114,22 +117,38 @@ const serviceGlows = [
   "radial-gradient(ellipse at top left, rgba(79,142,247,0.18) 0%, transparent 65%)",
   "radial-gradient(ellipse at top left, rgba(139,92,246,0.18) 0%, transparent 65%)",
   "radial-gradient(ellipse at top left, rgba(6,182,212,0.15) 0%, transparent 65%)",
+  "amber",
 ];
 
-const services = [
+type Service = {
+  name: string;
+  desc: string;
+  tags: string[];
+  cta: string;
+  href: string;
+};
+
+const services: Service[] = [
   {
     name: "DX・AXコンサルティング",
-    desc: "ただの\"IT化\"で終わらせない。DX戦略の立案からAI導入・新規事業支援まで、コンサルタント・エンジニアがビジネスパートナーとして伴走します。",
+    desc: "ただの\"IT化\"で終わらせない。DX戦略の立案からAI導入・新規事業支援まで、技術にも精通した経験豊富なコンサルタントがビジネスパートナーとして伴走します。",
     tags: ["DX推進支援", "AI導入", "新規事業", "補助金申請"],
-    cta: "コンサルを相談する",
+    cta: "詳細を見る",
     href: "/service/dx-ax",
   },
   {
     name: "システム開発",
     desc: "要件定義から保守・運用まで全フェーズを自社内で完結。多重下請け構造を排除し、低コスト・短納期・高品質なシステムを直接お届けします。",
     tags: ["Webアプリ", "業務システム", "モバイルアプリ", "API開発"],
-    cta: "開発を相談する",
+    cta: "詳細を見る",
     href: "/service/system-dev",
+  },
+  {
+    name: "技術顧問",
+    desc: "採用しなくていい、CTOレンタル。月額2万円からの固定費で、経営目線と技術目線を兼ね備えたコンサルタントがあなたの技術判断を支えます。",
+    tags: ["外部CTO", "技術選定", "ベンダー折衝"],
+    cta: "詳細を見る",
+    href: "/service/tech-advisor",
   },
   {
     name: "自社プロダクト",
@@ -154,7 +173,7 @@ const strengthCards: StrengthCard[] = [
     accentColor: "#06B6D4",
     glowColor: "rgba(6,182,212,0.08)",
     heading: "ツールを入れて終わりにしない。",
-    body: "「システムを導入したのに、現場が使ってくれない」「デジタル化したのに、業務のスピードが変わらない」——これはツールの問題ではなく、変革の進め方の問題です。GOWSのDX支援は、ツールの選定・導入にとどまりません。現場の業務フロー・組織の動き方・人の意識まで変えることを前提に伴走します。",
+    body: "「システムを導入したのに、現場が使ってくれない」「デジタル化したのに、業務が変わらない、会社の成長に繋がらない」——これはツールの問題ではなく、変革の進め方の問題です。GOWSのDX支援は、ツールの選定・導入にとどまりません。現場の業務フロー・組織の動き方・人の意識まで変えることを前提に伴走します。",
     points: [
       "戦略・ロードマップ設計から着手し、現場定着まで伴走",
       "定着・活用状況をモニタリングしてPDCAを回す",
@@ -164,12 +183,12 @@ const strengthCards: StrengthCard[] = [
   {
     accentColor: "#8B5CF6",
     glowColor: "rgba(139,92,246,0.08)",
-    heading: "AIで何ができるか、誰よりも具体的に答えられる。",
-    body: "代表の小山は、北海道大学大学院でAIを研究し、修士号を取得しています。GOWSはAIの仕組みを原理から理解した上で、「あなたのビジネスのどこにAIを使えば効果が出るか」を具体的に設計します。流行のツールを当てはめるのではなく、課題から逆算してAIの活用方法を設計します。",
+    heading: "AIで何ができるか、具体的に答えられる。",
+    body: "代表の小山は学生時代、AIの研究をしていました。代表だけでなくGOWSのメンバーはAIの仕組みを原理から理解した上で、「あなたのビジネスに対してAIでどのような効果が出せるか」を具体的に設計します。流行のツールを当てはめるのではなく、課題から逆算してAIの活用方法を設計します。",
     points: [
-      "代表が北大大学院でAI研究",
-      "AI活用業務設計まで担う",
-      "自社プロダクトにもAIを実装済み、実装経験のある提案が可能",
+      "ただ流行に乗るだけではないAI活用",
+      "AI活用業務設計から具体的な実装まで担う",
+      "多くのAI経験をもとにご提案",
     ],
   },
   {
@@ -180,7 +199,7 @@ const strengthCards: StrengthCard[] = [
     points: [
       "戦略→要件定義→設計→開発→運用をワンチームで担当",
       "コンサルと開発の「伝言ゲーム」「認識のズレ」を構造的に排除",
-      "「要件を固めてから来てください」とは言わない",
+      "何も決まっていない段階からでも一緒に考えていきます",
     ],
   },
 ];
@@ -199,78 +218,12 @@ const strengthSubCards = [
   },
 ];
 
-// 信頼バー
-const trustItems = [
-  {
-    icon: "📰",
-    main: "朝日新聞 掲載",
-    sub: "メディア掲載実績",
-  },
-  {
-    icon: "🏭",
-    main: "9業種の支援経験",
-    sub: "金融・製造・EC・教育など",
-  },
-  {
-    icon: "👥",
-    main: "延べ1,000名以上が利用",
-    sub: "自社プロダクト",
-  },
-];
-
-// ニュース
-const news = [
-  {
-    id: 1,
-    tags: ["プレスリリース", "Duosub"],
-    date: "2025.01.30",
-    title: "海外映画・ドラマの英語字幕表示アプリ「Duosub」大幅アップデート（日本語訳の常時表示が可能に。）",
-    url: "https://www.atpress.ne.jp/news/423834",
-  },
-  {
-    id: 2,
-    tags: ["プレスリリース", "Duosub"],
-    date: "2025.05.17",
-    title: "海外映画・ドラマの英語字幕・日本語訳アプリ『Duosub』が大幅アップデート（広告なしで全機能使い放題の格安サブスクプランを追加）",
-    url: "https://prtimes.jp/main/html/rd/p/000000001.000156441.html",
-  },
-  {
-    id: 3,
-    tags: ["プレスリリース", "Duosub"],
-    date: "2025.11.08",
-    title: "海外映画・ドラマの英語字幕・日本語訳アプリ『Duosub』がYouTubeにも対応！",
-    url: "https://prtimes.jp/main/html/rd/p/000000003.000156441.html",
-  },
-  {
-    id: 4,
-    tags: ["メディア掲載"],
-    date: "2025.11.10",
-    title: "弊社代表の小山望海が朝日新聞に掲載されました。",
-    url: "/news/4",
-  },
-  {
-    id: 5,
-    tags: ["プレスリリース", "Duosub"],
-    date: "2025.12.02",
-    title: "海外動画の英語字幕・日本語訳アプリ『Duosub』の日本語訳性能が向上",
-    url: "https://prtimes.jp/main/html/rd/p/000000004.000156441.html",
-  },
-  {
-    id: 6,
-    tags: ["プレスリリース", "Gentle Diary"],
-    date: "2026.04.16",
-    title: "新サービス「Gentle Diary」リリース",
-    url: "https://prtimes.jp/main/html/rd/p/000000005.000156441.html",
-  },
-];
-
 function isExternalNewsUrl(url: string): boolean {
   return /^https?:\/\//i.test(url);
 }
 
-const newsSortedByIdDesc = [...news].sort((a, b) => b.id - a.id);
-
-type NewsEntry = (typeof news)[number];
+// トップページは最新6件のみ表示（全件は /news ページで確認できる）
+const newsSortedByIdDesc = [...news].sort((a, b) => b.id - a.id).slice(0, 6);
 
 function NewsHomeCard({ n, i, external }: { n: NewsEntry; i: number; external: boolean }) {
   const [expanded, setExpanded] = useState(false);
@@ -385,28 +338,13 @@ export default function Home() {
           </p>
           <div className={s.ctaRow}>
             <a href={CONTACT_URL} className={s.btnPrimary}>
-              まずは相談してみる（無料・30分）
+              まずは相談してみる（無料）
             </a>
             <a href="#services" className={s.btnGhost}>サービスを見る</a>
           </div>
         </div>
         {/* スクロールプロンプト */}
         <div className={s.scrollPrompt} aria-hidden="true">↓</div>
-      </section>
-
-      {/* 信頼バー */}
-      <section className={s.trustBar} aria-label="信頼シグナル">
-        <div className="container">
-          <ul className={s.trustGrid} role="list">
-            {trustItems.map((item, i) => (
-              <li key={i} className={s.trustItem}>
-                <span className={s.trustIcon} aria-hidden="true">{item.icon}</span>
-                <span className={s.trustMain}>{item.main}</span>
-                <span className={s.trustSub}>{item.sub}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
       </section>
 
       {/* 課題セクション */}
@@ -448,7 +386,7 @@ export default function Home() {
         <div className="container">
           <h2 className={`${s.sectionTitle} ${s.reveal}`}>なぜGOWSが選ばれるのか</h2>
           <p className={`${s.sectionSub} ${s.reveal} ${s.strengthLead}`}>
-            「コンサルに頼んだら戦略書だけ出てきた」「開発会社に頼んだら要件を固めてから来いと言われた」。この分断が、DX・AI導入を失敗させてきました。GOWSは、この構造問題に正面から向き合うために設立されました。
+            ただ流行っているからという理由でAIを導入する、あるいは、紙やExcelで行なっていた業務をただシステム化するだけでは十分な効果を得ることはできません。GOWSはせっかくのIT投資の効果を最大化するために、業務の本質を理解し、課題の根本を解決するDX・AI戦略を提案します。
           </p>
 
           {/* 主軸3カード */}
@@ -508,10 +446,19 @@ export default function Home() {
         <div className="container">
           <h2 className={`${s.sectionTitle} ${s.reveal}`}>事業内容</h2>
           <p className={`${s.sectionSub} ${s.reveal}`}>戦略立案からプロダクト運営まで、ITで事業成長を支援します。</p>
-          <ul className={s.cardGrid} role="list">
+          <ul className={s.cardGridFour} role="list">
             {services.map((sv, i) => (
-              <li key={sv.name} className={`${s.serviceCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
-                <div className={s.serviceCardGlow} style={{ background: serviceGlows[i] }} aria-hidden="true" />
+              <li
+                key={sv.name}
+                className={`${s.serviceCard} ${s.reveal}`}
+                style={{ transitionDelay: `${i * 0.1}s` }}
+                data-glow={serviceGlows[i]}
+              >
+                <div
+                  className={s.serviceCardGlow}
+                  style={{ background: serviceGlows[i] === "amber" ? "radial-gradient(ellipse at top left, rgba(245,158,11,0.13) 0%, transparent 65%)" : serviceGlows[i] }}
+                  aria-hidden="true"
+                />
                 <h3 className={s.serviceH3}>{sv.name}</h3>
                 <p className={s.serviceDesc}>{sv.desc}</p>
                 <ul className={s.darkTagList} role="list" aria-label="対応内容">
@@ -571,6 +518,11 @@ export default function Home() {
               <NewsHomeCard key={n.id} n={n} i={i} external={isExternalNewsUrl(n.url)} />
             ))}
           </ul>
+          <div className={s.newsMore}>
+            <a href="/news" className={s.btnGhost}>
+              すべてのニュースを見る →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -591,11 +543,11 @@ export default function Home() {
           <p className={s.footerCtaSub}>
             一緒に整理するところから始めましょう。ヒアリングから提案まで、初回は無料です。
             <br />
-            まずは30分、話だけでも聞いてみてください。
+            まずは話だけでも聞いてみてください。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
             <a href={CONTACT_URL} className={s.btnPrimary}>
-              無料相談を予約する（30分）
+              無料相談を予約する
             </a>
           </div>
         </div>
