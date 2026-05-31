@@ -119,7 +119,7 @@ const serviceGlows = [
 const services = [
   {
     name: "DX・AXコンサルティング",
-    desc: "ただの\"IT化\"で終わらせない。DX戦略の立案からAI導入・新規事業支援まで、コンサルタント・エンジニアがビジネスパートナーとして伴走します。",
+    desc: "ただの\"IT化\"で終わらせない。DX戦略の立案からAI導入・新規事業支援まで、技術にも精通した経験豊富なコンサルタントがビジネスパートナーとして伴走します。",
     tags: ["DX推進支援", "AI導入", "新規事業", "補助金申請"],
     cta: "コンサルを相談する",
     href: "/service/dx-ax",
@@ -154,7 +154,7 @@ const strengthCards: StrengthCard[] = [
     accentColor: "#06B6D4",
     glowColor: "rgba(6,182,212,0.08)",
     heading: "ツールを入れて終わりにしない。",
-    body: "「システムを導入したのに、現場が使ってくれない」「デジタル化したのに、業務のスピードが変わらない」——これはツールの問題ではなく、変革の進め方の問題です。GOWSのDX支援は、ツールの選定・導入にとどまりません。現場の業務フロー・組織の動き方・人の意識まで変えることを前提に伴走します。",
+    body: "「システムを導入したのに、現場が使ってくれない」「デジタル化したのに、業務が変わらない、会社の成長に繋がらない」——これはツールの問題ではなく、変革の進め方の問題です。GOWSのDX支援は、ツールの選定・導入にとどまりません。現場の業務フロー・組織の動き方・人の意識まで変えることを前提に伴走します。",
     points: [
       "戦略・ロードマップ設計から着手し、現場定着まで伴走",
       "定着・活用状況をモニタリングしてPDCAを回す",
@@ -164,12 +164,12 @@ const strengthCards: StrengthCard[] = [
   {
     accentColor: "#8B5CF6",
     glowColor: "rgba(139,92,246,0.08)",
-    heading: "AIで何ができるか、誰よりも具体的に答えられる。",
-    body: "代表の小山は、北海道大学大学院でAIを研究し、修士号を取得しています。GOWSはAIの仕組みを原理から理解した上で、「あなたのビジネスのどこにAIを使えば効果が出るか」を具体的に設計します。流行のツールを当てはめるのではなく、課題から逆算してAIの活用方法を設計します。",
+    heading: "AIで何ができるか、具体的に答えられる。",
+    body: "代表の小山は学生時代、AIの研究をしていました。代表だけでなくGOWSのメンバーはAIの仕組みを原理から理解した上で、「あなたのビジネスに対してAIでどのような効果が出せるか」を具体的に設計します。流行のツールを当てはめるのではなく、課題から逆算してAIの活用方法を設計します。",
     points: [
-      "代表が北大大学院でAI研究",
-      "AI活用業務設計まで担う",
-      "自社プロダクトにもAIを実装済み、実装経験のある提案が可能",
+      "ただ流行に乗るだけではないAI活用",
+      "AI活用業務設計から具体的な実装まで担う",
+      "多くのAI経験をもとにご提案",
     ],
   },
   {
@@ -180,7 +180,7 @@ const strengthCards: StrengthCard[] = [
     points: [
       "戦略→要件定義→設計→開発→運用をワンチームで担当",
       "コンサルと開発の「伝言ゲーム」「認識のズレ」を構造的に排除",
-      "「要件を固めてから来てください」とは言わない",
+      "何も決まっていない段階からでも一緒に考えていきます",
     ],
   },
 ];
@@ -196,25 +196,6 @@ const strengthSubCards = [
     icon: "🏭",
     heading: "業界の商習慣・規制を理解した上で提案します。",
     body: "金融・小売・EC・教育・イベント・製造・エンタメ・飲食・人材など、多岐に渡る業種での支援実績があります。それぞれの業界特有の制約や商習慣を踏まえた上で、最適な提案が可能です。",
-  },
-];
-
-// 信頼バー
-const trustItems = [
-  {
-    icon: "📰",
-    main: "朝日新聞 掲載",
-    sub: "メディア掲載実績",
-  },
-  {
-    icon: "🏭",
-    main: "9業種の支援経験",
-    sub: "金融・製造・EC・教育など",
-  },
-  {
-    icon: "👥",
-    main: "延べ1,000名以上が利用",
-    sub: "自社プロダクト",
   },
 ];
 
@@ -385,28 +366,13 @@ export default function Home() {
           </p>
           <div className={s.ctaRow}>
             <a href={CONTACT_URL} className={s.btnPrimary}>
-              まずは相談してみる（無料・30分）
+              まずは相談してみる（無料）
             </a>
             <a href="#services" className={s.btnGhost}>サービスを見る</a>
           </div>
         </div>
         {/* スクロールプロンプト */}
         <div className={s.scrollPrompt} aria-hidden="true">↓</div>
-      </section>
-
-      {/* 信頼バー */}
-      <section className={s.trustBar} aria-label="信頼シグナル">
-        <div className="container">
-          <ul className={s.trustGrid} role="list">
-            {trustItems.map((item, i) => (
-              <li key={i} className={s.trustItem}>
-                <span className={s.trustIcon} aria-hidden="true">{item.icon}</span>
-                <span className={s.trustMain}>{item.main}</span>
-                <span className={s.trustSub}>{item.sub}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
       </section>
 
       {/* 課題セクション */}
@@ -448,7 +414,7 @@ export default function Home() {
         <div className="container">
           <h2 className={`${s.sectionTitle} ${s.reveal}`}>なぜGOWSが選ばれるのか</h2>
           <p className={`${s.sectionSub} ${s.reveal} ${s.strengthLead}`}>
-            「コンサルに頼んだら戦略書だけ出てきた」「開発会社に頼んだら要件を固めてから来いと言われた」。この分断が、DX・AI導入を失敗させてきました。GOWSは、この構造問題に正面から向き合うために設立されました。
+            ただ流行っているからという理由でAIを導入する、あるいは、紙やExcelで行なっていた業務をただシステム化するだけでは十分な効果を得ることはできません。GOWSはせっかくのIT投資の効果を最大化するために、業務の本質を理解し、課題の根本を解決するDX・AI戦略を提案します。
           </p>
 
           {/* 主軸3カード */}
@@ -591,11 +557,11 @@ export default function Home() {
           <p className={s.footerCtaSub}>
             一緒に整理するところから始めましょう。ヒアリングから提案まで、初回は無料です。
             <br />
-            まずは30分、話だけでも聞いてみてください。
+            まずは話だけでも聞いてみてください。
           </p>
           <div className={`${s.ctaRow} ${s.ctaRowCenter}`}>
             <a href={CONTACT_URL} className={s.btnPrimary}>
-              無料相談を予約する（30分）
+              無料相談を予約する
             </a>
           </div>
         </div>
