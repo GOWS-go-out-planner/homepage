@@ -105,7 +105,7 @@ const problems = [
   {
     heading: "技術と経営を両立できる相談相手がいない",
     body: "CTOを雇う余裕はない。でも技術判断を経営者だけでするには限界がある。",
-    tag: "新規事業・MVP開発支援",
+    tag: "技術顧問",
   },
 ];
 
@@ -114,21 +114,30 @@ const serviceGlows = [
   "radial-gradient(ellipse at top left, rgba(79,142,247,0.18) 0%, transparent 65%)",
   "radial-gradient(ellipse at top left, rgba(139,92,246,0.18) 0%, transparent 65%)",
   "radial-gradient(ellipse at top left, rgba(6,182,212,0.15) 0%, transparent 65%)",
+  "amber",
 ];
 
-const services = [
+type Service = {
+  name: string;
+  desc: string;
+  tags: string[];
+  cta: string;
+  href: string;
+};
+
+const services: Service[] = [
   {
     name: "DX・AXコンサルティング",
     desc: "ただの\"IT化\"で終わらせない。DX戦略の立案からAI導入・新規事業支援まで、技術にも精通した経験豊富なコンサルタントがビジネスパートナーとして伴走します。",
     tags: ["DX推進支援", "AI導入", "新規事業", "補助金申請"],
-    cta: "コンサルを相談する",
+    cta: "詳細を見る",
     href: "/service/dx-ax",
   },
   {
     name: "システム開発",
     desc: "要件定義から保守・運用まで全フェーズを自社内で完結。多重下請け構造を排除し、低コスト・短納期・高品質なシステムを直接お届けします。",
     tags: ["Webアプリ", "業務システム", "モバイルアプリ", "API開発"],
-    cta: "開発を相談する",
+    cta: "詳細を見る",
     href: "/service/system-dev",
   },
   {
@@ -137,6 +146,13 @@ const services = [
     tags: ["iOS", "Android", "自社開発"],
     cta: "プロダクトを見る",
     href: "/service/products",
+  },
+  {
+    name: "技術顧問",
+    desc: "採用しなくていい、CTOレンタル。月額2万円からの固定費で、経営目線と技術目線を兼ね備えたコンサルタントがあなたの技術判断を支えます。",
+    tags: ["外部CTO", "技術選定", "ベンダー折衝"],
+    cta: "詳細を見る",
+    href: "/service/tech-advisor",
   },
 ];
 
@@ -474,10 +490,19 @@ export default function Home() {
         <div className="container">
           <h2 className={`${s.sectionTitle} ${s.reveal}`}>事業内容</h2>
           <p className={`${s.sectionSub} ${s.reveal}`}>戦略立案からプロダクト運営まで、ITで事業成長を支援します。</p>
-          <ul className={s.cardGrid} role="list">
+          <ul className={s.cardGridFour} role="list">
             {services.map((sv, i) => (
-              <li key={sv.name} className={`${s.serviceCard} ${s.reveal}`} style={{ transitionDelay: `${i * 0.1}s` }}>
-                <div className={s.serviceCardGlow} style={{ background: serviceGlows[i] }} aria-hidden="true" />
+              <li
+                key={sv.name}
+                className={`${s.serviceCard} ${s.reveal}`}
+                style={{ transitionDelay: `${i * 0.1}s` }}
+                data-glow={serviceGlows[i]}
+              >
+                <div
+                  className={s.serviceCardGlow}
+                  style={{ background: serviceGlows[i] === "amber" ? "radial-gradient(ellipse at top left, rgba(245,158,11,0.13) 0%, transparent 65%)" : serviceGlows[i] }}
+                  aria-hidden="true"
+                />
                 <h3 className={s.serviceH3}>{sv.name}</h3>
                 <p className={s.serviceDesc}>{sv.desc}</p>
                 <ul className={s.darkTagList} role="list" aria-label="対応内容">
