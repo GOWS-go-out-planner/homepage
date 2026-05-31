@@ -772,6 +772,7 @@
   padding: 4px 12px;
   border-radius: 4px;
   margin-top: 12px;
+  white-space: nowrap;
 }
 
 .ceoContent {
@@ -1638,6 +1639,8 @@
   }
   .ceoPhotoCol {
     width: 140px;
+    /* PC時の負のマージンをリセット（スマホ縦積みでラベルへの重なりを防ぐ） */
+    margin-top: 0;
   }
   .ceoContent {
     width: 100%;
