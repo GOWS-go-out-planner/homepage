@@ -51,13 +51,6 @@
   margin-bottom: 56px;
 }
 
-.gradientText {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* ---- Buttons ---- */
 .btnPrimary {
   display: inline-block;
@@ -1291,6 +1284,10 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+.pageHero .container {
+  max-width: 1720px;
+}
+
 /* 利用規約ページ（グローバル Nav 無し）：ヘッダー分の余白を詰める */
 .pageHeroTerms {
   padding: 24px 0 36px;
@@ -1372,7 +1369,7 @@
   font-size: 16px;
   color: rgba(240, 244, 255, 0.94);
   line-height: 1.8;
-  max-width: 560px;
+  max-width: 720px;
   margin-bottom: 36px;
   white-space: pre-line;
 }
@@ -1640,6 +1637,94 @@
     align-items: stretch;
   }
   .ctaRow a { text-align: center; }
+}
+
+/* ---- Tech Advisor Page ---- */
+.advisorLead {
+  max-width: 760px;
+  margin: 0 auto 56px;
+  font-size: 16px;
+  color: var(--color-text-sub);
+  text-align: center;
+  line-height: 1.85;
+}
+
+.advisorPricingWrap {
+  max-width: 680px;
+  margin: 0 auto 32px;
+}
+
+.advisorTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.advisorTable th {
+  width: 180px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-muted);
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.advisorTable td {
+  color: var(--color-text);
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.advisorTable tr:last-child th,
+.advisorTable tr:last-child td {
+  border-bottom: none;
+}
+
+.advisorPriceHighlight {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.advisorPriceNote {
+  font-size: 14px;
+  color: var(--color-text-sub);
+}
+
+.advisorCompareNote {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: var(--color-text-sub);
+  background: rgba(79, 142, 247, 0.06);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .advisorTable th {
+    width: 120px;
+    font-size: 13px;
+    padding: 16px;
+  }
+
+  .advisorTable td {
+    font-size: 14px;
+    padding: 16px;
+  }
+
+  .advisorPriceHighlight {
+    font-size: 22px;
+  }
 }
 
 /* ---- prefers-reduced-motion ---- */

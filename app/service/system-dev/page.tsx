@@ -85,7 +85,7 @@ export default function SystemDevPage() {
           </nav>
           <h1 className={s.pageH1}>システム開発</h1>
           <p className={s.pageSubCopy}>
-            課題を深く理解した設計と、全工程自社完結の開発力で、{"\n"}低コスト・短納期・高品質なシステムを提供します。
+            課題を深く理解した設計と、全工程自社完結の開発力で、低コスト・短納期・高品質なシステムを提供します。
           </p>
           <a href={CONTACT_URL} className={s.btnPrimary}>
             無料相談を予約する →
