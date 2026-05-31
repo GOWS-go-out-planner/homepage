@@ -32,6 +32,7 @@ export default function Nav() {
         <ul className={styles.links} role="list">
           <li><a href="/service/dx-ax">DX・AXコンサルティング</a></li>
           <li><a href="/service/system-dev">システム開発</a></li>
+          <li><a href="/service/tech-advisor">技術顧問</a></li>
           <li><a href="/service/products">自社プロダクト</a></li>
           <li><a href="/company-info">会社概要</a></li>
         </ul>
@@ -68,6 +69,7 @@ export default function Nav() {
         <ul className={styles.mobileLinks} role="list">
           <li><a href="/service/dx-ax" onClick={closeMobileMenu}>DX・AXコンサルティング</a></li>
           <li><a href="/service/system-dev" onClick={closeMobileMenu}>システム開発</a></li>
+          <li><a href="/service/tech-advisor" onClick={closeMobileMenu}>技術顧問</a></li>
           <li><a href="/service/products" onClick={closeMobileMenu}>自社プロダクト</a></li>
           <li><a href="/company-info" onClick={closeMobileMenu}>会社概要</a></li>
           <li><a href="/#news" onClick={closeMobileMenu}>お知らせ</a></li>

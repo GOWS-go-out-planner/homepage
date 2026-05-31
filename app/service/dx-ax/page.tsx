@@ -84,7 +84,7 @@ export default function DxAxPage() {
           </nav>
           <h1 className={s.pageH1}>DX・AXコンサルティング</h1>
           <p className={s.pageSubCopy}>
-            AIとデジタルの力で、事業の変革を加速する。{"\n"}お客様と一体になって課題に寄り添い、{"\n"}最新テクノロジーを駆使して根本から解決します。
+            AIとデジタルの力で、事業の変革を加速する。{"\n"}お客様と一体になって課題に寄り添い、最新テクノロジーを駆使して根本から解決します。
           </p>
           <a href={CONTACT_URL} className={s.btnPrimary}>
             無料相談を予約する →

@@ -9,6 +9,7 @@ const routes: { path: string; changeFrequency?: MetadataRoute.Sitemap[number]["c
   { path: "/personal-info", changeFrequency: "yearly", priority: 0.3 },
   { path: "/service/dx-ax", changeFrequency: "monthly", priority: 0.9 },
   { path: "/service/system-dev", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/service/tech-advisor", changeFrequency: "monthly", priority: 0.9 },
   { path: "/service/products", changeFrequency: "weekly", priority: 0.9 },
   { path: "/service/products/duosub", changeFrequency: "weekly", priority: 0.9 },
   { path: "/service/products/duosub/terms", changeFrequency: "yearly", priority: 0.4 },
@@ -18,6 +19,7 @@ const routes: { path: string; changeFrequency?: MetadataRoute.Sitemap[number]["c
   { path: "/service/products/gentle-diary", changeFrequency: "weekly", priority: 0.8 },
   { path: "/service/products/gentle-diary/terms", changeFrequency: "yearly", priority: 0.4 },
   { path: "/service/products/gentle-diary/privacy", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/news", changeFrequency: "weekly", priority: 0.8 },
   { path: "/news/4", changeFrequency: "yearly", priority: 0.6 },
 ];
 

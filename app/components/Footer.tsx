@@ -75,13 +75,14 @@ export default function Footer() {
             <ul role="list" className={s.footerNavList}>
               <li><a href="/service/dx-ax">DX・AXコンサルティング</a></li>
               <li><a href="/service/system-dev">システム開発</a></li>
+              <li><a href="/service/tech-advisor">技術顧問</a></li>
               <li><a href="/service/products">自社プロダクト</a></li>
             </ul>
           </nav>
           <nav aria-label="会社情報">
             <ul role="list" className={s.footerNavList}>
               <li><a href="/company-info">会社概要</a></li>
-              <li><a href="/#news">お知らせ</a></li>
+              <li><a href="/news">お知らせ</a></li>
               <li><a href="/#faq">よくある質問</a></li>
             </ul>
           </nav>
