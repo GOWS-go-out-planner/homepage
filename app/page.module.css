@@ -977,12 +977,56 @@
   border-top: 1px solid var(--color-border);
 }
 
+/* /news ページ専用: 全件一覧セクション */
+.newsListSection {
+  padding: 96px 0;
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
 .newsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   list-style: none;
   margin-bottom: 40px;
+}
+
+.newsGridSingle {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+/* PC・モバイル共通: 2段構造（メタ行 + タイトル行） */
+.newsGridSingle .newsCardLink {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newsCardMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+}
+
+.newsGridSingle .newsTagList {
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.newsGridSingle .newsDate {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.newsGridSingle .newsTitle {
+  font-size: 15px;
+  line-height: 1.55;
 }
 
 .newsCard {
@@ -1359,19 +1403,6 @@
   font-size: 12px;
 }
 
-.pageBadge {
-  display: inline-block;
-  background: rgba(79, 142, 247, 0.15);
-  border: 1px solid rgba(79, 142, 247, 0.35);
-  color: #93c5fd;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 14px;
-  border-radius: 100px;
-  letter-spacing: 0.06em;
-  margin-bottom: 20px;
-}
-
 .pageH1 {
   font-size: clamp(1.8rem, 4vw, 2.75rem);
   font-weight: 900;
@@ -1566,6 +1597,7 @@
   .serviceSection,
   .testimonialSection,
   .newsSection,
+  .newsListSection,
   .footerCta,
   .trustBar,
   .strengthSection,
@@ -1601,6 +1633,7 @@
   .cardGridTwo { grid-template-columns: 1fr; }
   .cardGridFour { grid-template-columns: 1fr; }
   .newsGrid { grid-template-columns: 1fr; }
+  .newsGridSingle { max-width: 100%; }
   .menuGrid { grid-template-columns: 1fr; }
 
   /* 信頼バー: mobile は2カラム */
@@ -1655,6 +1688,11 @@
     align-items: stretch;
   }
   .ctaRow a { text-align: center; }
+
+  .newsCardMeta {
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
 }
 
 /* ---- Tech Advisor Page ---- */

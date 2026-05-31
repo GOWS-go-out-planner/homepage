@@ -5,6 +5,9 @@ import Nav from "./components/Nav";
 import FaqAccordion from "./components/FaqAccordion";
 import Footer from "./components/Footer";
 import s from "./page.module.css";
+// ニュースデータは lib/data/news.ts で一元管理。/news ページでも同データを参照している。
+import { news } from "../lib/data/news";
+import type { NewsEntry } from "../lib/data/news";
 
 const CONTACT_URL = "/contact";
 
@@ -215,59 +218,12 @@ const strengthSubCards = [
   },
 ];
 
-// ニュース
-const news = [
-  {
-    id: 1,
-    tags: ["プレスリリース", "Duosub"],
-    date: "2025.01.30",
-    title: "海外映画・ドラマの英語字幕表示アプリ「Duosub」大幅アップデート（日本語訳の常時表示が可能に。）",
-    url: "https://www.atpress.ne.jp/news/423834",
-  },
-  {
-    id: 2,
-    tags: ["プレスリリース", "Duosub"],
-    date: "2025.05.17",
-    title: "海外映画・ドラマの英語字幕・日本語訳アプリ『Duosub』が大幅アップデート（広告なしで全機能使い放題の格安サブスクプランを追加）",
-    url: "https://prtimes.jp/main/html/rd/p/000000001.000156441.html",
-  },
-  {
-    id: 3,
-    tags: ["プレスリリース", "Duosub"],
-    date: "2025.11.08",
-    title: "海外映画・ドラマの英語字幕・日本語訳アプリ『Duosub』がYouTubeにも対応！",
-    url: "https://prtimes.jp/main/html/rd/p/000000003.000156441.html",
-  },
-  {
-    id: 4,
-    tags: ["メディア掲載"],
-    date: "2025.11.10",
-    title: "弊社代表の小山望海が朝日新聞に掲載されました。",
-    url: "/news/4",
-  },
-  {
-    id: 5,
-    tags: ["プレスリリース", "Duosub"],
-    date: "2025.12.02",
-    title: "海外動画の英語字幕・日本語訳アプリ『Duosub』の日本語訳性能が向上",
-    url: "https://prtimes.jp/main/html/rd/p/000000004.000156441.html",
-  },
-  {
-    id: 6,
-    tags: ["プレスリリース", "Gentle Diary"],
-    date: "2026.04.16",
-    title: "新サービス「Gentle Diary」リリース",
-    url: "https://prtimes.jp/main/html/rd/p/000000005.000156441.html",
-  },
-];
-
 function isExternalNewsUrl(url: string): boolean {
   return /^https?:\/\//i.test(url);
 }
 
-const newsSortedByIdDesc = [...news].sort((a, b) => b.id - a.id);
-
-type NewsEntry = (typeof news)[number];
+// トップページは最新6件のみ表示（全件は /news ページで確認できる）
+const newsSortedByIdDesc = [...news].sort((a, b) => b.id - a.id).slice(0, 6);
 
 function NewsHomeCard({ n, i, external }: { n: NewsEntry; i: number; external: boolean }) {
   const [expanded, setExpanded] = useState(false);
@@ -562,6 +518,11 @@ export default function Home() {
               <NewsHomeCard key={n.id} n={n} i={i} external={isExternalNewsUrl(n.url)} />
             ))}
           </ul>
+          <div className={s.newsMore}>
+            <a href="/news" className={s.btnGhost}>
+              すべてのニュースを見る →
+            </a>
+          </div>
         </div>
       </section>
 
