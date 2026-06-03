@@ -22,10 +22,10 @@ type Role = {
 const roles: Role[] = [
   {
     id: "consultant",
-    label: "DX・AXコンサルタント",
+    label: "ITコンサルタント",
     badgeClass: p.partnerRoleBadgeBlue,
-    badgeText: "DX・AX Consultant",
-    h3: "DX・AXコンサルタント",
+    badgeText: "IT Consultant",
+    h3: "ITコンサルタント",
     desc: "DX推進・業務改革・AI活用の企画や導入支援を担当します。クライアントとの上流コミュニケーションから要件整理まで、コンサルタントとして幅広く関与いただきます。",
     fits: [
       "上流工程（戦略立案・要件定義）に関わりたい方",
@@ -36,7 +36,7 @@ const roles: Role[] = [
       "DX推進・業務改革・AI活用の企画・導入経験",
       "クライアントワーク・提案資料作成",
       "業務フロー整理・要件定義",
-      "ITプロジェクトのPM・PMO",
+      "プロジェクトのPM・PMO",
       "特定業種（金融・製造・小売・教育等）の深い知見（歓迎）",
     ],
   },
@@ -145,7 +145,7 @@ const initialForm: PartnerFormData = {
 };
 
 const roleOptions = [
-  "DX・AXコンサルタント",
+  "ITコンサルタント",
   "システムエンジニア / フルスタックエンジニア",
   "AI・機械学習エンジニア",
   "その他",
@@ -501,7 +501,7 @@ export default function PartnerPage() {
             {submitStatus === "success" ? (
               <div className={p.partnerSuccessBox}>
                 <div className={p.partnerSuccessIcon} aria-hidden="true">✓</div>
-                <h2 className={p.partnerSuccessH2}>エントリーを受け付けました</h2>
+                <h2 className={p.partnerSuccessH2}>受け付けました</h2>
                 <p className={p.partnerSuccessText}>
                   ご応募ありがとうございます。<br />
                   翌営業日中にご入力いただいたメールアドレス宛にご連絡させていただきます。
@@ -668,7 +668,7 @@ export default function PartnerPage() {
                       className={p.partnerSubmitBtn}
                       disabled={submitStatus === "loading"}
                     >
-                      {submitStatus === "loading" ? "送信中..." : "エントリーを送信する"}
+                      {submitStatus === "loading" ? "送信中..." : "送信する"}
                     </button>
                   </div>
                 </div>
