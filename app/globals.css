@@ -38,6 +38,13 @@
   --color-strength-dx:  #06B6D4;
   --color-strength-ax:  #8B5CF6;
   --color-strength-int: #10B981;
+
+  /* /partner ページ 専用トークン */
+  --color-partner-warm:    #E8A838;
+  --gradient-partner-hero: radial-gradient(ellipse at 30% 60%, rgba(232,168,56,0.12) 0%, transparent 55%),
+                            radial-gradient(ellipse at 75% 25%, rgba(79,142,247,0.14) 0%, transparent 50%),
+                            linear-gradient(160deg, #0C1020 0%, #0A0E1A 45%, #0D0C18 100%);
+  --gradient-partner-num:  linear-gradient(135deg, #E8A838 0%, #4F8EF7 100%);
 }
 
 html {
