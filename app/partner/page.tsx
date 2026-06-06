@@ -37,7 +37,7 @@ const roles: Role[] = [
       "クライアントワーク・提案資料作成",
       "業務フロー整理・要件定義",
       "プロジェクトのPM・PMO",
-      "特定業種（金融・製造・小売・教育等）の深い知見（歓迎）",
+      "特定業種（金融・製造・小売・教育等）の深い知見",
     ],
   },
   {
@@ -57,7 +57,7 @@ const roles: Role[] = [
       "Next.js・React・TypeScript・Node.js・Python・Go等",
       "DB設計・API設計",
       "アジャイル・スクラム開発",
-      "クラウドインフラ（AWS・GCP・Azure）（歓迎）",
+      "クラウドインフラ（AWS・GCP・Azure）",
     ],
   },
   {
@@ -70,13 +70,13 @@ const roles: Role[] = [
     fits: [
       "ビジネス側との要件調整経験がある方",
       "LLM・RAG・プロンプトエンジニアリングの実績がある方",
-      "研究バックグラウンド（大学院・研究機関）がある方（歓迎）",
+      "研究バックグラウンド（大学院・研究機関）がある方",
     ],
     skills: [
       "生成AI（LLM）業務活用・RAG構築・プロンプトエンジニアリング",
       "Python・機械学習フレームワーク（PyTorch・scikit-learn等）",
       "データ分析・データエンジニアリング",
-      "ML Ops・モデル運用の知識（歓迎）",
+      "ML Ops・モデル運用の知識",
     ],
   },
 ];
@@ -114,7 +114,7 @@ type FaqItem = { q: string; a: string };
 
 const faqs: FaqItem[] = [
   { q: "稼働時間はどのくらい必要ですか？", a: "タイミング次第では週数時間程度から参画いただける案件があります。稼働時間・日数はご状況に合わせてご相談ください。" },
-  { q: "契約形態はどうなりますか？", a: "業務委託契約（準委任または請負）となります。雇用関係は発生しません。" },
+  { q: "契約形態はどうなりますか？", a: "業務委託契約（準委任または請負）となります。雇用関係は発生しません。副業も大歓迎です。" },
   { q: "今すぐ動けない状態でも相談できますか？", a: "はい、歓迎です。まずはご状況をお聞きし、タイミングが合う案件が出た際にご連絡することも可能です。" },
 ];
 
@@ -259,12 +259,11 @@ export default function PartnerPage() {
         <section className={p.partnerHero}>
           <div className={p.partnerHeroOrb} aria-hidden="true" />
           <div className="container">
-            {/* パンくず */}
-            <nav aria-label="パンくず">
-              <ol className={s.breadcrumb} style={{ position: "static", marginBottom: "32px", display: "flex", gap: "6px", listStyle: "none", alignItems: "center" }}>
-                <li><a href="/" style={{ fontSize: "13px", color: "var(--color-muted)" }}>ホーム</a></li>
-                <li aria-hidden="true" style={{ fontSize: "12px", color: "var(--color-muted)" }}>/</li>
-                <li><span aria-current="page" style={{ fontSize: "13px", color: "var(--color-text-sub)" }}>パートナー募集</span></li>
+            <nav className={s.breadcrumb} aria-label="パンくず">
+              <ol>
+                <li><a href="/">ホーム</a></li>
+                <li aria-hidden="true" className={s.breadcrumbSep}>/</li>
+                <li><span aria-current="page">パートナー募集</span></li>
               </ol>
             </nav>
 
