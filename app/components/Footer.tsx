@@ -90,6 +90,7 @@ export default function Footer() {
             <ul role="list" className={s.footerNavList}>
               <li><a href="/privacy">プライバシーポリシー</a></li>
               <li><a href="/personal-info">個人情報の取り扱いについて</a></li>
+              <li><a href="/partner">パートナー募集</a></li>
             </ul>
           </nav>
         </div>
