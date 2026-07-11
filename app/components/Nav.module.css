@@ -175,6 +175,34 @@
   transition: opacity 0.15s, transform 0.15s;
 }
 
+@media (min-width: 768px) and (max-width: 1244px) {
+  /*
+   * 768px〜1244px の間は、ロゴ + リンク6項目 + CTA2ボタンが1行に収まらず
+   * はみ出す（.links の nowrap により右側がコンテナ外へ押し出される）。
+   * この範囲でのみ .links を2行に折り返し、あわせてフォント・gapを
+   * 詰めることで .inner の height: 72px 内に収める。
+   * 1245px以上では元々1行に収まるため、このブロックは影響しない。
+   */
+  .inner {
+    gap: 12px;
+  }
+
+  .links {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+
+  .links a {
+    font-size: 13px;
+  }
+
+  .cta,
+  .ctaSecondary {
+    font-size: 13px;
+    padding: 6px 14px;
+  }
+}
+
 @media (max-width: 767px) {
   .inner {
     height: 64px;
