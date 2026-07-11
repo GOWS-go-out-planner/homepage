@@ -804,6 +804,7 @@
 
   .partnerRoleSection { padding: 72px 0; }
   .partnerRoleTabList { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+  .partnerRoleTab { padding: 10px 5px; }
   .partnerRolePanelActive { grid-template-columns: 1fr; gap: 24px; }
   .partnerRolePanelH3 { font-size: 1.3rem; }
   .partnerRolePanelSkills { padding: 24px; }

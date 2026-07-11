@@ -88,9 +88,9 @@ export default function Footer() {
           </nav>
           <nav aria-label="その他">
             <ul role="list" className={s.footerNavList}>
+              <li><a href="/partner">パートナー募集</a></li>
               <li><a href="/privacy">プライバシーポリシー</a></li>
               <li><a href="/personal-info">個人情報の取り扱いについて</a></li>
-              <li><a href="/partner">パートナー募集</a></li>
             </ul>
           </nav>
         </div>

@@ -35,6 +35,7 @@ export default function Nav() {
           <li><a href="/service/tech-advisor">技術顧問</a></li>
           <li><a href="/service/products">自社プロダクト</a></li>
           <li><a href="/company-info">会社概要</a></li>
+          <li><a href="/partner">パートナー募集</a></li>
         </ul>
         <div className={styles.ctaGroup}>
           <a
@@ -72,6 +73,7 @@ export default function Nav() {
           <li><a href="/service/tech-advisor" onClick={closeMobileMenu}>技術顧問</a></li>
           <li><a href="/service/products" onClick={closeMobileMenu}>自社プロダクト</a></li>
           <li><a href="/company-info" onClick={closeMobileMenu}>会社概要</a></li>
+          <li><a href="/partner" onClick={closeMobileMenu}>パートナー募集</a></li>
           <li><a href="/#news" onClick={closeMobileMenu}>お知らせ</a></li>
           <li>
             <a
