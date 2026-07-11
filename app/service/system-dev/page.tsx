@@ -20,6 +20,10 @@ const menus = [
     name: "モバイルアプリ",
     desc: "Flutter / React Native でAndroid・iOS両対応。全機種対応アプリを短納期で開発します。",
   },
+  {
+    name: "AI開発",
+    desc: "生成AI活用や業務自動化、AIエージェント開発、AIを用いたプロダクト開発まで、構想段階から伴走します。",
+  },
 ];
 
 const features = [
