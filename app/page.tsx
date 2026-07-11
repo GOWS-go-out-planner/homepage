@@ -381,6 +381,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* サービス詳細 */}
+      <section className={s.serviceSection} id="services">
+        <div className="container">
+          <h2 className={`${s.sectionTitle} ${s.reveal}`}>事業内容</h2>
+          <p className={`${s.sectionSub} ${s.reveal}`}>戦略立案からプロダクト運営まで、ITで事業成長を支援します。</p>
+          <ul className={s.cardGridFour} role="list">
+            {services.map((sv, i) => (
+              <li
+                key={sv.name}
+                className={`${s.serviceCard} ${s.reveal}`}
+                style={{ transitionDelay: `${i * 0.1}s` }}
+                data-glow={serviceGlows[i]}
+              >
+                <div
+                  className={s.serviceCardGlow}
+                  style={{ background: serviceGlows[i] === "amber" ? "radial-gradient(ellipse at top left, rgba(245,158,11,0.13) 0%, transparent 65%)" : serviceGlows[i] }}
+                  aria-hidden="true"
+                />
+                <h3 className={s.serviceH3}>{sv.name}</h3>
+                <p className={s.serviceDesc}>{sv.desc}</p>
+                <ul className={s.darkTagList} role="list" aria-label="対応内容">
+                  {sv.tags.map((t) => (
+                    <li key={t} className={s.darkTag}>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+                <a href={sv.href} className={s.btnGhostSm}>
+                  {sv.cta} →
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* GOWSの強みセクション */}
       <section className={s.strengthSection} id="why-gows">
         <div className="container">
@@ -435,42 +471,6 @@ export default function Home() {
                   <h3 className={s.strengthSubH3}>{card.heading}</h3>
                   <p className={s.strengthSubBody}>{card.body}</p>
                 </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* サービス詳細 */}
-      <section className={s.serviceSection} id="services">
-        <div className="container">
-          <h2 className={`${s.sectionTitle} ${s.reveal}`}>事業内容</h2>
-          <p className={`${s.sectionSub} ${s.reveal}`}>戦略立案からプロダクト運営まで、ITで事業成長を支援します。</p>
-          <ul className={s.cardGridFour} role="list">
-            {services.map((sv, i) => (
-              <li
-                key={sv.name}
-                className={`${s.serviceCard} ${s.reveal}`}
-                style={{ transitionDelay: `${i * 0.1}s` }}
-                data-glow={serviceGlows[i]}
-              >
-                <div
-                  className={s.serviceCardGlow}
-                  style={{ background: serviceGlows[i] === "amber" ? "radial-gradient(ellipse at top left, rgba(245,158,11,0.13) 0%, transparent 65%)" : serviceGlows[i] }}
-                  aria-hidden="true"
-                />
-                <h3 className={s.serviceH3}>{sv.name}</h3>
-                <p className={s.serviceDesc}>{sv.desc}</p>
-                <ul className={s.darkTagList} role="list" aria-label="対応内容">
-                  {sv.tags.map((t) => (
-                    <li key={t} className={s.darkTag}>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-                <a href={sv.href} className={s.btnGhostSm}>
-                  {sv.cta} →
-                </a>
               </li>
             ))}
           </ul>
