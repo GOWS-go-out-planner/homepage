@@ -106,7 +106,7 @@ const steps: Step[] = [
   {
     num: "04",
     h3: "参画・プロジェクト開始",
-    body: "業務委託契約を締結し、プロジェクトを開始します。GOWSのメンバーと連携しながら進めます。初回の案件後も継続的にパートナーとして関わっていただくことが多いです。",
+    body: "業務委託契約を締結し、プロジェクトを開始します。初回の案件後も継続的にパートナーとして関わっていただくことが多いです。",
   },
 ];
 
@@ -342,12 +342,12 @@ export default function PartnerPage() {
                     className={p.partnerWorkKeyword}
                     style={{ background: "linear-gradient(135deg, #E8A838, #F0C060)" }}
                   >
-                    少数精鋭
+                    AI活用
                   </span>
-                  <h3 className={p.partnerWorkH3}>少数精鋭でフラットに動ける</h3>
+                  <h3 className={p.partnerWorkH3}>AI・AX領域の案件にも携われる</h3>
                   <p className={p.partnerWorkBody}>
-                    大きな組織特有の階層や無駄な調整コストがありません。
-                    メンバーと直接コミュニケーションを取りながら、スピード感をもってプロジェクトを推進できます。
+                    生成AI活用やAIの実装を伴う案件に参画する機会があります。
+                    実務を通じて、AI活用の実践知見や市場価値の高いスキルを磨けます。
                   </p>
                 </div>
               </div>
