@@ -1,0 +1,63 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(10, 14, 26, 0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+.message {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  word-break: break-all;
+}
+
+.link {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--color-primary-dark);
+}
+
+.countdown {
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: var(--color-text-sub);
+}
+
+@media (max-width: 767px) {
+  .card {
+    padding: 28px 20px;
+  }
+
+  .message {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+}
