@@ -4,7 +4,11 @@ import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import { useSetMigrationNoticeTarget } from "./components/MigrationNoticeContext";
 import s from "./not-found.module.css";
+
+/** 新ドメインのトップページ（404ページからの誘導先） */
+const NEW_SITE_TOP_URL = "https://www.pit-dock.com";
 
 function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -83,6 +87,12 @@ function ParticleCanvas() {
 
 export default function NotFound() {
   const router = useRouter();
+  // 404ページでは、現在の（存在しない）パスではなく新ドメインのトップページへ遷移させる
+  const setMigrationNoticeTarget = useSetMigrationNoticeTarget();
+  useEffect(() => {
+    setMigrationNoticeTarget(NEW_SITE_TOP_URL);
+    return () => setMigrationNoticeTarget(null);
+  }, [setMigrationNoticeTarget]);
 
   return (
     <>
@@ -100,7 +110,7 @@ export default function NotFound() {
             URLをご確認いただくか、ホームページからお探しください。
           </p>
           <div className={s.buttons}>
-            <a href="/" className={s.btnPrimary}>ホームへ戻る</a>
+            <a href={NEW_SITE_TOP_URL} className={s.btnPrimary}>ホームへ戻る</a>
             <button
               type="button"
               className={s.btnSecondary}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { DomainMigrationNotice } from "./components/DomainMigrationNotice";
+import { MigrationNoticeProvider } from "./components/MigrationNoticeContext";
 import { JsonLd } from "./components/JsonLd";
 import { createPageMetadata } from "../lib/seo/metadata";
 import { faqPageJsonLd, organizationJsonLd, webSiteJsonLd } from "../lib/seo/json-ld";
@@ -56,7 +58,10 @@ export default function RootLayout({
         <JsonLd data={[organizationJsonLd(), webSiteJsonLd(), faqPageJsonLd()]} />
       </head>
       <body>
-        {children}
+        <MigrationNoticeProvider>
+          <DomainMigrationNotice />
+          <div id="site-content">{children}</div>
+        </MigrationNoticeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
